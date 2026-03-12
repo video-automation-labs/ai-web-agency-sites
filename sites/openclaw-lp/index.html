@@ -35,7 +35,6 @@
             --text-secondary: #666666;
             --background: #F5F5F5;
             --border: #E0E0E0;
-            --success: #00C851;
         }
 
         * {
@@ -55,79 +54,24 @@
             background-color: var(--secondary);
         }
 
-        /* ========== HERO ========== */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0F0F0F 0%, #1A1A2E 100%);
-            color: var(--secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding: 80px 24px;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(20px); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 900px;
-            animation: slideUp 0.8s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero h1 {
-            font-size: 52px;
+        h2 {
+            font-size: 40px;
             font-weight: 700;
-            margin-bottom: 24px;
-            line-height: 1.2;
+            margin-bottom: 48px;
+            text-align: center;
         }
 
-        .hero p {
+        .subtitle {
             font-size: 18px;
-            margin-bottom: 16px;
-            opacity: 0.9;
-        }
-
-        .hero .subtext {
-            font-size: 16px;
-            margin-bottom: 40px;
-            color: #B0B0B0;
-        }
-
-        .cta-container {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 48px;
         }
 
         .btn {
@@ -164,48 +108,135 @@
             color: var(--primary);
         }
 
-        /* ========== CONCEPT SECTION ========== */
-        .concept {
+        /* ========== HERO ========== */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0F0F0F 0%, #1A1A2E 100%);
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 80px 24px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            line-height: 1.2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 32px;
+        }
+
+        .hero-cta {
+            margin-top: 48px;
+        }
+
+        /* ========== CAPABILITIES SECTION ========== */
+        .capabilities {
             padding: 64px 24px;
             background-color: var(--background);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
         }
 
-        h2 {
-            font-size: 40px;
-            font-weight: 700;
+        .capability-card {
+            background-color: var(--secondary);
+            padding: 40px 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .capability-icon {
+            font-size: 48px;
             margin-bottom: 16px;
-            text-align: center;
         }
 
-        .subtitle {
-            font-size: 18px;
-            color: var(--text-secondary);
-            text-align: center;
-            margin-bottom: 48px;
+        .capability-card h3 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--primary);
         }
 
-        .badge-line {
-            text-align: center;
-            margin-bottom: 48px;
+        .capability-card p {
             font-size: 14px;
-            color: var(--accent);
-            font-weight: 700;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ========== FREE PRESET SECTION ========== */
+        .free-preset {
+            padding: 64px 24px;
+            background-color: var(--secondary);
         }
 
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 32px;
-            margin-bottom: 32px;
+            margin-top: 48px;
         }
 
         .feature-card {
-            background-color: var(--secondary);
+            background-color: var(--background);
             border-left: 4px solid var(--accent);
             padding: 32px;
             border-radius: 8px;
@@ -219,7 +250,7 @@
         }
 
         .feature-card h3 {
-            font-size: 20px;
+            font-size: 18px;
             margin-bottom: 12px;
             color: var(--primary);
         }
@@ -231,7 +262,7 @@
         }
 
         .examples {
-            background-color: #F9F9F9;
+            background-color: var(--secondary);
             padding: 16px;
             border-radius: 8px;
             font-size: 13px;
@@ -239,7 +270,7 @@
         }
 
         .examples li {
-            margin: 8px 0;
+            margin: 6px 0;
             padding-left: 20px;
             position: relative;
         }
@@ -251,250 +282,38 @@
             color: var(--accent);
         }
 
-        /* ========== WHY FREE SECTION ========== */
-        .why-free {
-            padding: 64px 24px;
-            background-color: var(--secondary);
-        }
-
-        .why-free-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .why-free-content h2 {
-            margin-bottom: 24px;
-        }
-
-        .why-free-box {
-            background-color: var(--background);
-            padding: 40px;
-            border-radius: 12px;
-            margin-bottom: 24px;
-        }
-
-        .why-free-box p {
-            font-size: 16px;
-            margin-bottom: 16px;
-            color: var(--text-secondary);
-            line-height: 1.8;
-        }
-
-        .highlight {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 16px;
-        }
-
-        /* ========== PROBLEM SECTION ========== */
-        .problem {
-            padding: 64px 24px;
-            background-color: var(--background);
-        }
-
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-        }
-
-        .problem-card {
-            background-color: var(--secondary);
-            border: 2px solid #FFE0E0;
-            padding: 32px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .problem-card:hover {
-            border-color: #FF6B6B;
-            box-shadow: 0 8px 16px rgba(255, 107, 107, 0.1);
-        }
-
-        .problem-card h3 {
-            font-size: 18px;
-            margin-bottom: 12px;
-            color: #FF6B6B;
-        }
-
-        /* ========== SOLUTION SECTION ========== */
-        .solution {
-            padding: 64px 24px;
-            background-color: var(--secondary);
-        }
-
-        .solution-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-        }
-
-        .solution-card {
-            background-color: var(--background);
-            padding: 32px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .solution-card:hover {
-            transform: translateY(-8px);
-        }
-
-        .solution-card h3 {
-            font-size: 18px;
-            margin-bottom: 12px;
-            color: var(--primary);
-        }
-
-        .solution-card p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-        }
-
-        .benefit {
-            background-color: var(--secondary);
-            border-left: 3px solid var(--accent);
-            padding: 12px 16px;
-            border-radius: 4px;
-            font-size: 13px;
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        /* ========== SERVICE VALUE SECTION ========== */
-        .service-value {
-            padding: 64px 24px;
-            background: linear-gradient(135deg, #00D4FF 0%, #0099CC 100%);
-            color: var(--primary);
-        }
-
-        .service-value-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .service-value h2 {
-            color: var(--primary);
-            margin-bottom: 32px;
-        }
-
-        .comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 32px;
-        }
-
-        .comparison-box {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 32px;
-            border-radius: 12px;
-        }
-
-        .comparison-box h3 {
-            font-size: 16px;
-            margin-bottom: 12px;
-            color: var(--primary);
-        }
-
-        .comparison-label {
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-
-        .vs {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .service-meaning {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary);
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 24px;
-            border-radius: 12px;
-        }
-
-        /* ========== NEXT LEVEL SECTION ========== */
-        .next-level {
-            padding: 64px 24px;
-            background-color: var(--background);
-        }
-
-        .next-level-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .next-level h2 {
-            margin-bottom: 24px;
-        }
-
-        .next-level-box {
-            background-color: var(--secondary);
-            padding: 40px;
-            border-radius: 12px;
-            margin-bottom: 32px;
-            border-left: 4px solid var(--accent);
-        }
-
-        .next-level-definition {
-            background-color: var(--background);
-            padding: 24px;
-            border-radius: 8px;
-            margin-bottom: 24px;
-        }
-
-        .next-level-definition h3 {
-            font-size: 18px;
-            margin-bottom: 8px;
-            color: var(--primary);
-        }
-
-        .capabilities {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-
-        .capability {
-            background-color: var(--accent);
-            color: var(--primary);
-            padding: 16px;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 700;
-        }
-
         /* ========== PRICING SECTION ========== */
         .pricing {
             padding: 64px 24px;
-            background-color: var(--secondary);
+            background-color: var(--background);
         }
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+            gap: 16px;
             margin-top: 48px;
         }
 
+        @media (min-width: 481px) {
+            .pricing-grid {
+                grid-template-columns: repeat(auto-fit, minmax(calc(50% - 8px), 1fr));
+                gap: 16px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .pricing-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px;
+            }
+        }
+
         .pricing-card {
-            background-color: var(--background);
+            background-color: var(--secondary);
             border: 2px solid var(--border);
             border-radius: 12px;
-            padding: 32px;
+            padding: 24px;
             text-align: center;
             position: relative;
             transition: all 0.3s ease;
@@ -504,7 +323,6 @@
             background-color: var(--primary);
             color: var(--secondary);
             border-color: var(--accent);
-            transform: scale(1.05);
         }
 
         .pricing-card.highlight h3,
@@ -524,43 +342,44 @@
         .badge {
             position: absolute;
             top: -12px;
-            right: 16px;
+            right: 12px;
             background-color: var(--accent);
             color: var(--primary);
             padding: 4px 12px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
         }
 
         .pricing-card h3 {
-            font-size: 18px;
+            font-size: 16px;
             margin-bottom: 8px;
             color: var(--primary);
         }
 
         .price {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 700;
             margin-bottom: 8px;
             color: var(--accent);
         }
 
         .duration {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-secondary);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .features {
             text-align: left;
-            margin-bottom: 24px;
-            font-size: 13px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            min-height: 100px;
         }
 
         .features li {
-            margin: 8px 0;
-            padding-left: 20px;
+            margin: 6px 0;
+            padding-left: 16px;
             position: relative;
             color: var(--text-secondary);
         }
@@ -573,64 +392,10 @@
             font-weight: 700;
         }
 
-        .target {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-            font-style: italic;
-        }
-
-        /* ========== IMPLEMENTATION SECTION ========== */
-        .implementation {
-            padding: 64px 24px;
-            background-color: var(--background);
-        }
-
-        .timeline {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 32px;
-            margin-top: 48px;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .step {
-            position: relative;
-            text-align: center;
-        }
-
-        .step-circle {
-            width: 80px;
-            height: 80px;
-            background-color: var(--accent);
-            color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            font-weight: 700;
-            margin: 0 auto 24px;
-        }
-
-        .step h3 {
-            font-size: 16px;
-            margin-bottom: 12px;
-            color: var(--primary);
-        }
-
-        .step p {
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-        }
-
-        .duration {
-            font-size: 12px;
-            color: var(--accent);
-            font-weight: 700;
+        .pricing-card .btn {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 14px;
         }
 
         /* ========== PROOF SECTION ========== */
@@ -648,15 +413,15 @@
         }
 
         .case-study-header {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             color: var(--accent);
             margin-bottom: 16px;
         }
 
         .case-item {
-            margin: 12px 0;
-            font-size: 14px;
+            margin: 10px 0;
+            font-size: 13px;
             padding-left: 20px;
             position: relative;
         }
@@ -666,65 +431,37 @@
         }
 
         .case-item.before::before {
-            content: '→ ';
+            content: '→';
             position: absolute;
             left: 0;
-            color: #FF6B6B;
-            font-weight: 700;
         }
 
         .case-item.after {
-            color: var(--success);
+            color: #00C851;
         }
 
         .case-item.after::before {
-            content: '✓ ';
+            content: '✓';
             position: absolute;
             left: 0;
-            color: var(--success);
-            font-weight: 700;
         }
 
         .testimonial {
-            margin-top: 16px;
-            padding: 16px;
+            margin-top: 12px;
+            padding: 12px;
             background-color: var(--secondary);
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-secondary);
             border-left: 3px solid var(--accent);
             font-style: italic;
         }
 
         .impact {
-            margin-top: 12px;
-            font-size: 13px;
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        .trust-signals {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 24px;
-            margin-top: 48px;
-        }
-
-        .trust-signal {
-            text-align: center;
-            padding: 24px;
-        }
-
-        .signal-number {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .signal-label {
-            font-size: 13px;
-            color: var(--text-secondary);
             margin-top: 8px;
+            font-size: 12px;
+            color: var(--accent);
+            font-weight: 700;
         }
 
         /* ========== FAQ SECTION ========== */
@@ -739,17 +476,18 @@
         }
 
         details {
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid var(--border);
         }
 
         details summary {
-            padding: 16px;
+            padding: 14px;
             background-color: var(--secondary);
             cursor: pointer;
             font-weight: 700;
+            font-size: 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -767,10 +505,10 @@
         }
 
         details p {
-            padding: 16px;
+            padding: 14px;
             background-color: var(--secondary);
             color: var(--text-secondary);
-            font-size: 14px;
+            font-size: 13px;
         }
 
         /* ========== FINAL CTA ========== */
@@ -783,12 +521,12 @@
 
         .final-cta h2 {
             color: var(--primary);
-            font-size: 48px;
+            font-size: 40px;
             margin-bottom: 24px;
         }
 
         .final-cta p {
-            font-size: 18px;
+            font-size: 16px;
             margin-bottom: 32px;
             opacity: 0.95;
         }
@@ -804,36 +542,59 @@
 
         /* ========== RESPONSIVE ========== */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 32px;
-            }
-
             h2 {
                 font-size: 28px;
+                margin-bottom: 32px;
             }
 
-            .comparison {
-                grid-template-columns: 1fr;
+            .hero h1 {
+                font-size: 32px;
+                margin-bottom: 24px;
             }
 
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .pricing-card {
+                padding: 20px 16px;
+            }
+
+            .price {
+                font-size: 24px;
+            }
+
+            .pricing-card h3 {
+                font-size: 14px;
+            }
+
+            .features {
+                font-size: 11px;
+                min-height: 80px;
+            }
+
+            .pricing-card .btn {
+                padding: 10px 12px;
+                font-size: 12px;
+            }
+
+            .final-cta h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
             .pricing-grid {
                 grid-template-columns: 1fr;
             }
 
-            .pricing-card.highlight {
-                transform: scale(1);
+            .capabilities-grid {
+                gap: 20px;
             }
 
-            .cta-container {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            .final-cta h2 {
-                font-size: 32px;
+            .features-grid {
+                gap: 20px;
             }
         }
     </style>
@@ -842,28 +603,59 @@
     <!-- ========== HERO ========== -->
     <section class="hero">
         <div class="hero-content">
-            <h1>AI秘書を無料で導入できる</h1>
-            <p>あなた専用のAI秘書を無料でセットアップします。</p>
-            <p class="subtext">目標管理・タスク整理・AI相談・朝の通知が自動化される。</p>
-            <div class="cta-container">
-                <button class="btn btn-primary" onclick="document.getElementById('concept').scrollIntoView({behavior: 'smooth'})">AI秘書を無料で体験する</button>
-                <button class="btn btn-secondary" onclick="document.getElementById('why-free').scrollIntoView({behavior: 'smooth'})">詳しく知る</button>
+            <div class="hero-badge">期間限定：1万円分が無料</div>
+            <h1>1万円のAI秘書セットアップを<br>無料プレゼント</h1>
+            <div class="hero-cta">
+                <button class="btn btn-primary" onclick="document.getElementById('capabilities').scrollIntoView({behavior: 'smooth'})">詳しく見る</button>
             </div>
         </div>
     </section>
 
-    <!-- ========== CONCEPT ========== -->
-    <section class="concept" id="concept">
+    <!-- ========== CAPABILITIES ========== -->
+    <section class="capabilities" id="capabilities">
         <div class="container">
-            <h2>無料プレゼントの内容</h2>
-            <p class="subtitle">通常は 1 万円のAI秘書セットアップを、期間限定で無料プレゼント。</p>
-            <p class="badge-line">まずはAI秘書を体験してもらうことが目的です。</p>
+            <h2>AI秘書でできること</h2>
+            <p class="subtitle">目標管理・タスク整理・AI相談・朝の通知を完全自動化</p>
+
+            <div class="capabilities-grid">
+                <div class="capability-card">
+                    <div class="capability-icon">💬</div>
+                    <h3>AI相談</h3>
+                    <p>仕事の判断、アイデア出し、優先順位。AI秘書が答えてくれます。</p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">📋</div>
+                    <h3>朝の通知</h3>
+                    <p>毎朝『今日やるべきタスク』を自動通知。迷わず1日をスタート。</p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">🎯</div>
+                    <h3>年間目標設定</h3>
+                    <p>目標を設定すると自動でToDo生成。目標達成率が3倍に。</p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">💾</div>
+                    <h3>Discord連携</h3>
+                    <p>スマホ・PCどこからでも使える。場所を選ばずアクセス可能。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FREE PRESET ========== -->
+    <section class="free-preset" id="free-preset">
+        <div class="container">
+            <h2>無料プレゼント内容</h2>
+            <p class="subtitle">通常 1 万円のAI秘書セットアップをすべて無料でプレゼント</p>
 
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-number">①</div>
                     <h3>AI相談機能</h3>
-                    <p>仕事の相談・アイデア相談・ビジネス相談をAI秘書にできます。</p>
+                    <p>仕事・アイデア・ビジネス相談ができます。</p>
                     <ul class="examples">
                         <li>今日やるべきことを整理して</li>
                         <li>SNS投稿のアイデアを出して</li>
@@ -874,9 +666,8 @@
                 <div class="feature-card">
                     <div class="feature-number">②</div>
                     <h3>朝の通知機能</h3>
-                    <p>毎朝、AI秘書が今日のやるべきタスクを自動通知。迷わず 1 日をスタート。</p>
+                    <p>毎朝『今日のやるべきタスク』を自動通知。</p>
                     <div class="examples">
-                        <p><strong>例</strong></p>
                         <li>LP制作</li>
                         <li>SNS投稿</li>
                         <li>クライアント返信</li>
@@ -886,9 +677,8 @@
                 <div class="feature-card">
                     <div class="feature-number">③</div>
                     <h3>年間目標設定</h3>
-                    <p>AI秘書と一緒に年間目標を設定。モチベーション維持がカンタン。</p>
+                    <p>AI秘書と一緒に年間目標を設定。</p>
                     <div class="examples">
-                        <p><strong>例</strong></p>
                         <li>売上1000万円</li>
                         <li>SNSフォロワー1万人</li>
                         <li>AI副業で月30万円</li>
@@ -898,260 +688,91 @@
                 <div class="feature-card">
                     <div class="feature-number">④</div>
                     <h3>ToDo自動生成</h3>
-                    <p>目標を設定すると自動で月目標→週タスク→今日のToDoに分解。</p>
+                    <p>目標→月目標→週タスク→今日のToDoが自動生成。</p>
                     <div class="examples">
-                        <li>年間目標</li>
-                        <li>月目標</li>
-                        <li>週タスク</li>
-                        <li>今日のToDo</li>
+                        <li>年間目標を入力</li>
+                        <li>月ごとのゴール自動計算</li>
+                        <li>毎日のタスク自動作成</li>
                     </div>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-number">⑤</div>
                     <h3>Discord連携</h3>
-                    <p>AI秘書はDiscordで動作。スマホ・PCどこからでも使えます。</p>
-                    <p style="color: var(--accent); font-weight: 700; margin-top: 16px;">場所を選ばずいつでもアクセス</p>
+                    <p>Discord でAI秘書が動作。スマホ・PC どこからでも。</p>
+                    <div class="examples">
+                        <li>チャットで指示するだけ</li>
+                        <li>スマホからもアクセス</li>
+                        <li>いつでもどこでも利用可</li>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- ========== WHY FREE ========== -->
-    <section class="why-free" id="why-free">
-        <div class="why-free-content">
-            <h2>なぜ無料なのか？</h2>
-            <div class="why-free-box">
-                <p class="highlight">AI秘書を体験してほしいからです。</p>
-                <p>AIを実際に使うと『こんなに便利なのか』と感じる人が多いです。</p>
-                <p>その後『もっと自動化したい』と思う人にAI会社OS構築を提案します。</p>
-                <p style="margin-top: 24px; font-size: 16px; color: var(--primary); font-weight: 700;">つまり、AI秘書は入口。AI会社OSが本体です。</p>
+            <div style="text-align: center; margin-top: 48px;">
+                <button class="btn btn-primary" onclick="document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})">今すぐ無料で始める</button>
             </div>
-        </div>
-    </section>
-
-    <!-- ========== PROBLEM ========== -->
-    <section class="problem">
-        <div class="container">
-            <h2>こんなことで困っていませんか？</h2>
-            <div class="grid-4">
-                <div class="problem-card">
-                    <h3>毎日やることが多すぎる</h3>
-                    <p>朝起きても『何からやるんだっけ？』と迷う</p>
-                </div>
-                <div class="problem-card">
-                    <h3>重要なタスクを見落とす</h3>
-                    <p>メールやメッセージに埋もれて大事な仕事を忘れる</p>
-                </div>
-                <div class="problem-card">
-                    <h3>目標は立てるけど続かない</h3>
-                    <p>年初の目標。もう忘れていませんか？</p>
-                </div>
-                <div class="problem-card">
-                    <h3>判断に時間がかかる</h3>
-                    <p>『これ優先？それとも後回し？』で迷う</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== SOLUTION ========== -->
-    <section class="solution">
-        <div class="container">
-            <h2>AI秘書が全部やってくれる</h2>
-            <p class="subtitle">AIが相談相手・タスク管理・目標サポートを担当</p>
-
-            <div class="solution-grid">
-                <div class="solution-card">
-                    <h3>相談相手</h3>
-                    <p>仕事の判断、アイデア出し、優先順位。AI秘書が答えてくれます。</p>
-                    <div class="benefit">判断時間が 80% 削減</div>
-                </div>
-
-                <div class="solution-card">
-                    <h3>タスク管理</h3>
-                    <p>目標→月目標→週タスク→今日のToDoが自動生成。やることが自動で整理される。</p>
-                    <div class="benefit">毎日を迷わずスタート</div>
-                </div>
-
-                <div class="solution-card">
-                    <h3>目標サポート</h3>
-                    <p>朝の通知で毎日『今日は目標に向かっているのか』を実感。モチベーション維持</p>
-                    <div class="benefit">目標達成率が 3 倍に</div>
-                </div>
-
-                <div class="solution-card">
-                    <h3>Discord連携</h3>
-                    <p>スマホ・PCどこからでも。チャットするだけで自動化</p>
-                    <div class="benefit">場所を選ばないストレスフリー</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== SERVICE VALUE ========== -->
-    <section class="service-value">
-        <div class="service-value-content">
-            <h2>このサービスの本当の価値</h2>
-            <div class="comparison">
-                <div class="comparison-box">
-                    <h3>普通は</h3>
-                    <p class="comparison-label">『AIツール』を使う</p>
-                </div>
-                <div class="vs">↓</div>
-                <div class="comparison-box">
-                    <h3>このサービスは</h3>
-                    <p class="comparison-label">『AIエージェント』を使う</p>
-                </div>
-            </div>
-            <div class="service-meaning">
-                AIツール導入ではなく、<br>AI社員導入です。<br><br>つまり、AIが仕事をする状態になります。
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== NEXT LEVEL ========== -->
-    <section class="next-level">
-        <div class="next-level-content">
-            <h2>さらに自動化したい人へ</h2>
-            <div class="next-level-box">
-                <p>AI秘書だけでなく、AI会社OSを作ることもできます。</p>
-            </div>
-
-            <div class="next-level-definition">
-                <h3>AI会社OSとは</h3>
-                <p>AIが会社の部署として働く仕組み</p>
-            </div>
-
-            <div class="capabilities">
-                <div class="capability">AI営業</div>
-                <div class="capability">AIマーケ</div>
-                <div class="capability">AI制作</div>
-                <div class="capability">AI秘書</div>
-                <div class="capability">AI分析</div>
-            </div>
-
-            <p style="text-align: center; font-size: 18px; font-weight: 700; color: var(--primary);">つまり、AI社員が働く会社です。</p>
         </div>
     </section>
 
     <!-- ========== PRICING ========== -->
-    <section class="pricing">
+    <section class="pricing" id="pricing">
         <div class="container">
-            <h2>シンプルな料金体系</h2>
-            <p class="subtitle">無料体験後に、必要な人だけ導入できます。</p>
+            <h2>構築プラン</h2>
+            <p class="subtitle">無料体験後に、必要な人だけ導入できます</p>
 
             <div class="pricing-grid">
                 <div class="pricing-card">
-                    <h3>AI秘書スターターセット</h3>
-                    <div class="price">無料</div>
-                    <div class="duration">1万円分を期間限定プレゼント</div>
-                    <ul class="features">
-                        <li>AI相談機能</li>
-                        <li>朝の通知機能</li>
-                        <li>年間目標設定</li>
-                        <li>ToDo自動生成</li>
-                        <li>Discord連携</li>
-                    </ul>
-                    <button class="btn btn-primary" style="width: 100%;">無料で体験する</button>
-                    <p class="target">入口</p>
-                </div>
-
-                <div class="pricing-card">
-                    <h3>スタータープラン</h3>
+                    <h3>スターター</h3>
                     <div class="price">10万円</div>
                     <div class="duration">1回限り</div>
                     <ul class="features">
-                        <li>Open Claw初期構築</li>
-                        <li>AI秘書拡張機能</li>
-                        <li>基本自動化セットアップ</li>
+                        <li>初期構築</li>
+                        <li>AI秘書拡張</li>
+                        <li>基本自動化</li>
                         <li>基本マニュアル</li>
                     </ul>
-                    <button class="btn btn-primary" style="width: 100%;">相談する</button>
-                    <p class="target">AI初心者向け</p>
+                    <button class="btn btn-primary">相談する</button>
                 </div>
 
                 <div class="pricing-card">
-                    <h3>自動化プラン</h3>
+                    <h3>自動化</h3>
                     <div class="price">30万円</div>
                     <div class="duration">1回限り</div>
                     <ul class="features">
                         <li>AI業務自動化</li>
                         <li>SNS自動化</li>
                         <li>リサーチAI</li>
-                        <li>毎月相談 2 回</li>
+                        <li>月2回相談</li>
                     </ul>
-                    <button class="btn btn-primary" style="width: 100%;">相談する</button>
-                    <p class="target">副業・フリーランス向け</p>
+                    <button class="btn btn-primary">相談する</button>
                 </div>
 
                 <div class="pricing-card highlight">
                     <div class="badge">人気</div>
-                    <h3>AI部署構築</h3>
+                    <h3>AI部署</h3>
                     <div class="price">50万円</div>
                     <div class="duration">1回限り</div>
                     <ul class="features">
-                        <li>AI営業構築</li>
-                        <li>AIマーケ構築</li>
-                        <li>AI制作構築</li>
-                        <li>AIリサーチ構築</li>
-                        <li>毎月相談 2 回</li>
+                        <li>AI営業</li>
+                        <li>AIマーケ</li>
+                        <li>AI制作</li>
+                        <li>月2回相談</li>
                     </ul>
-                    <button class="btn btn-primary" style="width: 100%; background-color: var(--secondary); color: var(--primary);">相談する</button>
-                    <p class="target" style="color: var(--secondary);">事業者向け</p>
+                    <button class="btn btn-primary" style="background-color: var(--secondary); color: var(--primary);">相談する</button>
                 </div>
 
                 <div class="pricing-card">
                     <div class="badge">フル</div>
                     <h3>フルカスタム</h3>
-                    <div class="price">100万円~</div>
+                    <div class="price">相談</div>
                     <div class="duration">カスタマイズ</div>
                     <ul class="features">
-                        <li>AI会社OS完全構築</li>
+                        <li>完全カスタム対応</li>
                         <li>全エージェント統合</li>
-                        <li>カスタム機能開発</li>
-                        <li>無制限相談サポート</li>
+                        <li>専任サポート</li>
+                        <li>無制限相談</li>
                     </ul>
-                    <button class="btn btn-primary" style="width: 100%;">相談する</button>
-                    <p class="target">企業・経営者向け</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== IMPLEMENTATION ========== -->
-    <section class="implementation">
-        <div class="container">
-            <h2>導入ステップ</h2>
-            <p class="subtitle">最短 2 週間で完成。シンプルな流れ。</p>
-
-            <div class="timeline">
-                <div class="step">
-                    <div class="step-circle">1</div>
-                    <h3>AI秘書を無料体験</h3>
-                    <p>1 万円分を期間限定で無料プレゼント。実際に使ってみてください。</p>
-                    <p class="duration">14 日間</p>
-                </div>
-
-                <div class="step">
-                    <div class="step-circle">2</div>
-                    <h3>相談</h3>
-                    <p>『もっと自動化したい』と思ったら相談。あなたの業務に合わせて最適なプランを提案。</p>
-                    <p class="duration">1 日</p>
-                </div>
-
-                <div class="step">
-                    <div class="step-circle">3</div>
-                    <h3>必要なら構築</h3>
-                    <p>納得したプランだけ導入。強制ではなく、あなたが選択。</p>
-                    <p class="duration">5-10 日</p>
-                </div>
-
-                <div class="step">
-                    <div class="step-circle">4</div>
-                    <h3>AI会社OS完成</h3>
-                    <p>AI秘書だけでなく、営業・マーケ・制作などAI社員が働く環境が完成。</p>
-                    <p class="duration">2 週間</p>
+                    <button class="btn btn-primary">相談する</button>
                 </div>
             </div>
         </div>
@@ -1161,50 +782,31 @@
     <section class="proof">
         <div class="container">
             <h2>実際の効果</h2>
+            <p class="subtitle">AI秘書導入後の変化</p>
 
-            <div class="case-study">
-                <div class="case-study-header">フリーランス（営業代行業）</div>
-                <div class="case-item before">朝『今日は何をやるんだっけ？』と迷う。タスク管理に 30 分費やす</div>
-                <div class="case-item">AI秘書を導入。朝の自動通知で『今日のタスク』が表示される。目標→月→週→日が自動で分解される</div>
-                <div class="case-item after">朝の迷い時間がゼロに。判断に費やす時間が 80% 削減。同じ時間で 2 倍の仕事量。</div>
-                <div class="testimonial">"朝起きたら『今日のタスク』がもう決まってる感覚。脳が疲れなくなった。"</div>
-                <div class="impact">月の生産性が 40% 向上</div>
-            </div>
-
-            <div class="case-study">
-                <div class="case-study-header">事業者（1 人経営）</div>
-                <div class="case-item before">『今月売上 100 万円』という目標があるのに、毎日の行動が目標と結びついていない</div>
-                <div class="case-item">AI秘書が『売上 100 万円 → 月 8.3 万 → 週 2 万 → 今日は何をすべきか』を自動計算</div>
-                <div class="case-item after">毎日『目標に向かっている』実感。迷わず行動。3 ヶ月で目標達成</div>
-                <div class="testimonial">"大目標が怖くなくなった。毎日のタスクが『目標への階段』に見える。"</div>
-                <div class="impact">目標達成率が 3 倍に</div>
-            </div>
-
-            <div class="case-study">
-                <div class="case-study-header">企業管理職</div>
-                <div class="case-item before">部下のタスク管理・目標達成サポートに毎日 3 時間。本来の仕事ができない</div>
-                <div class="case-item">AI秘書を部下にも導入。自動通知・自動目標分解で手間削減。管理職の負担が 70% 削減</div>
-                <div class="case-item after">部下は『自分で目標管理できる』スキルが身つく。管理職は本来の経営判断に時間を使える</div>
-                <div class="testimonial">"部下の自律性が上がった。マイクロマネジメントが不要になった。"</div>
-                <div class="impact">チーム生産性が 25% 向上</div>
-            </div>
-
-            <div class="trust-signals">
-                <div class="trust-signal">
-                    <div class="signal-number">3,000+</div>
-                    <div class="signal-label">導入者数</div>
+            <div style="margin-top: 48px;">
+                <div class="case-study">
+                    <div class="case-study-header">フリーランス（営業代行業）</div>
+                    <div class="case-item before">朝『今日は何をやるんだっけ？』と迷う。タスク管理に 30 分費やす</div>
+                    <div class="case-item after">朝の迷い時間がゼロに。判断に費やす時間が 80% 削減</div>
+                    <div class="testimonial">"朝起きたら『今日のタスク』がもう決まってる感覚。脳が疲れなくなった。"</div>
+                    <div class="impact">生産性が 40% 向上</div>
                 </div>
-                <div class="trust-signal">
-                    <div class="signal-number">100K+</div>
-                    <div class="signal-label">月間タスク処理</div>
+
+                <div class="case-study">
+                    <div class="case-study-header">事業者（1 人経営）</div>
+                    <div class="case-item before">『今月売上 100 万円』という目標があるのに、毎日の行動が結びついていない</div>
+                    <div class="case-item after">毎日『目標に向かっている』実感。迷わず行動。3 ヶ月で目標達成</div>
+                    <div class="testimonial">"大目標が怖くなくなった。毎日のタスクが『目標への階段』に見える。"</div>
+                    <div class="impact">目標達成率が 3 倍に</div>
                 </div>
-                <div class="trust-signal">
-                    <div class="signal-number">96%</div>
-                    <div class="signal-label">ユーザー満足度</div>
-                </div>
-                <div class="trust-signal">
-                    <div class="signal-number">98%</div>
-                    <div class="signal-label">継続率</div>
+
+                <div class="case-study">
+                    <div class="case-study-header">企業管理職</div>
+                    <div class="case-item before">部下のタスク管理に毎日 3 時間。本来の仕事ができない</div>
+                    <div class="case-item after">部下の自律性が上がる。管理職の負担が 70% 削減</div>
+                    <div class="testimonial">"部下の自律性が上がった。マイクロマネジメントが不要になった。"</div>
+                    <div class="impact">チーム生産性が 25% 向上</div>
                 </div>
             </div>
         </div>
@@ -1232,22 +834,12 @@
 
                 <details>
                     <summary>Discord 以外では使えないですか？<span>+</span></summary>
-                    <p>Discord がメインです。LINE・Slack・メール対応もカスタム可能。相談でご相談ください。</p>
+                    <p>Discord がメインです。LINE・Slack 対応もカスタム可能。相談でご相談ください。</p>
                 </details>
 
                 <details>
                     <summary>データは安全ですか？<span>+</span></summary>
                     <p>クラウドセキュア環境で運用。暗号化・バックアップ完備。SOC2 準拠。安全です。</p>
-                </details>
-
-                <details>
-                    <summary>複数の目標を持ってます。対応できますか？<span>+</span></summary>
-                    <p>はい。『売上・SNS・副業』など複数の目標に対応。各目標の進捗を自動トラッキングします。</p>
-                </details>
-
-                <details>
-                    <summary>オーダーメイドは可能ですか？<span>+</span></summary>
-                    <p>はい。『うちの業務に合わせてカスタマイズしたい』なら相談してください。フルカスタムプラン（100万円~）をご提案します。</p>
                 </details>
             </div>
         </div>
@@ -1256,9 +848,9 @@
     <!-- ========== FINAL CTA ========== -->
     <section class="final-cta">
         <div class="container">
-            <h2>まずはAI秘書を体験してください。</h2>
-            <p>無料です。期間限定プレゼント。</p>
-            <button class="btn btn-primary" style="background-color: #0F0F0F; color: #00D4FF; padding: 18px 48px; font-size: 18px;">AI秘書を無料で体験する</button>
+            <h2>1万円のAI秘書セットアップを<br>無料で始める</h2>
+            <p>期間限定。今すぐ体験</p>
+            <button class="btn btn-primary" style="background-color: #0F0F0F; color: #00D4FF; padding: 18px 48px; font-size: 16px;">無料で始める</button>
         </div>
     </section>
 
