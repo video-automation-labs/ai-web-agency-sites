@@ -1,0 +1,269 @@
+{
+  "colors": {
+    "primary": "#0F0F0F",
+    "secondary": "#FFFFFF",
+    "accent": "#00D4FF",
+    "text_primary": "#1A1A1A",
+    "text_secondary": "#666666",
+    "background": "#F5F5F5",
+    "cta_primary": "#00D4FF",
+    "cta_secondary": "#0F0F0F",
+    "border": "#E0E0E0",
+    "success": "#00C851",
+    "warning": "#FF8C00"
+  },
+
+  "typography": {
+    "heading_font": "Noto Sans JP",
+    "heading_weight": 700,
+    "body_font": "Noto Sans JP",
+    "body_weight": 400,
+    "sizes": {
+      "h1": {
+        "desktop": 52,
+        "tablet": 40,
+        "mobile": 28
+      },
+      "h2": {
+        "desktop": 40,
+        "tablet": 32,
+        "mobile": 24
+      },
+      "h3": {
+        "desktop": 28,
+        "tablet": 24,
+        "mobile": 20
+      },
+      "body": {
+        "desktop": 16,
+        "tablet": 15,
+        "mobile": 14
+      },
+      "small": {
+        "desktop": 14,
+        "tablet": 13,
+        "mobile": 12
+      }
+    },
+    "line_height": 1.6,
+    "letter_spacing": 0.5
+  },
+
+  "layout": {
+    "max_width_desktop": "1200px",
+    "max_width_tablet": "768px",
+    "max_width_mobile": "375px",
+    "grid_columns": 12,
+    "spacing_unit": 8,
+    "section_padding_desktop": 64,
+    "section_padding_tablet": 48,
+    "section_padding_mobile": 32,
+    "gap": 24
+  },
+
+  "sections": {
+    "hero": {
+      "background_style": "gradient",
+      "background_color_from": "#0F0F0F",
+      "background_color_to": "#1A1A2E",
+      "height_viewport": "100vh",
+      "text_alignment": "center",
+      "text_color": "#FFFFFF",
+      "image_position": "background",
+      "overlay_opacity": 0.7,
+      "cta_button_style": "primary",
+      "padding_top": 80,
+      "padding_bottom": 80
+    },
+    "problem": {
+      "background_color": "#FFFFFF",
+      "layout_pattern": "3_column_grid",
+      "card_style": "bordered",
+      "card_background": "#F9F9F9",
+      "card_border_color": "#E0E0E0",
+      "text_color": "#1A1A1A"
+    },
+    "solution": {
+      "background_color": "#F5F5F5",
+      "layout_pattern": "5_column_grid",
+      "card_style": "shadow",
+      "card_background": "#FFFFFF",
+      "icon_size": 64,
+      "icon_color": "#00D4FF",
+      "text_color": "#1A1A1A"
+    },
+    "system": {
+      "background_color": "#FFFFFF",
+      "layout_pattern": "table",
+      "table_header_bg": "#0F0F0F",
+      "table_header_text": "#FFFFFF",
+      "table_row_bg_alt": "#F9F9F9",
+      "text_color": "#1A1A1A"
+    },
+    "demo": {
+      "background_color": "#0F0F0F",
+      "layout_pattern": "3_column_grid",
+      "card_style": "bordered",
+      "card_background": "#1A1A2E",
+      "card_border_color": "#00D4FF",
+      "text_color": "#FFFFFF",
+      "accent_color": "#00D4FF"
+    },
+    "proof": {
+      "background_color": "#FFFFFF",
+      "layout_pattern": "vertical_cards",
+      "card_style": "bordered",
+      "card_background": "#F9F9F9",
+      "card_border_color": "#00D4FF",
+      "testimonial_style": "quote",
+      "text_color": "#1A1A1A"
+    },
+    "pricing": {
+      "background_color": "#F5F5F5",
+      "layout_pattern": "5_column_grid",
+      "card_style": "shadow",
+      "card_background": "#FFFFFF",
+      "highlight_card_bg": "#0F0F0F",
+      "highlight_card_text": "#FFFFFF",
+      "text_color": "#1A1A1A",
+      "badge_bg": "#00D4FF",
+      "badge_text": "#0F0F0F"
+    },
+    "implementation": {
+      "background_color": "#FFFFFF",
+      "layout_pattern": "4_step_timeline",
+      "timeline_color": "#00D4FF",
+      "step_circle_bg": "#00D4FF",
+      "step_circle_text": "#FFFFFF",
+      "text_color": "#1A1A1A"
+    },
+    "faq": {
+      "background_color": "#FFFFFF",
+      "layout_pattern": "accordion",
+      "accordion_header_bg": "#F9F9F9",
+      "accordion_header_border": "#00D4FF",
+      "text_color": "#1A1A1A"
+    },
+    "final_cta": {
+      "background_color": "#00D4FF",
+      "text_color": "#0F0F0F",
+      "padding": 80,
+      "text_alignment": "center"
+    }
+  },
+
+  "components": {
+    "button_primary": {
+      "background": "#00D4FF",
+      "text_color": "#0F0F0F",
+      "padding_vertical": 16,
+      "padding_horizontal": 40,
+      "border_radius": 8,
+      "font_weight": 700,
+      "font_size": 16,
+      "hover_effect": "brightness(0.85)",
+      "transition": "all 0.3s ease",
+      "border": "none",
+      "cursor": "pointer"
+    },
+    "button_secondary": {
+      "background": "transparent",
+      "text_color": "#00D4FF",
+      "padding_vertical": 16,
+      "padding_horizontal": 40,
+      "border_radius": 8,
+      "font_weight": 700,
+      "font_size": 16,
+      "border": "2px solid #00D4FF",
+      "hover_effect": "background-color",
+      "hover_background": "#00D4FF",
+      "hover_text_color": "#0F0F0F",
+      "transition": "all 0.3s ease"
+    },
+    "button_white": {
+      "background": "#FFFFFF",
+      "text_color": "#0F0F0F",
+      "padding_vertical": 16,
+      "padding_horizontal": 40,
+      "border_radius": 8,
+      "font_weight": 700,
+      "font_size": 16,
+      "hover_effect": "background-color",
+      "hover_background": "#F0F0F0",
+      "transition": "all 0.3s ease"
+    },
+    "card": {
+      "background": "#FFFFFF",
+      "border_radius": 12,
+      "box_shadow": "0 4px 12px rgba(0, 0, 0, 0.1)",
+      "padding": 32,
+      "border": "1px solid #E0E0E0",
+      "hover_effect": "transform translateY(-4px)",
+      "transition": "all 0.3s ease"
+    },
+    "card_bordered": {
+      "background": "#F9F9F9",
+      "border_radius": 12,
+      "border": "2px solid #E0E0E0",
+      "padding": 24,
+      "hover_effect": "border-color #00D4FF"
+    },
+    "input": {
+      "background": "#FFFFFF",
+      "border": "2px solid #E0E0E0",
+      "border_radius": 8,
+      "padding": "12px 16px",
+      "font_size": 16,
+      "focus_border": "#00D4FF",
+      "focus_shadow": "0 0 0 3px rgba(0, 212, 255, 0.1)"
+    },
+    "badge": {
+      "background": "#00D4FF",
+      "text_color": "#0F0F0F",
+      "padding": "4px 12px",
+      "border_radius": 20,
+      "font_size": 12,
+      "font_weight": 700
+    }
+  },
+
+  "animations": {
+    "fade_in": {
+      "duration": "0.6s",
+      "timing": "ease-out",
+      "delay": "0s"
+    },
+    "slide_up": {
+      "duration": "0.8s",
+      "timing": "ease-out",
+      "delay": "0s",
+      "transform": "translateY(30px)"
+    },
+    "hover_scale": {
+      "duration": "0.3s",
+      "timing": "ease-out",
+      "transform": "scale(1.05)"
+    }
+  },
+
+  "responsive": {
+    "breakpoints": {
+      "desktop": "1200px",
+      "tablet": "768px",
+      "mobile": "375px"
+    },
+    "rules": {
+      "hero_font_size_ratio": 0.65,
+      "section_padding_ratio": 0.75,
+      "grid_columns_tablet": 8,
+      "grid_columns_mobile": 2,
+      "button_full_width_mobile": true
+    }
+  },
+
+  "design_rationale": {
+    "color_choice": "黒×白×サイバーブルー。モダン・テック感を演出。『AI感』を黒背景 + 青のアクセントで表現",
+    "layout_choice": "Hero は 100vh で没入感。Solution は 5 列グリッドで機能を並列表示。Pricing は強調して『選択肢がある』感覚",
+    "style": "ミニマル + モダン + テック。余白を大きく。メッセージを大きく。CTA を青でポイント化"
+  }
+}
