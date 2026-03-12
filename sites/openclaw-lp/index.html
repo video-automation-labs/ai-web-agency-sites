@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI秘書を無料導入。目標管理・タスク整理を完全自動化</title>
+    <meta name="description" content="1万円分のAI秘書セットアップを期間限定で無料プレゼント。AI相談、朝の通知、年間目標設定。Discord連携で場所を選ばず利用可能。">
+
+    <!-- OG Tags -->
+    <meta property="og:title" content="AI秘書を無料導入。目標管理・タスク整理を完全自動化">
+    <meta property="og:description" content="1万円分のAI秘書セットアップを期間限定で無料プレゼント。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://video-automation-labs.github.io/ai-web-agency-sites/sites/open-claw-lp/">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Open Claw AI秘書",
+      "description": "AI秘書の無料導入サービス。期間限定で1万円分を無料プレゼント",
+      "provider": {
+        "@type": "Organization",
+        "name": "Open Claw"
+      }
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary: #0F0F0F;
+            --secondary: #FFFFFF;
+            --accent: #00D4FF;
+            --text-primary: #1A1A1A;
+            --text-secondary: #666666;
+            --background: #F5F5F5;
+            --border: #E0E0E0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background-color: var(--secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 48px;
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: #00A3C7;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0F0F0F 0%, #1A1A2E 100%);
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 80px 24px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            line-height: 1.2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 32px;
+        }
+
+        .hero-cta {
+            margin-top: 48px;
+        }
+
+        /* ========== CAPABILITIES SECTION ========== */
+        .capabilities {
+            padding: 64px 24px;
+            background-color: var(--background);
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .capability-card {
+            background-color: var(--secondary);
+            padding: 40px 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .capability-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .capability-card h3 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .capability-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ========== FREE PRESET SECTION ========== */
+        .free-preset {
+            padding: 64px 24px;
+            background-color: var(--secondary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .feature-card {
+            background-color: var(--background);
+            border-left: 4px solid var(--accent);
+            padding: 32px;
+            border-radius: 8px;
+        }
+
+        .feature-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .examples {
+            background-color: var(--secondary);
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .examples li {
+            margin: 6px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .examples li:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* ========== PRICING SECTION ========== */
+        .pricing {
+            padding: 64px 24px;
+            background-color: var(--background);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+            gap: 16px;
+            margin-top: 48px;
+        }
+
+        @media (min-width: 481px) {
+            .pricing-grid {
+                grid-template-columns: repeat(auto-fit, minmax(calc(50% - 8px), 1fr));
+                gap: 16px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .pricing-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px;
+            }
+        }
+
+        .pricing-card {
+            background-color: var(--secondary);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.highlight {
+            background-color: var(--primary);
+            color: var(--secondary);
+            border-color: var(--accent);
+        }
+
+        .pricing-card.highlight h3,
+        .pricing-card.highlight .price {
+            color: var(--secondary);
+        }
+
+        .pricing-card.highlight .duration {
+            color: var(--accent);
+        }
+
+        .pricing-card:hover:not(.highlight) {
+            border-color: var(--accent);
+            box-shadow: 0 8px 16px rgba(0, 212, 255, 0.1);
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            right: 12px;
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .pricing-card h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .price {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--accent);
+        }
+
+        .duration {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .features {
+            text-align: left;
+            margin-bottom: 20px;
+            font-size: 12px;
+            min-height: 100px;
+        }
+
+        .features li {
+            margin: 6px 0;
+            padding-left: 16px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 14px;
+        }
+
+        /* ========== PROOF SECTION ========== */
+        .proof {
+            padding: 64px 24px;
+            background-color: var(--secondary);
+        }
+
+        .case-study {
+            background-color: var(--background);
+            border-left: 4px solid var(--accent);
+            padding: 32px;
+            margin-bottom: 32px;
+            border-radius: 8px;
+        }
+
+        .case-study-header {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .case-item {
+            margin: 10px 0;
+            font-size: 13px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .case-item.before {
+            color: #FF6B6B;
+        }
+
+        .case-item.before::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+        }
+
+        .case-item.after {
+            color: #00C851;
+        }
+
+        .case-item.after::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+        }
+
+        .testimonial {
+            margin-top: 12px;
+            padding: 12px;
+            background-color: var(--secondary);
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            border-left: 3px solid var(--accent);
+            font-style: italic;
+        }
+
+        .impact {
+            margin-top: 8px;
+            font-size: 12px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* ========== FAQ SECTION ========== */
+        .faq {
+            padding: 64px 24px;
+            background-color: var(--background);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        details {
+            margin-bottom: 12px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        details summary {
+            padding: 14px;
+            background-color: var(--secondary);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: background-color 0.3s ease;
+        }
+
+        details summary:hover {
+            background-color: #F9F9F9;
+        }
+
+        details[open] summary {
+            background-color: #F9F9F9;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        details p {
+            padding: 14px;
+            background-color: var(--secondary);
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        /* ========== FINAL CTA ========== */
+        .final-cta {
+            padding: 80px 24px;
+            background: linear-gradient(135deg, #00D4FF 0%, #0099CC 100%);
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            color: var(--primary);
+            font-size: 40px;
+            margin-bottom: 24px;
+        }
+
+        .final-cta p {
+            font-size: 16px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            padding: 32px 24px;
+            background-color: var(--primary);
+            color: var(--secondary);
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 28px;
+                margin-bottom: 32px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+                margin-bottom: 24px;
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .pricing-card {
+                padding: 20px 16px;
+            }
+
+            .price {
+                font-size: 24px;
+            }
+
+            .pricing-card h3 {
+                font-size: 14px;
+            }
+
+            .features {
+                font-size: 11px;
+                min-height: 80px;
+            }
+
+            .pricing-card .btn {
+                padding: 10px 12px;
+                font-size: 12px;
+            }
+
+            .final-cta h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .capabilities-grid {
+                gap: 20px;
+            }
+
+            .features-grid {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">期間限定：1万円分が無料</div>
+            <h1>1万円のAI秘書セットアップを<br>無料プレゼント</h1>
+            <div class="hero-cta">
+                <button class="btn btn-primary" onclick="document.getElementById('capabilities').scrollIntoView({behavior: 'smooth'})">詳しく見る</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CAPABILITIES ========== -->
+    <section class="capabilities" id="capabilities">
+        <div class="container">
+            <h2>AI秘書でできること</h2>
+            <p class="subtitle">目標管理・タスク整理・AI相談・朝の通知を完全自動化</p>
+
+            <div class="capabilities-grid">
+                <div class="capability-card">
+                    <div class="capability-icon">💬</div>
+                    <h3>AI相談</h3>
+                    <p>仕事の判断、アイデア出し、優先順位。AI秘書が答えてくれます。</p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">📋</div>
+                    <h3>朝の通知</h3>
+                    <p>毎朝『今日やるべきタスク』を自動通知。迷わず1日をスタート。</p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">🎯</div>
+                    <h3>年間目標設定</h3>
+                    <p>目標を設定すると自動でToDo生成。目標達成率が3倍に。</p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">💾</div>
+                    <h3>Discord連携</h3>
+                    <p>スマホ・PCどこからでも使える。場所を選ばずアクセス可能。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FREE PRESET ========== -->
+    <section class="free-preset" id="free-preset">
+        <div class="container">
+            <h2>無料プレゼント内容</h2>
+            <p class="subtitle">通常 1 万円のAI秘書セットアップをすべて無料でプレゼント</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-number">①</div>
+                    <h3>AI相談機能</h3>
+                    <p>仕事・アイデア・ビジネス相談ができます。</p>
+                    <ul class="examples">
+                        <li>今日やるべきことを整理して</li>
+                        <li>SNS投稿のアイデアを出して</li>
+                        <li>この仕事の優先順位を決めて</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-number">②</div>
+                    <h3>朝の通知機能</h3>
+                    <p>毎朝『今日のやるべきタスク』を自動通知。</p>
+                    <div class="examples">
+                        <li>LP制作</li>
+                        <li>SNS投稿</li>
+                        <li>クライアント返信</li>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-number">③</div>
+                    <h3>年間目標設定</h3>
+                    <p>AI秘書と一緒に年間目標を設定。</p>
+                    <div class="examples">
+                        <li>売上1000万円</li>
+                        <li>SNSフォロワー1万人</li>
+                        <li>AI副業で月30万円</li>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-number">④</div>
+                    <h3>ToDo自動生成</h3>
+                    <p>目標→月目標→週タスク→今日のToDoが自動生成。</p>
+                    <div class="examples">
+                        <li>年間目標を入力</li>
+                        <li>月ごとのゴール自動計算</li>
+                        <li>毎日のタスク自動作成</li>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-number">⑤</div>
+                    <h3>Discord連携</h3>
+                    <p>Discord でAI秘書が動作。スマホ・PC どこからでも。</p>
+                    <div class="examples">
+                        <li>チャットで指示するだけ</li>
+                        <li>スマホからもアクセス</li>
+                        <li>いつでもどこでも利用可</li>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 48px;">
+                <button class="btn btn-primary" onclick="document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})">今すぐ無料で始める</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRICING ========== -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>構築プラン</h2>
+            <p class="subtitle">無料体験後に、必要な人だけ導入できます</p>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>スターター</h3>
+                    <div class="price">10万円</div>
+                    <div class="duration">1回限り</div>
+                    <ul class="features">
+                        <li>初期構築</li>
+                        <li>AI秘書拡張</li>
+                        <li>基本自動化</li>
+                        <li>基本マニュアル</li>
+                    </ul>
+                    <button class="btn btn-primary">相談する</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>自動化</h3>
+                    <div class="price">30万円</div>
+                    <div class="duration">1回限り</div>
+                    <ul class="features">
+                        <li>AI業務自動化</li>
+                        <li>SNS自動化</li>
+                        <li>リサーチAI</li>
+                        <li>月2回相談</li>
+                    </ul>
+                    <button class="btn btn-primary">相談する</button>
+                </div>
+
+                <div class="pricing-card highlight">
+                    <div class="badge">人気</div>
+                    <h3>AI部署</h3>
+                    <div class="price">50万円</div>
+                    <div class="duration">1回限り</div>
+                    <ul class="features">
+                        <li>AI営業</li>
+                        <li>AIマーケ</li>
+                        <li>AI制作</li>
+                        <li>月2回相談</li>
+                    </ul>
+                    <button class="btn btn-primary" style="background-color: var(--secondary); color: var(--primary);">相談する</button>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="badge">フル</div>
+                    <h3>フルカスタム</h3>
+                    <div class="price">相談</div>
+                    <div class="duration">カスタマイズ</div>
+                    <ul class="features">
+                        <li>完全カスタム対応</li>
+                        <li>全エージェント統合</li>
+                        <li>専任サポート</li>
+                        <li>無制限相談</li>
+                    </ul>
+                    <button class="btn btn-primary">相談する</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROOF ========== -->
+    <section class="proof">
+        <div class="container">
+            <h2>実際の効果</h2>
+            <p class="subtitle">AI秘書導入後の変化</p>
+
+            <div style="margin-top: 48px;">
+                <div class="case-study">
+                    <div class="case-study-header">フリーランス（営業代行業）</div>
+                    <div class="case-item before">朝『今日は何をやるんだっけ？』と迷う。タスク管理に 30 分費やす</div>
+                    <div class="case-item after">朝の迷い時間がゼロに。判断に費やす時間が 80% 削減</div>
+                    <div class="testimonial">"朝起きたら『今日のタスク』がもう決まってる感覚。脳が疲れなくなった。"</div>
+                    <div class="impact">生産性が 40% 向上</div>
+                </div>
+
+                <div class="case-study">
+                    <div class="case-study-header">事業者（1 人経営）</div>
+                    <div class="case-item before">『今月売上 100 万円』という目標があるのに、毎日の行動が結びついていない</div>
+                    <div class="case-item after">毎日『目標に向かっている』実感。迷わず行動。3 ヶ月で目標達成</div>
+                    <div class="testimonial">"大目標が怖くなくなった。毎日のタスクが『目標への階段』に見える。"</div>
+                    <div class="impact">目標達成率が 3 倍に</div>
+                </div>
+
+                <div class="case-study">
+                    <div class="case-study-header">企業管理職</div>
+                    <div class="case-item before">部下のタスク管理に毎日 3 時間。本来の仕事ができない</div>
+                    <div class="case-item after">部下の自律性が上がる。管理職の負担が 70% 削減</div>
+                    <div class="testimonial">"部下の自律性が上がった。マイクロマネジメントが不要になった。"</div>
+                    <div class="impact">チーム生産性が 25% 向上</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <section class="faq">
+        <div class="container">
+            <h2>よくある質問</h2>
+            <div class="faq-list">
+                <details>
+                    <summary>本当に無料ですか？<span>+</span></summary>
+                    <p>はい。通常 1 万円のAI秘書セットアップを、期間限定で無料プレゼント。隠れた料金もありません。</p>
+                </details>
+
+                <details>
+                    <summary>AI初心者でも使えますか？<span>+</span></summary>
+                    <p>はい。Discord でタスクを指示するだけ。技術スキルは不要です。セットアップもすべて当社が行います。</p>
+                </details>
+
+                <details>
+                    <summary>どのくらいで効果を実感できますか？<span>+</span></summary>
+                    <p>初日から『朝の自動通知』で効果を実感。1 週間で『タスク管理の時間が減った』と感じます。</p>
+                </details>
+
+                <details>
+                    <summary>Discord 以外では使えないですか？<span>+</span></summary>
+                    <p>Discord がメインです。LINE・Slack 対応もカスタム可能。相談でご相談ください。</p>
+                </details>
+
+                <details>
+                    <summary>データは安全ですか？<span>+</span></summary>
+                    <p>クラウドセキュア環境で運用。暗号化・バックアップ完備。SOC2 準拠。安全です。</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FINAL CTA ========== -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>1万円のAI秘書セットアップを<br>無料で始める</h2>
+            <p>期間限定。今すぐ体験</p>
+            <button class="btn btn-primary" style="background-color: #0F0F0F; color: #00D4FF; padding: 18px 48px; font-size: 16px;">無料で始める</button>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <p>&copy; 2026 Open Claw. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
