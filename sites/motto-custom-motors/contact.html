@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ | Motto Custom Motors</title>
+  <meta name="description" content="Motto Custom Motors へのお問い合わせ。電話、LINE、問い合わせフォームからお気軽にどうぞ。初回相談は無料です。">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">Motto Custom Motors</div>
+      <nav class="navbar">
+        <ul>
+          <li><a href="index.html">トップ</a></li>
+          <li><a href="index.html#services">サービス</a></li>
+          <li><a href="gallery.html">実績</a></li>
+          <li><a href="about.html">について</a></li>
+        </ul>
+      </nav>
+      <button class="cta-header">初回相談（無料）</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>お問い合わせ</h1>
+        <p>Motto Custom Motors へのご相談・ご依頼は、下記からお気軽にお問い合わせください。初回相談は無料です。</p>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-block phone-block">
+            <div class="contact-icon">📞</div>
+            <h2>お電話でご相談</h2>
+            <p class="contact-description">直接職人と話したいという方は、お電話でお気軽にどうぞ。営業時間内にお答えします。</p>
+            <p class="phone-number"><a href="tel:09012345678">090-1234-5678</a></p>
+            <p class="contact-hours">営業時間: 平日 10:00～19:00 / 土曜 10:00～18:00（日曜・祝日 休業）</p>
+          </div>
+
+          <div class="contact-block line-block">
+            <div class="contact-icon">💬</div>
+            <h2>LINE で気軽に相談</h2>
+            <p class="contact-description">LINE で気軽にご相談いただけます。営業時間内に、職人から直接返信いたします。</p>
+            <button class="cta-button line-button" onclick="window.open('https://line.me/R/ti/p/@motto-custom-motors', '_blank')">
+              🟢 LINE で友達追加する
+            </button>
+            <p class="line-id">ID: @motto-custom-motors</p>
+          </div>
+
+          <div class="contact-block form-block">
+            <div class="contact-icon">📝</div>
+            <h2>お問い合わせフォーム</h2>
+            <p class="contact-description">下記フォームに入力いただき、送信してください。3営業日以内にご返信いたします。</p>
+
+            <form class="contact-form" id="contactForm">
+              <div class="form-group">
+                <label for="name">お名前 <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required placeholder="山田太郎">
+              </div>
+
+              <div class="form-group">
+                <label for="email">メールアドレス <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="example@example.com">
+              </div>
+
+              <div class="form-group">
+                <label for="phone">電話番号</label>
+                <input type="tel" id="phone" name="phone" placeholder="09012345678">
+              </div>
+
+              <div class="form-group">
+                <label for="bike-model">現在のバイク（または希望バイク）</label>
+                <input type="text" id="bike-model" name="bike-model" placeholder="例: ハーレーダビッドソン">
+              </div>
+
+              <div class="form-group">
+                <label for="budget">予算（参考）</label>
+                <select id="budget" name="budget">
+                  <option value="">-- 選択してください --</option>
+                  <option value="under50">～50万円</option>
+                  <option value="50-100">50～100万円</option>
+                  <option value="100-200">100～200万円</option>
+                  <option value="200-500">200～500万円</option>
+                  <option value="over500">500万円以上</option>
+                  <option value="unknown">未定</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">ご相談内容 <span class="required">*</span></label>
+                <textarea id="message" name="message" required rows="6" placeholder="カスタムのご希望、ご質問、ご相談をお書きください。"></textarea>
+              </div>
+
+              <div class="form-group privacy-agreement">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="privacy" required>
+                  <a href="privacy-policy.html" target="_blank">プライバシーポリシー</a>に同意する <span class="required">*</span>
+                </label>
+              </div>
+
+              <button type="submit" class="cta-button submit-button">送信する</button>
+              <p class="form-note">※ 送信いただいた情報は、お問い合わせ対応のためのみに使用します。</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-info">
+      <div class="container">
+        <h2>アクセス情報</h2>
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>住所</h3>
+            <p>〒123-4567<br>東京都渋谷区カスタムストリート 5-5-5<br>Motto Custom Motors</p>
+          </div>
+
+          <div class="info-card">
+            <h3>営業時間</h3>
+            <p>平日: 10:00～19:00<br>土曜: 10:00～18:00<br>日曜・祝日: 休業</p>
+          </div>
+
+          <div class="info-card">
+            <h3>電話</h3>
+            <p><a href="tel:09012345678">090-1234-5678</a></p>
+          </div>
+
+          <div class="info-card">
+            <h3>メール</h3>
+            <p><a href="mailto:info@motto-custom.com">info@motto-custom.com</a></p>
+          </div>
+
+          <div class="info-card">
+            <h3>LINE</h3>
+            <p>@motto-custom-motors</p>
+          </div>
+
+          <div class="info-card">
+            <h3>駐車場</h3>
+            <p>敷地内に10台分の駐車場完備</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-faq">
+      <div class="container">
+        <h2>よくある質問</h2>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h4>問い合わせ後、いつ連絡をもらえますか？</h4>
+            <p>3営業日以内にご返信いたします。お急ぎの方は、お電話またはLINEでお気軽にお声がけください。</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>初回相談で費用がかかりますか？</h4>
+            <p>いいえ、初回相談は完全無料です。ご相談だけでも大丈夫。お気軽にお聞きください。</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>遠方ですが、対応していただけますか？</h4>
+            <p>はい。全国からのご相談・ご依頼をお受けしています。配送手配も可能です。詳しくはお問い合わせください。</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>カスタムの相談だけでも良いですか？</h4>
+            <p>もちろんです。「このバイクはカスタムできるか」「どのくらい費用がかかるか」など、お気軽にご相談ください。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container">
+        <h2>お気軽にご連絡ください</h2>
+        <p>「夢のバイクを作りたい」その想いを、職人たちと一緒に実現しましょう。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Motto Custom Motors</h4>
+        <p class="business-name">夢のカスタムバイク工房</p>
+      </div>
+      <div class="footer-section">
+        <h4>リンク</h4>
+        <ul>
+          <li><a href="index.html">トップ</a></li>
+          <li><a href="about.html">について</a></li>
+          <li><a href="gallery.html">実績</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>お問い合わせ</h4>
+        <p>📞 Phone: 090-1234-5678</p>
+        <p>📧 Email: info@motto-custom.com</p>
+        <p>📱 LINE: @motto-custom-motors</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <ul class="footer-legal">
+        <li><a href="privacy-policy.html">プライバシーポリシー</a></li>
+      </ul>
+      <p class="copyright">&copy; 2026 Motto Custom Motors. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

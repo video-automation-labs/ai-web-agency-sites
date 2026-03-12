@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Web Agency - デモサイト集</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', 'Hiragino Sans W4', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    h1 {
+      font-size: 48px;
+      color: #0066cc;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      font-size: 14px;
+      color: #999;
+      margin-bottom: 10px;
+    }
+
+    .demo-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .demo-card {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border-left: 5px solid #0066cc;
+    }
+
+    .demo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .demo-card h3 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .demo-card p {
+      color: #666;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .demo-card a {
+      display: inline-block;
+      padding: 14px 32px;
+      background: #0066cc;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .demo-card a:hover {
+      background: #0052a3;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      color: #999;
+      font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 32px;
+      }
+
+      .demo-list {
+        gap: 20px;
+      }
+
+      .demo-card {
+        padding: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎨 AI Web Agency</h1>
+      <p class="subtitle">AIで自動生成されたホームページの実例</p>
+      <p class="description">最新のAI技術を使い、3日で高品質なホームページを制作します</p>
+    </header>
+
+    <div class="demo-list">
+      <div class="demo-card">
+        <h3>AI Strategy Partner</h3>
+        <p>AIエージェント導入で会社の生産性を10倍にする。営業・企画・事務・カスタマーサポートをAI化。中小企業・士業・成長企業向け。</p>
+        <a href="sites/ai-strategy-partner/">サイトを見る →</a>
+      </div>
+
+      <div class="demo-card">
+        <h3>Motto Custom Motors</h3>
+        <p>カスタムバイク・カスタムカー製作専門店。高い技術力と創造性で、あなたの「理想の一台」を実現します。</p>
+        <a href="sites/motto-custom-motors/">サイトを見る →</a>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 AI Web Agency. All rights reserved.</p>
+      <p style="margin-top: 12px;">このデモサイトはAI技術によって自動生成されました。</p>
+    </footer>
+  </div>
+</body>
+</html>

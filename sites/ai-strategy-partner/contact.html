@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ | AI Strategy Partner</title>
+  <meta name="description" content="AI Strategy Partner へのお問い合わせ。LINE 相談または問い合わせフォームからお気軽にご連絡ください。初回相談は無料です。">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">AI Strategy Partner</div>
+      <nav class="navbar">
+        <ul>
+          <li><a href="index.html#services">サービス</a></li>
+          <li><a href="index.html#pricing">料金</a></li>
+          <li><a href="case-studies.html">導入事例</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+      <button class="cta-header">無料相談</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>お問い合わせ</h1>
+        <p>AI Strategy Partner へのご質問・ご相談は、下記からお気軽にお問い合わせください。初回相談は無料です。</p>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- LINE セクション -->
+          <div class="contact-block line-block">
+            <div class="contact-icon line-icon">💬</div>
+            <h2>LINE で気軽に相談</h2>
+            <p class="contact-description">公式 LINE アカウントを友達追加いただくと、チャットで気軽にご相談いただけます。営業時間内に返信いたします。</p>
+
+            <div class="line-benefits">
+              <h3>LINE 相談のメリット</h3>
+              <ul>
+                <li>✓ 24時間いつでもメッセージ送信可能</li>
+                <li>✓ 営業時間内に迅速にご返信</li>
+                <li>✓ 写真・資料の共有が簡単</li>
+                <li>✓ 初回相談は無料</li>
+              </ul>
+            </div>
+
+            <button class="cta-button line-button" onclick="window.open('https://line.me/R/ti/p/@ai-strategy-partner', '_blank')">
+              🟢 LINE で友達追加する
+            </button>
+
+            <p class="line-id">ID: @ai-strategy-partner</p>
+          </div>
+
+          <!-- 問い合わせフォーム -->
+          <div class="contact-block form-block">
+            <div class="contact-icon form-icon">📝</div>
+            <h2>お問い合わせフォーム</h2>
+            <p class="contact-description">下記フォームに入力いただき、送信してください。2営業日以内にご返信いたします。</p>
+
+            <form class="contact-form" id="contactForm">
+              <div class="form-group">
+                <label for="company">会社名・事業名 <span class="required">*</span></label>
+                <input type="text" id="company" name="company" required placeholder="例: 株式会社 VIBE">
+              </div>
+
+              <div class="form-group">
+                <label for="name">ご担当者名 <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required placeholder="例: 山田太郎">
+              </div>
+
+              <div class="form-group">
+                <label for="email">メールアドレス <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="example@company.com">
+              </div>
+
+              <div class="form-group">
+                <label for="phone">電話番号</label>
+                <input type="tel" id="phone" name="phone" placeholder="09012345678">
+              </div>
+
+              <div class="form-group">
+                <label for="industry">業種</label>
+                <select id="industry" name="industry">
+                  <option value="">-- 選択してください --</option>
+                  <option value="consulting">コンサルティング</option>
+                  <option value="sales">営業・販売</option>
+                  <option value="service">サービス業</option>
+                  <option value="manufacturing">製造業</option>
+                  <option value="it">IT・テクノロジー</option>
+                  <option value="finance">金融・不動産</option>
+                  <option value="education">教育・研修</option>
+                  <option value="other">その他</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="interest">ご関心のあるサービス</label>
+                <div class="checkbox-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="interest" value="proposal"> 最新AI活用提案
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="interest" value="tools"> AIツール導入支援
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="interest" value="document"> 資料作成代行
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="interest" value="education"> 社員向け教育
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="interest" value="support"> AI運用サポート
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="interest" value="report"> AIトレンドレポート
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">お問い合わせ内容 <span class="required">*</span></label>
+                <textarea id="message" name="message" required rows="6" placeholder="AI活用に関するご質問、ご相談内容をお聞かせください。"></textarea>
+              </div>
+
+              <div class="form-group privacy-agreement">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="privacy" required>
+                  <a href="privacy-policy.html" target="_blank">プライバシーポリシー</a>に同意する <span class="required">*</span>
+                </label>
+              </div>
+
+              <button type="submit" class="cta-button submit-button">送信する</button>
+
+              <p class="form-note">※ 送信いただいた情報は、お問い合わせ対応のためのみに使用します。</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-info">
+      <div class="container">
+        <h2>会社情報</h2>
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>会社名</h3>
+            <p>AI Strategy Partner</p>
+          </div>
+
+          <div class="info-card">
+            <h3>事業名</h3>
+            <p>AIエージェント導入で生産性10倍化</p>
+          </div>
+
+          <div class="info-card">
+            <h3>対応業種</h3>
+            <p>中小企業・士業事務所・サービス業全般</p>
+          </div>
+
+          <div class="info-card">
+            <h3>営業時間</h3>
+            <p>平日 9:00～18:00<br>土曜 10:00～16:00<br>（日曜・祝日 休業）</p>
+          </div>
+
+          <div class="info-card">
+            <h3>返信日数</h3>
+            <p>2営業日以内</p>
+          </div>
+
+          <div class="info-card">
+            <h3>初回相談</h3>
+            <p>無料（60分）</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-faq">
+      <div class="container">
+        <h2>よくある質問</h2>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h4>問い合わせ後、いつ連絡をもらえますか？</h4>
+            <p>2営業日以内にご返信いたします。急なご相談の場合は、LINE でお声がけいただければ優先的に対応させていただきます。</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>初回相談で費用がかかりますか？</h4>
+            <p>いいえ、初回相談は完全無料です。ご相談だけで解約いただくことも可能です。強制的なセールスは致しません。</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>どのような相談でも受け付けていますか？</h4>
+            <p>はい、AI活用に関するあらゆるご相談をお受けしています。「導入できるか不安」「予算が限られている」など、どんな状況でもお気軽にお聞きください。</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>個人事業主でも相談できますか？</h4>
+            <p>もちろんです。むしろ個人事業主こそ AI を活用することで、大幅な業務効率化が見込めます。多くの個人事業主様にご利用いただいています。</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>提供いただいた情報はどのように扱われますか？</h4>
+            <p>プライバシーポリシーに従い、ご相談内容や個人情報はお問い合わせ対応のためのみに使用します。第三者に提供することはありません。</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>遠方ですが、対応していただけますか？</h4>
+            <p>はい。ミーティングはオンライン（Zoom等）で対応しておりますので、日本全国どこからでもご利用いただけます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container">
+        <h2>AIが働く会社へ。<br>今から始めましょう。</h2>
+        <p>業務効率化、採用課題の解決、経営課題の克服。AIエージェント導入で実現できます。<br>初回相談は無料です。お気軽にお問い合わせください。</p>
+        <button class="cta-button">無料相談を予約する</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>AI Strategy Partner</h4>
+        <p class="business-name">AIエージェント導入で生産性10倍化</p>
+      </div>
+      <div class="footer-section">
+        <h4>リンク</h4>
+        <ul>
+          <li><a href="index.html">トップ</a></li>
+          <li><a href="index.html#services">サービス</a></li>
+          <li><a href="case-studies.html">導入事例</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>お問い合わせ</h4>
+        <p>📧 Email: contact@ai-strategy-partner.com</p>
+        <p>📱 LINE: @ai-strategy-partner</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <ul class="footer-legal">
+        <li><a href="privacy-policy.html">プライバシーポリシー</a></li>
+      </ul>
+      <p class="copyright">&copy; 2026 AI Strategy Partner. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
