@@ -879,6 +879,165 @@ section {
 }
 
 /* =========================================
+   Page Hero (subpages)
+   ========================================= */
+
+.page-hero {
+  background: var(--bg-light);
+  padding: 140px 0 80px;
+  text-align: center;
+}
+
+.page-hero h1 {
+  margin-bottom: 16px;
+}
+
+.page-hero-sub {
+  font-size: 19px;
+  color: var(--text-mid);
+  margin: 0;
+}
+
+/* =========================================
+   Contact — LINE CTA
+   ========================================= */
+
+.line-cta-section {
+  background: var(--bg);
+  padding: 80px 0 100px;
+}
+
+.line-cta-card {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  padding: 72px 64px;
+  text-align: center;
+}
+
+.line-logo-wrap {
+  margin-bottom: 28px;
+}
+
+.line-cta-card h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.line-cta-desc {
+  font-size: 17px;
+  color: var(--text-mid);
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto 48px;
+}
+
+.line-merits {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 400px;
+  margin: 0 auto 48px;
+  text-align: left;
+}
+
+.line-merit {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.line-merit-num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #06C755;
+  background: rgba(6, 199, 85, 0.1);
+  padding: 3px 10px;
+  border-radius: 980px;
+  white-space: nowrap;
+}
+
+.btn-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #06C755;
+  color: #fff;
+  border: none;
+  border-radius: 980px;
+  padding: 16px 40px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  text-decoration: none;
+}
+
+.btn-line:hover {
+  opacity: 0.88;
+  transform: scale(1.02);
+}
+
+.line-note {
+  font-size: 12px;
+  color: var(--text-mid);
+  margin-top: 16px;
+}
+
+/* =========================================
+   Contact Info Cards
+   ========================================= */
+
+.contact-info-section {
+  background: var(--bg-dark);
+  padding: 100px 0;
+}
+
+.contact-info-section .section-header h2 {
+  color: var(--text-inv);
+}
+
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.contact-info-card {
+  padding: 48px 40px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.contact-info-card:last-child {
+  border-right: none;
+}
+
+.contact-info-num {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.contact-info-card h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.contact-info-card p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* =========================================
    Responsive
    ========================================= */
 
@@ -946,5 +1105,22 @@ section {
     gap: 12px;
     text-align: center;
     padding: 20px 24px;
+  }
+
+  .line-cta-card {
+    padding: 48px 24px;
+  }
+
+  .contact-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info-card {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .contact-info-card:last-child {
+    border-bottom: none;
   }
 }
