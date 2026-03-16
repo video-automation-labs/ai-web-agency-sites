@@ -718,6 +718,176 @@
       margin-top: 16px;
     }
 
+    /* ===== ONBOARDING FLOW ===== */
+    .onboarding-flow {
+      padding: 100px 0;
+      background: var(--bg);
+    }
+    .flow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 56px;
+      position: relative;
+    }
+    .flow-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 32px;
+      align-items: flex-start;
+      position: relative;
+      padding-bottom: 48px;
+    }
+    .flow-step:last-child { padding-bottom: 0; }
+    .flow-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 39px;
+      top: 80px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--border), transparent);
+    }
+    .flow-step-number {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 900;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .flow-step:nth-child(1) .flow-step-number {
+      background: var(--amber-dim);
+      border: 2px solid var(--amber);
+      color: var(--amber);
+    }
+    .flow-step:nth-child(2) .flow-step-number,
+    .flow-step:nth-child(3) .flow-step-number {
+      background: var(--cyan-dim);
+      border: 2px solid var(--cyan);
+      color: var(--cyan);
+    }
+    .flow-step-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 36px;
+    }
+    .flow-step:nth-child(1) .flow-step-content {
+      border-color: rgba(200,134,10,0.35);
+    }
+    .flow-step-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .flow-step:nth-child(1) .flow-step-badge {
+      background: var(--amber-dim);
+      color: var(--amber);
+    }
+    .flow-step:nth-child(2) .flow-step-badge,
+    .flow-step:nth-child(3) .flow-step-badge {
+      background: var(--cyan-dim);
+      color: var(--cyan);
+    }
+    .flow-step-content h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .flow-step-content p {
+      font-size: 15px;
+      color: var(--text-mid);
+      margin-bottom: 16px;
+      line-height: 1.75;
+    }
+    .flow-step-content ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .flow-step-content ul li {
+      font-size: 14px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .flow-step-content ul li::before {
+      content: '✓';
+      font-weight: 700;
+      color: var(--cyan);
+      flex-shrink: 0;
+    }
+    .flow-step:nth-child(1) .flow-step-content ul li::before {
+      color: var(--amber);
+    }
+    .flow-price-tag {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .flow-price-old {
+      font-size: 16px;
+      color: var(--text-dim);
+      text-decoration: line-through;
+    }
+    .flow-price-new {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--amber);
+    }
+    .flow-price-off {
+      font-size: 13px;
+      font-weight: 700;
+      background: var(--amber-dim);
+      color: var(--amber);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    .flow-roi {
+      display: flex;
+      gap: 16px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .flow-roi-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-mid);
+    }
+    .flow-roi-item strong {
+      color: var(--cyan);
+      font-weight: 700;
+    }
+    @media (max-width: 640px) {
+      .flow-step { grid-template-columns: 56px 1fr; gap: 16px; }
+      .flow-step-number { width: 56px; height: 56px; font-size: 16px; }
+      .flow-step:not(:last-child)::after { left: 27px; top: 56px; }
+      .flow-step-content { padding: 24px 20px; }
+      .flow-step-content h3 { font-size: 17px; }
+    }
+
     /* ===== FOOTER ===== */
     footer {
       padding: 32px 24px;
@@ -737,6 +907,7 @@
     <ul class="header-nav">
       <li><a href="#capabilities">機能</a></li>
       <li><a href="#demo">デモ</a></li>
+      <li><a href="#flow">導入の流れ</a></li>
       <li><a href="#pricing">料金</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
@@ -1000,6 +1171,77 @@
           <div class="proof-after">部下の自律性が向上。管理職の負担が70%削減</div>
           <p class="proof-quote">"部下の自律性が上がった。マイクロマネジメントが不要になった。"</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONBOARDING FLOW -->
+  <section class="onboarding-flow" id="flow">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">How it Works</div>
+        <h2 class="section-title">導入の流れ</h2>
+        <p class="section-desc">まず¥10,000で体験。効果を実感してから、組織全体をAI化へ。</p>
+      </div>
+      <div class="flow-steps">
+
+        <!-- STEP 1 -->
+        <div class="flow-step">
+          <div class="flow-step-number">01</div>
+          <div class="flow-step-content">
+            <div class="flow-step-badge">まず試す</div>
+            <h3>AI秘書を体験導入する</h3>
+            <p>通常¥15,000の初期構築を、<strong style="color:var(--amber)">今だけ¥10,000</strong>でご提供。琥珀があなたの仕事をどう変えるかを、まずリアルに体験してください。構築作業はすべてこちらで代行します。</p>
+            <ul>
+              <li>AI秘書の初期セットアップ（代行）</li>
+              <li>朝の自動通知・タスク管理・議事録生成をデモ体験</li>
+              <li>Discordで実際に動く様子をリアルタイム確認</li>
+              <li>強制なし・満足しなければ上位プランへの誘導一切なし</li>
+            </ul>
+            <div class="flow-price-tag">
+              <span class="flow-price-old">通常 ¥15,000</span>
+              <span class="flow-price-new">¥10,000</span>
+              <span class="flow-price-off">¥5,000 OFF</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="flow-step">
+          <div class="flow-step-number">02</div>
+          <div class="flow-step-content">
+            <div class="flow-step-badge">もっと活用する</div>
+            <h3>業務をAIで丸ごと自動化（30万円〜）</h3>
+            <p>「もっとガッツリ使いたい」と感じたら、業務全体の自動化へ。資料作成・動画編集・SNS運用をAIに任せ、外注費・業務委託費を大幅に削減できます。人に頼む前にAIに聞く文化が生まれます。</p>
+            <ul>
+              <li>資料作成・動画編集・SNS投稿をAI自動生成</li>
+              <li>外注していた業務をAI内製化 → 委託費を削減</li>
+              <li>仕事の処理速度が<strong style="color:var(--cyan)">2〜4倍</strong>に向上</li>
+            </ul>
+            <div class="flow-roi">
+              <div class="flow-roi-item">導入月から <strong>月30〜50万円分の作業</strong> をAIが代替</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="flow-step">
+          <div class="flow-step-number">03</div>
+          <div class="flow-step-content">
+            <div class="flow-step-badge">組織を変える</div>
+            <h3>会社全体にAI部署を構築（50万円〜）</h3>
+            <p>採用・研修・管理コストゼロで、AI営業・AIマーケ・AI制作チームが同時稼働。AIを入れない競合との差は、1年後には取り返しのつかない差になります。人件費・外注費の構造を根本から変えます。</p>
+            <ul>
+              <li>AI営業・AIマーケ・AI制作を同時構築</li>
+              <li>人件費・業務委託費・外注費の劇的削減</li>
+              <li>競合が気づく前に<strong style="color:var(--cyan)">圧倒的なスピード差</strong>を確立</li>
+            </ul>
+            <div class="flow-roi">
+              <div class="flow-roi-item">年間 <strong>数百万円規模</strong> のコスト削減が現実的に</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
