@@ -284,12 +284,21 @@ section {
 }
 
 .hero-sub {
-  font-size: 24px;
-  font-weight: 400;
-  color: var(--text-mid);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
   max-width: 640px;
+  margin: 0 auto 20px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.hero-desc {
+  font-size: 17px;
+  color: var(--text-mid);
+  max-width: 560px;
   margin: 0 auto 48px;
-  line-height: 1.5;
+  line-height: 1.7;
 }
 
 .hero-actions {
@@ -378,27 +387,14 @@ section {
 .challenges-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border: 1px solid var(--border);
+  gap: 1px;
+  background: var(--border);
   text-align: left;
 }
 
 .challenge-item {
   padding: 40px 36px;
-  border-right: 1px solid var(--border);
-}
-
-.challenge-item:last-child {
-  border-right: none;
-}
-
-.challenge-item:nth-child(3) {
-  border-right: none;
-}
-
-.challenge-item:nth-child(4),
-.challenge-item:nth-child(5) {
-  border-top: 1px solid var(--border);
+  background: var(--bg);
 }
 
 .challenge-num {
@@ -924,8 +920,6 @@ section {
   .stat-block:last-child { border-bottom: none; }
 
   .challenges-grid { grid-template-columns: 1fr; }
-  .challenge-item { border-right: none; border-bottom: 1px solid var(--border); border-top: none !important; }
-  .challenge-item:last-child { border-bottom: none; }
 
   .services-grid { grid-template-columns: 1fr; gap: 1px; }
 
