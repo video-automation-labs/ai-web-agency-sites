@@ -3,57 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>お問い合わせ | Motto Custom Motors</title>
-  <meta name="description" content="Motto Custom Motors へのお問い合わせ。電話、LINE、問い合わせフォームからお気軽にどうぞ。初回相談は無料です。">
+  <title>お問い合わせ | Matto Custom Motors</title>
+  <meta name="description" content="Matto Custom Motors（マットカスタムモータース）へのお問い合わせ。電話、LINE、問い合わせフォームからお気軽にどうぞ。初回相談は無料です。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
   <header class="header">
     <div class="header-container">
-      <div class="logo">Motto Custom Motors</div>
+      <div class="logo">
+        <a href="index.html">MATTO CUSTOM MOTORS</a>
+      </div>
+
       <nav class="navbar">
         <ul>
-          <li><a href="index.html">トップ</a></li>
-          <li><a href="index.html#services">サービス</a></li>
-          <li><a href="gallery.html">実績</a></li>
-          <li><a href="about.html">について</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="gallery.html">CUSTOM LINE-UP</a></li>
+          <li><a href="index.html#services">SERVICE</a></li>
+          <li><a href="index.html#process">ORDER FLOW</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
         </ul>
       </nav>
-      <button class="cta-header">初回相談（無料）</button>
+
+      <div class="header-sns">
+        <a href="#" class="sns-link" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"></circle>
+          </svg>
+        </a>
+        <a href="#" class="sns-link" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+        <a href="#" class="sns-link" aria-label="YouTube">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path>
+            <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"></polygon>
+          </svg>
+        </a>
+      </div>
+
+      <button class="hamburger" aria-label="メニュー">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
   <main>
+
     <section class="page-header">
       <div class="container">
+        <div class="section-label">Contact</div>
         <h1>お問い合わせ</h1>
-        <p>Motto Custom Motors へのご相談・ご依頼は、下記からお気軽にお問い合わせください。初回相談は無料です。</p>
+        <p>Matto Custom Motors へのご相談・ご依頼は、下記からお気軽にお問い合わせください。初回相談は無料です。</p>
       </div>
     </section>
 
     <section class="contact-section">
       <div class="container">
         <div class="contact-grid">
+
           <div class="contact-block phone-block">
-            <div class="contact-icon">📞</div>
             <h2>お電話でご相談</h2>
             <p class="contact-description">直接職人と話したいという方は、お電話でお気軽にどうぞ。営業時間内にお答えします。</p>
             <p class="phone-number"><a href="tel:09012345678">090-1234-5678</a></p>
-            <p class="contact-hours">営業時間: 平日 10:00～19:00 / 土曜 10:00～18:00（日曜・祝日 休業）</p>
+            <p class="contact-hours">営業時間: 10:00〜18:00<br>定休日: 木（祝日のみ）・金</p>
           </div>
 
           <div class="contact-block line-block">
-            <div class="contact-icon">💬</div>
             <h2>LINE で気軽に相談</h2>
             <p class="contact-description">LINE で気軽にご相談いただけます。営業時間内に、職人から直接返信いたします。</p>
-            <button class="cta-button line-button" onclick="window.open('https://line.me/R/ti/p/@motto-custom-motors', '_blank')">
-              🟢 LINE で友達追加する
+            <button class="cta-button" onclick="window.open('https://line.me/R/ti/p/@matto-custom-motors', '_blank')">
+              LINE で友達追加する
             </button>
-            <p class="line-id">ID: @motto-custom-motors</p>
+            <p class="line-id">ID: @matto-custom-motors</p>
           </div>
 
           <div class="contact-block form-block">
-            <div class="contact-icon">📝</div>
             <h2>お問い合わせフォーム</h2>
             <p class="contact-description">下記フォームに入力いただき、送信してください。3営業日以内にご返信いたします。</p>
 
@@ -82,10 +116,10 @@
                 <label for="budget">予算（参考）</label>
                 <select id="budget" name="budget">
                   <option value="">-- 選択してください --</option>
-                  <option value="under50">～50万円</option>
-                  <option value="50-100">50～100万円</option>
-                  <option value="100-200">100～200万円</option>
-                  <option value="200-500">200～500万円</option>
+                  <option value="under50">〜50万円</option>
+                  <option value="50-100">50〜100万円</option>
+                  <option value="100-200">100〜200万円</option>
+                  <option value="200-500">200〜500万円</option>
                   <option value="over500">500万円以上</option>
                   <option value="unknown">未定</option>
                 </select>
@@ -113,16 +147,17 @@
 
     <section class="contact-info">
       <div class="container">
+        <div class="section-label">Access</div>
         <h2>アクセス情報</h2>
         <div class="info-grid">
           <div class="info-card">
             <h3>住所</h3>
-            <p>〒123-4567<br>東京都渋谷区カスタムストリート 5-5-5<br>Motto Custom Motors</p>
+            <p>〒253-0012<br>神奈川県茅ヶ崎市小和田3丁目12-1<br>Matto Custom Motors</p>
           </div>
 
           <div class="info-card">
             <h3>営業時間</h3>
-            <p>平日: 10:00～19:00<br>土曜: 10:00～18:00<br>日曜・祝日: 休業</p>
+            <p>10:00〜18:00<br>（月・火・水・土・日）<br>定休日: 木（祝日のみ）・金</p>
           </div>
 
           <div class="info-card">
@@ -132,17 +167,17 @@
 
           <div class="info-card">
             <h3>メール</h3>
-            <p><a href="mailto:info@motto-custom.com">info@motto-custom.com</a></p>
+            <p><a href="mailto:info@matto-custom.com">info@matto-custom.com</a></p>
           </div>
 
           <div class="info-card">
             <h3>LINE</h3>
-            <p>@motto-custom-motors</p>
+            <p>@matto-custom-motors</p>
           </div>
 
           <div class="info-card">
             <h3>駐車場</h3>
-            <p>敷地内に10台分の駐車場完備</p>
+            <p>敷地内に駐車場完備</p>
           </div>
         </div>
       </div>
@@ -150,23 +185,21 @@
 
     <section class="contact-faq">
       <div class="container">
+        <div class="section-label">FAQ</div>
         <h2>よくある質問</h2>
         <div class="faq-grid">
           <div class="faq-item">
             <h4>問い合わせ後、いつ連絡をもらえますか？</h4>
             <p>3営業日以内にご返信いたします。お急ぎの方は、お電話またはLINEでお気軽にお声がけください。</p>
           </div>
-
           <div class="faq-item">
             <h4>初回相談で費用がかかりますか？</h4>
             <p>いいえ、初回相談は完全無料です。ご相談だけでも大丈夫。お気軽にお聞きください。</p>
           </div>
-
           <div class="faq-item">
             <h4>遠方ですが、対応していただけますか？</h4>
             <p>はい。全国からのご相談・ご依頼をお受けしています。配送手配も可能です。詳しくはお問い合わせください。</p>
           </div>
-
           <div class="faq-item">
             <h4>カスタムの相談だけでも良いですか？</h4>
             <p>もちろんです。「このバイクはカスタムできるか」「どのくらい費用がかかるか」など、お気軽にご相談ください。</p>
@@ -181,34 +214,41 @@
         <p>「夢のバイクを作りたい」その想いを、職人たちと一緒に実現しましょう。</p>
       </div>
     </section>
+
   </main>
 
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-section">
-        <h4>Motto Custom Motors</h4>
-        <p class="business-name">夢のカスタムバイク工房</p>
+        <h4>Matto Custom Motors</h4>
+        <p class="business-name">マットカスタムモータース</p>
+        <p>〒253-0012 神奈川県茅ヶ崎市小和田3丁目12-1</p>
+        <p style="margin-top:8px; font-size:12px; color:rgba(255,255,255,0.5);">
+          営業時間 10:00〜18:00<br>
+          定休日: 木（祝日のみ）・金
+        </p>
       </div>
       <div class="footer-section">
-        <h4>リンク</h4>
+        <h4>Navigation</h4>
         <ul>
-          <li><a href="index.html">トップ</a></li>
-          <li><a href="about.html">について</a></li>
-          <li><a href="gallery.html">実績</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Custom Line-Up</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
       <div class="footer-section">
-        <h4>お問い合わせ</h4>
-        <p>📞 Phone: 090-1234-5678</p>
-        <p>📧 Email: info@motto-custom.com</p>
-        <p>📱 LINE: @motto-custom-motors</p>
+        <h4>Contact</h4>
+        <p>TEL &nbsp; 090-1234-5678</p>
+        <p>MAIL &nbsp; info@matto-custom.com</p>
+        <p>LINE &nbsp; @matto-custom-motors</p>
       </div>
     </div>
     <div class="footer-bottom">
       <ul class="footer-legal">
         <li><a href="privacy-policy.html">プライバシーポリシー</a></li>
       </ul>
-      <p class="copyright">&copy; 2026 Motto Custom Motors. All rights reserved.</p>
+      <p class="copyright">&copy; 2026 Matto Custom Motors. All rights reserved.</p>
     </div>
   </footer>
 
