@@ -6,55 +6,93 @@
   <title>Motto Custom Motors | 夢のカスタムバイクを現実に</title>
   <meta name="description" content="カスタムバイク製作工房 Motto Custom Motors。職人の技術と情熱で、あなたの理想を走る芸術に。フルカスタム・パーツカスタム・エンジンチューニング対応。">
   <meta name="keywords" content="カスタムバイク、カスタマイズ、バイク製作、職人、ハーレー">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
   <header class="header">
     <div class="header-container">
-      <div class="logo">Motto Custom Motors</div>
+      <div class="logo">
+        <a href="index.html">MOTTO CUSTOM MOTORS</a>
+      </div>
+
       <nav class="navbar">
         <ul>
-          <li><a href="#services">サービス</a></li>
-          <li><a href="#process">オーダーフロー</a></li>
-          <li><a href="gallery.html">実績</a></li>
-          <li><a href="contact.html">お問い合わせ</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="gallery.html">CUSTOM LINE-UP</a></li>
+          <li><a href="#services">SERVICE</a></li>
+          <li><a href="#process">ORDER FLOW</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
         </ul>
       </nav>
-      <button class="cta-header">初回相談（無料）</button>
+
+      <div class="header-sns">
+        <a href="#" class="sns-link" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"></circle>
+          </svg>
+        </a>
+        <a href="#" class="sns-link" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+        <a href="#" class="sns-link" aria-label="YouTube">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path>
+            <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"></polygon>
+          </svg>
+        </a>
+      </div>
+
+      <button class="hamburger" aria-label="メニュー">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
   <main>
+
+    <!-- Hero -->
     <section class="hero">
-      <div class="hero-background" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);"></div>
+      <img
+        src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1920&q=80"
+        alt="カスタムバイク"
+        class="hero-photo"
+      >
       <div class="hero-content">
-        <h1>夢のカスタムバイクを現実に</h1>
+        <p class="hero-label">Custom Motorcycle Atelier — Since 2004</p>
+        <h1>夢のカスタムバイクを<br>現実に</h1>
         <p class="hero-subtitle">職人の技術と情熱で、あなたの想いを走る芸術に</p>
-        <p class="hero-description">
-          Motto Custom Motors は、カスタムバイク製作の職人集団。20年以上の実績。お客様の理想をヒアリングから完成まで、全てお任せください。一台一台、心を込めた製作。
-        </p>
-        <button class="cta-button">オーダーフローを見る</button>
+        <a href="gallery.html" class="hero-cta">Custom Line-Up を見る</a>
       </div>
     </section>
 
+    <!-- About intro -->
     <section class="about-intro">
       <div class="container">
+        <div class="section-label">About</div>
         <h2>Motto Custom Motors について</h2>
         <div class="about-grid">
           <div class="about-card">
-            <div class="about-icon">🎯</div>
+            <div class="about-num">01</div>
             <h3>「格言」の意味</h3>
             <p>Motto はイタリア語で「格言」「座右の銘」。お客様の人生観・バイク観を聞き、その想いを形にします。</p>
           </div>
-
           <div class="about-card">
-            <div class="about-icon">🔧</div>
+            <div class="about-num">02</div>
             <h3>職人の技術</h3>
             <p>全スタッフが 10 年以上のキャリア。フレーム設計、エンジン調整、ペイントまで、最高の技術で対応。</p>
           </div>
-
           <div class="about-card">
-            <div class="about-icon">❤️</div>
+            <div class="about-num">03</div>
             <h3>完全オーダーメイド</h3>
             <p>テンプレートなし。あなただけのバイク。予算・期間・デザイン、全てお客様のご希望で実現。</p>
           </div>
@@ -62,42 +100,76 @@
       </div>
     </section>
 
+    <!-- Custom Line-Up -->
+    <section class="lineup-section">
+      <div class="container">
+        <div class="section-label">Custom Line-Up</div>
+        <h2>製作実績</h2>
+        <div class="lineup-grid">
+          <a href="gallery.html" class="lineup-item">
+            <div class="lineup-photo">
+              <img
+                src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80"
+                alt="Classic Chopper"
+              >
+            </div>
+            <p class="lineup-model">Harley-Davidson &nbsp;|&nbsp; Full Custom &nbsp;|&nbsp; 2024</p>
+            <h3 class="lineup-name">MCM-012 &nbsp; Classic Chopper</h3>
+          </a>
+          <a href="gallery.html" class="lineup-item">
+            <div class="lineup-photo">
+              <img
+                src="https://images.unsplash.com/photo-1580310614729-ccd69652491d?auto=format&fit=crop&w=800&q=80"
+                alt="Modern Cafe Racer"
+              >
+            </div>
+            <p class="lineup-model">BMW &nbsp;|&nbsp; Semi Custom &nbsp;|&nbsp; 2024</p>
+            <h3 class="lineup-name">MCM-011 &nbsp; Modern Café Racer</h3>
+          </a>
+          <a href="gallery.html" class="lineup-item">
+            <div class="lineup-photo">
+              <img
+                src="https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?auto=format&fit=crop&w=800&q=80"
+                alt="Sport Racer"
+              >
+            </div>
+            <p class="lineup-model">Kawasaki &nbsp;|&nbsp; Semi Custom &nbsp;|&nbsp; 2023</p>
+            <h3 class="lineup-name">MCM-010 &nbsp; Sport Racer</h3>
+          </a>
+        </div>
+        <div class="lineup-more">
+          <a href="gallery.html" class="view-all-link">すべての制作実績を見る &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
     <section class="services" id="services">
       <div class="container">
+        <div class="section-label">Service</div>
         <h2>サービス</h2>
         <div class="services-grid">
           <div class="service-card">
-            <div class="service-icon">🔧</div>
             <h3>フルカスタム製作</h3>
-            <p>フレーム設計からエンジン調整、外装ペイントまで。理想を完全に実現するフルカスタム。3～6ヶ月で完成。</p>
+            <p>フレーム設計からエンジン調整、外装ペイントまで。理想を完全に実現するフルカスタム。3〜6ヶ月で完成。</p>
           </div>
-
           <div class="service-card">
-            <div class="service-icon">⚙️</div>
             <h3>パーツカスタム</h3>
             <p>既存バイクを素材に、ハンドル・シート・マフラーなど部分的にカスタム。既有バイクを理想の一台に。</p>
           </div>
-
           <div class="service-card">
-            <div class="service-icon">⚡</div>
             <h3>エンジンチューニング</h3>
             <p>パワー・トルク・燃費。プロの技術で、バイクのポテンシャルを最大限に引き出します。</p>
           </div>
-
           <div class="service-card">
-            <div class="service-icon">🛠️</div>
             <h3>メンテナンス・修理</h3>
             <p>日々のメンテナンスから複雑な修理まで。職人が丁寧に対応。カスタムバイクの長期サポート。</p>
           </div>
-
           <div class="service-card">
-            <div class="service-icon">🎨</div>
             <h3>ペイント・デザイン</h3>
             <p>業界トップクラスのペイント職人による、オリジナルペイント。手書きラインからフルカラーまで対応。</p>
           </div>
-
           <div class="service-card">
-            <div class="service-icon">💡</div>
             <h3>コンサルテーション</h3>
             <p>「こんなバイクが欲しい」その想いを形にするために。専門家としてアドバイス・提案。無料。</p>
           </div>
@@ -105,136 +177,124 @@
       </div>
     </section>
 
+    <!-- Process -->
     <section class="process" id="process">
       <div class="container">
+        <div class="section-label">Order Flow</div>
         <h2>オーダーから完成までのフロー</h2>
         <div class="process-timeline">
           <div class="process-step">
-            <div class="step-number">1</div>
+            <div class="step-number">01</div>
             <h3>初回相談</h3>
-            <p>ご来店またはオンラインで、理想をお聞きします。予算・期間・デザイン・走行性など、細かくお話しください。</p>
+            <p>ご来店またはオンラインで、理想をお聞きします。予算・期間・デザインなど、細かくお話しください。</p>
           </div>
-
-          <div class="timeline-connector">→</div>
-
           <div class="process-step">
-            <div class="step-number">2</div>
+            <div class="step-number">02</div>
             <h3>提案・見積</h3>
-            <p>ヒアリング内容をもとに、職人チームで提案を検討。デザイン案・部品選定・予算案を提示。</p>
+            <p>ヒアリング内容をもとに、職人チームでデザイン案・部品選定・予算案を提示。</p>
           </div>
-
-          <div class="timeline-connector">→</div>
-
           <div class="process-step">
-            <div class="step-number">3</div>
+            <div class="step-number">03</div>
             <h3>企画書作成</h3>
-            <p>最終的な仕様・デザイン・スケジュールを企画書として提示。ご承認後、製作契約となります。</p>
+            <p>最終的な仕様・スケジュールを企画書として提示。ご承認後、製作契約となります。</p>
           </div>
-
-          <div class="timeline-connector">→</div>
-
           <div class="process-step">
-            <div class="step-number">4</div>
+            <div class="step-number">04</div>
             <h3>製作開始</h3>
-            <p>職人が本格的な製作に着手。フレーム加工・エンジン調整・外装製作など、全工程を丁寧に実施。</p>
+            <p>職人が本格的な製作に着手。全工程を丁寧に実施します。</p>
           </div>
-
-          <div class="timeline-connector">→</div>
-
           <div class="process-step">
-            <div class="step-number">5</div>
-            <h3>途中検査・確認</h3>
-            <p>製作途中、ご来店いただき、進捗を確認。変更・調整があれば、その時点で対応。</p>
+            <div class="step-number">05</div>
+            <h3>途中確認</h3>
+            <p>製作途中、ご来店いただき進捗を確認。変更・調整があればその時点で対応。</p>
           </div>
-
-          <div class="timeline-connector">→</div>
-
           <div class="process-step">
-            <div class="step-number">6</div>
+            <div class="step-number">06</div>
             <h3>納車</h3>
-            <p>完成。試乗・確認を経て、あなたのカスタムバイクが完成。納車式でお渡しします。</p>
+            <p>試乗・確認を経て、あなたのカスタムバイクが完成。納車式でお渡しします。</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Pricing -->
     <section class="pricing">
       <div class="container">
+        <div class="section-label">Price</div>
         <h2>料金の目安</h2>
         <p class="section-intro">完全オーダーメイドのため、費用は案件により異なります。以下は一般的な目安です。</p>
-
         <div class="pricing-grid">
           <div class="pricing-card">
             <h3>パーツカスタム</h3>
-            <p class="price">15～50万円</p>
+            <p class="price">15〜50万円</p>
             <ul class="features">
-              <li>✓ ハンドル交換</li>
-              <li>✓ シート変更</li>
-              <li>✓ マフラー交換</li>
-              <li>✓ 部分カスタム対応</li>
+              <li>ハンドル交換</li>
+              <li>シート変更</li>
+              <li>マフラー交換</li>
+              <li>部分カスタム対応</li>
             </ul>
-            <p class="timeframe">制作期間: 1～2週間</p>
+            <p class="timeframe">制作期間: 1〜2週間</p>
           </div>
-
           <div class="pricing-card">
             <h3>セミカスタム</h3>
-            <p class="price">80～150万円</p>
+            <p class="price">80〜150万円</p>
             <ul class="features">
-              <li>✓ フレーム改造</li>
-              <li>✓ 外装カスタム</li>
-              <li>✓ エンジンチューニング</li>
-              <li>✓ ペイント対応</li>
+              <li>フレーム改造</li>
+              <li>外装カスタム</li>
+              <li>エンジンチューニング</li>
+              <li>ペイント対応</li>
             </ul>
-            <p class="timeframe">制作期間: 2～3ヶ月</p>
+            <p class="timeframe">制作期間: 2〜3ヶ月</p>
           </div>
-
           <div class="pricing-card featured">
             <h3>フルカスタム</h3>
-            <p class="price">200～500万円</p>
+            <p class="price">200〜500万円</p>
             <ul class="features">
-              <li>✓ フレーム設計</li>
-              <li>✓ 完全オリジナル製作</li>
-              <li>✓ エンジン選定・設計</li>
-              <li>✓ 全システム新規構築</li>
+              <li>フレーム設計</li>
+              <li>完全オリジナル製作</li>
+              <li>エンジン選定・設計</li>
+              <li>全システム新規構築</li>
             </ul>
-            <p class="timeframe">制作期間: 3～6ヶ月</p>
+            <p class="timeframe">制作期間: 3〜6ヶ月</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Testimonials -->
     <section class="testimonials">
       <div class="container">
+        <div class="section-label">Voice</div>
         <h2>お客様の声</h2>
         <div class="testimonial-grid">
           <div class="testimonial-card">
             <div class="testimonial-rating">★★★★★</div>
-            <p class="testimonial-text">"職人さんたちのこだわりに感動。完成したバイクは、自分の想い以上に素晴らしい。乗る度に笑顔になります。"</p>
-            <p class="testimonial-name">T.M さん | ハーレーダビッドソン（フルカスタム）</p>
+            <p class="testimonial-text">「職人さんたちのこだわりに感動。完成したバイクは、自分の想い以上に素晴らしい。乗る度に笑顔になります。」</p>
+            <p class="testimonial-name">T.M さん &nbsp;/&nbsp; ハーレーダビッドソン（フルカスタム）</p>
           </div>
-
           <div class="testimonial-card">
             <div class="testimonial-rating">★★★★★</div>
-            <p class="testimonial-text">"走行性が全く変わりました。コンサルから納車まで、親身に対応してくれた。次もここで。"</p>
-            <p class="testimonial-name">S.K さん | カワサキ（パーツカスタム）</p>
+            <p class="testimonial-text">「走行性が全く変わりました。コンサルから納車まで、親身に対応してくれた。次もここで。」</p>
+            <p class="testimonial-name">S.K さん &nbsp;/&nbsp; カワサキ（パーツカスタム）</p>
           </div>
-
           <div class="testimonial-card">
             <div class="testimonial-rating">★★★★★</div>
-            <p class="testimonial-text">"ヨーロッパンなデザインを希望していたのですが、ペイント職人の提案が素晴らしい。求めていた一台です。"</p>
-            <p class="testimonial-name">Y.N さん | BMW（セミカスタム）</p>
+            <p class="testimonial-text">「ヨーロッパンなデザインを希望していたのですが、ペイント職人の提案が素晴らしい。求めていた一台です。」</p>
+            <p class="testimonial-name">Y.N さん &nbsp;/&nbsp; BMW（セミカスタム）</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- CTA -->
     <section class="cta-section">
       <div class="container">
-        <h2>あなたの「夢のバイク」を一緒に作りませんか？</h2>
+        <h2>あなたの「夢のバイク」を<br>一緒に作りませんか？</h2>
         <p>初回相談は無料。バイク愛好家なら、どんな想いでも聞きます。まずはお気軽にご連絡ください。</p>
-        <button class="cta-button"><a href="contact.html">初回相談を予約する</a></button>
+        <a href="contact.html" class="cta-button">初回相談を予約する</a>
       </div>
     </section>
+
   </main>
 
   <footer class="footer">
@@ -242,21 +302,22 @@
       <div class="footer-section">
         <h4>Motto Custom Motors</h4>
         <p class="business-name">夢のカスタムバイク工房</p>
+        <p>〒000-0000 東京都XX区XX 1-2-3</p>
       </div>
       <div class="footer-section">
-        <h4>リンク</h4>
+        <h4>Navigation</h4>
         <ul>
-          <li><a href="index.html">トップ</a></li>
-          <li><a href="about.html">について</a></li>
-          <li><a href="gallery.html">実績</a></li>
-          <li><a href="contact.html">お問い合わせ</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Custom Line-Up</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
       <div class="footer-section">
-        <h4>お問い合わせ</h4>
-        <p>📞 Phone: 090-1234-5678</p>
-        <p>📧 Email: info@motto-custom.com</p>
-        <p>📱 LINE: @motto-custom-motors</p>
+        <h4>Contact</h4>
+        <p>TEL &nbsp; 090-1234-5678</p>
+        <p>MAIL &nbsp; info@motto-custom.com</p>
+        <p>LINE &nbsp; @motto-custom-motors</p>
       </div>
     </div>
     <div class="footer-bottom">
