@@ -762,12 +762,18 @@
       z-index: 1;
     }
     .flow-step:nth-child(1) .flow-step-number {
+      background: var(--cyan-dim);
+      border: 2px solid var(--cyan);
+      color: var(--cyan);
+    }
+    .flow-step:nth-child(2) .flow-step-number {
       background: var(--amber-dim);
       border: 2px solid var(--amber);
       color: var(--amber);
     }
-    .flow-step:nth-child(2) .flow-step-number,
-    .flow-step:nth-child(3) .flow-step-number {
+    .flow-step:nth-child(3) .flow-step-number,
+    .flow-step:nth-child(4) .flow-step-number,
+    .flow-step:nth-child(5) .flow-step-number {
       background: var(--cyan-dim);
       border: 2px solid var(--cyan);
       color: var(--cyan);
@@ -778,7 +784,7 @@
       border-radius: 16px;
       padding: 32px 36px;
     }
-    .flow-step:nth-child(1) .flow-step-content {
+    .flow-step:nth-child(2) .flow-step-content {
       border-color: rgba(200,134,10,0.35);
     }
     .flow-step-badge {
@@ -791,14 +797,16 @@
       border-radius: 20px;
       margin-bottom: 14px;
     }
-    .flow-step:nth-child(1) .flow-step-badge {
-      background: var(--amber-dim);
-      color: var(--amber);
-    }
-    .flow-step:nth-child(2) .flow-step-badge,
-    .flow-step:nth-child(3) .flow-step-badge {
+    .flow-step:nth-child(1) .flow-step-badge,
+    .flow-step:nth-child(3) .flow-step-badge,
+    .flow-step:nth-child(4) .flow-step-badge,
+    .flow-step:nth-child(5) .flow-step-badge {
       background: var(--cyan-dim);
       color: var(--cyan);
+    }
+    .flow-step:nth-child(2) .flow-step-badge {
+      background: var(--amber-dim);
+      color: var(--amber);
     }
     .flow-step-content h3 {
       font-size: 20px;
@@ -832,7 +840,7 @@
       color: var(--cyan);
       flex-shrink: 0;
     }
-    .flow-step:nth-child(1) .flow-step-content ul li::before {
+    .flow-step:nth-child(2) .flow-step-content ul li::before {
       color: var(--amber);
     }
     .flow-price-tag {
@@ -913,7 +921,7 @@
     </ul>
     <a href="https://discord.gg/CDZtp8J7" target="_blank" rel="noopener" class="btn-discord" style="padding:10px 24px;font-size:14px;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.032.056a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-      ¥10,000で始める
+      無料で体験する
     </a>
   </header>
 
@@ -930,7 +938,7 @@
         <div class="hero-actions">
           <a href="https://discord.gg/CDZtp8J7" target="_blank" rel="noopener" class="btn-discord" style="font-size:18px;padding:18px 48px;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.032.056a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-            Discordで今すぐ始める
+            Discordで無料体験
           </a>
           <a href="#demo" class="btn-outline">デモを見る →</a>
         </div>
@@ -1181,22 +1189,40 @@
       <div class="section-header">
         <div class="section-label">How it Works</div>
         <h2 class="section-title">導入の流れ</h2>
-        <p class="section-desc">まず¥10,000で体験。効果を実感してから、組織全体をAI化へ。</p>
+        <p class="section-desc">まずDiscordで無料体験。仕事の量・内容に合わせて、自分のペースで拡張できます。</p>
       </div>
       <div class="flow-steps">
+
+        <!-- STEP 0 -->
+        <div class="flow-step">
+          <div class="flow-step-number">00</div>
+          <div class="flow-step-content">
+            <div class="flow-step-badge">まず触れる</div>
+            <h3>Discordで琥珀を無料体験</h3>
+            <p>まずは触ってみてください。Discordに参加するだけで、本物の琥珀と会話できます。タスク整理・目標相談・朝の通知がどう動くか、リアルに体感してからご判断ください。</p>
+            <ul>
+              <li>Discord参加は完全無料・登録不要</li>
+              <li>AI秘書と実際に会話してデモを体験</li>
+              <li>気に入らなければそれで終わり。強引な案内は一切なし</li>
+            </ul>
+            <div class="flow-price-tag">
+              <span class="flow-price-new" style="font-size:22px;">完全無料</span>
+              <span class="flow-price-off" style="background:rgba(0,212,255,0.15);color:var(--cyan);">Discord参加だけでOK</span>
+            </div>
+          </div>
+        </div>
 
         <!-- STEP 1 -->
         <div class="flow-step">
           <div class="flow-step-number">01</div>
           <div class="flow-step-content">
-            <div class="flow-step-badge">まず試す</div>
-            <h3>AI秘書を体験導入する</h3>
-            <p>通常¥15,000の初期構築を、<strong style="color:var(--amber)">今だけ¥10,000</strong>でご提供。琥珀があなたの仕事をどう変えるかを、まずリアルに体験してください。構築作業はすべてこちらで代行します。</p>
+            <div class="flow-step-badge">自分でも使いたい</div>
+            <h3>スタータープランで基本を構築（¥10,000）</h3>
+            <p>「自分専用の琥珀が欲しい」と感じたら、スタータープランへ。目標設定・タスク管理・朝の通知など、AIスタートに必要な基本機能を¥10,000で構築します。通常¥15,000のところ期間限定割引中。</p>
             <ul>
-              <li>AI秘書の初期セットアップ（代行）</li>
-              <li>朝の自動通知・タスク管理・議事録生成をデモ体験</li>
-              <li>Discordで実際に動く様子をリアルタイム確認</li>
-              <li>強制なし・満足しなければ上位プランへの誘導一切なし</li>
+              <li>年間目標設定 → 月・週・今日のタスク自動生成</li>
+              <li>朝の自動通知（毎日のタスクをDiscordへ）</li>
+              <li>AI相談機能（仕事の判断・優先順位の整理）</li>
             </ul>
             <div class="flow-price-tag">
               <span class="flow-price-old">通常 ¥15,000</span>
@@ -1210,16 +1236,16 @@
         <div class="flow-step">
           <div class="flow-step-number">02</div>
           <div class="flow-step-content">
-            <div class="flow-step-badge">もっと活用する</div>
-            <h3>業務をAIで丸ごと自動化（30万円〜）</h3>
-            <p>「もっとガッツリ使いたい」と感じたら、業務全体の自動化へ。資料作成・動画編集・SNS運用をAIに任せ、外注費・業務委託費を大幅に削減できます。人に頼む前にAIに聞く文化が生まれます。</p>
+            <div class="flow-step-badge">もっと任せたい</div>
+            <h3>特定業務のAI部署を追加（¥10万円〜）</h3>
+            <p>基本機能に慣れてきたら、特定の業務をまるごとAIに任せる部署を追加できます。「経理の処理を自動化したい」「議事録・報告書を自動生成したい」など、仕事の内容に合わせて選択。</p>
             <ul>
-              <li>資料作成・動画編集・SNS投稿をAI自動生成</li>
-              <li>外注していた業務をAI内製化 → 委託費を削減</li>
-              <li>仕事の処理速度が<strong style="color:var(--cyan)">2〜4倍</strong>に向上</li>
+              <li>経理・会計レポート自動生成</li>
+              <li>議事録・提案書・メール文章の自動作成</li>
+              <li>業務量・種類に合わせてカスタム構築</li>
             </ul>
             <div class="flow-roi">
-              <div class="flow-roi-item">導入月から <strong>月30〜50万円分の作業</strong> をAIが代替</div>
+              <div class="flow-roi-item">業務委託・外注費が <strong>月数万〜十数万円削減</strong> に</div>
             </div>
           </div>
         </div>
@@ -1228,13 +1254,31 @@
         <div class="flow-step">
           <div class="flow-step-number">03</div>
           <div class="flow-step-content">
-            <div class="flow-step-badge">組織を変える</div>
-            <h3>会社全体にAI部署を構築（50万円〜）</h3>
-            <p>採用・研修・管理コストゼロで、AI営業・AIマーケ・AI制作チームが同時稼働。AIを入れない競合との差は、1年後には取り返しのつかない差になります。人件費・外注費の構造を根本から変えます。</p>
+            <div class="flow-step-badge">制作も自動化したい</div>
+            <h3>クリエイティブ制作をAI化（¥30万円〜）</h3>
+            <p>動画編集・スライド作成・SNS投稿・マーケティング資料まで、制作業務全体をAIで自動化。人に頼んでいた外注費をゼロにしながら、スピードと品質を同時に上げられます。</p>
             <ul>
-              <li>AI営業・AIマーケ・AI制作を同時構築</li>
-              <li>人件費・業務委託費・外注費の劇的削減</li>
-              <li>競合が気づく前に<strong style="color:var(--cyan)">圧倒的なスピード差</strong>を確立</li>
+              <li>動画編集・スライド作成をAI自動生成</li>
+              <li>SNS投稿・コンテンツ制作を量産</li>
+              <li>外注していたクリエイティブを内製化 → 委託費を削減</li>
+            </ul>
+            <div class="flow-roi">
+              <div class="flow-roi-item">制作外注費が <strong>月30〜50万円分</strong> 削減可能</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="flow-step">
+          <div class="flow-step-number">04</div>
+          <div class="flow-step-content">
+            <div class="flow-step-badge">組織ごと変える</div>
+            <h3>会社にAIチームをフルインストール（¥50万円〜）</h3>
+            <p>営業・マーケ・制作・管理のすべての部署にAIチームを構築。採用・研修・管理コストを大幅に削減しながら、全部門が同時に高速稼働します。AIを入れない競合との差は、1年後には取り返せない差になります。</p>
+            <ul>
+              <li>AI営業・AIマーケ・AI制作・AI管理を同時構築</li>
+              <li>人件費・業務委託費・外注費の構造を根本から変える</li>
+              <li>競合より<strong style="color:var(--cyan)">2〜4倍のスピード</strong>で事業が動き続ける</li>
             </ul>
             <div class="flow-roi">
               <div class="flow-roi-item">年間 <strong>数百万円規模</strong> のコスト削減が現実的に</div>
@@ -1311,8 +1355,8 @@
       </div>
       <div class="faq-list">
         <details>
-          <summary>¥10,000というのは本当ですか？<span></span></summary>
-          <p>はい。通常¥15,000のAI秘書セットアップを期間限定で¥10,000（¥5,000 OFF）でご提供しています。Discord参加自体は無料です。隠れた費用もありません。</p>
+          <summary>Discord体験は本当に無料ですか？<span></span></summary>
+          <p>はい。Discord参加・デモ体験は完全無料です。実際に琥珀と話して「自分でも使いたい」と感じた方には、¥10,000（通常¥15,000）のスタータープランをご案内します。強引な営業は一切しません。</p>
         </details>
         <details>
           <summary>どのくらいで効果を実感できますか？<span></span></summary>
@@ -1342,9 +1386,9 @@
       <p>通常¥15,000 → <strong style="color:var(--cyan)">¥10,000（¥5,000 OFF）</strong><br>期間限定。今すぐ申し込む。</p>
       <a href="https://discord.gg/CDZtp8J7" target="_blank" rel="noopener" class="btn-discord" style="font-size:18px;padding:20px 56px;">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.032.056a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-        Discordで¥10,000体験を始める
+        Discordで無料体験を始める
       </a>
-      <p class="final-cta-note">期間限定割引 • ¥5,000 OFF • 強引な営業なし</p>
+      <p class="final-cta-note">Discord体験は完全無料 • 構築¥10,000（通常¥15,000）• 強引な営業なし</p>
     </div>
   </section>
 
