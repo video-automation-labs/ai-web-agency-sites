@@ -3,129 +3,119 @@
     {
       "id": "q1",
       "number": 1,
-      "text": "あなたの業種は？",
+      "text": "あなたの業種・職種は？",
       "type": "radio",
       "options": [
-        { "value": "sales", "label": "営業・マーケティング" },
-        { "value": "admin", "label": "事務・バックオフィス" },
-        { "value": "support", "label": "カスタマーサポート" },
-        { "value": "planning", "label": "企画・データ分析" },
+        { "value": "sales",         "label": "営業・マーケティング" },
+        { "value": "admin",         "label": "事務・バックオフィス" },
+        { "value": "support",       "label": "カスタマーサポート" },
+        { "value": "planning",      "label": "企画・データ分析" },
         { "value": "manufacturing", "label": "製造・物流" },
-        { "value": "other", "label": "その他" }
+        { "value": "other",         "label": "その他" }
       ]
     },
     {
       "id": "q2",
       "number": 2,
-      "text": "従業員数は？",
+      "text": "会社・チームの規模は？",
       "type": "radio",
       "options": [
-        { "value": "small", "label": "1-10人" },
-        { "value": "growing", "label": "11-50人" },
-        { "value": "medium", "label": "51-100人" },
-        { "value": "large", "label": "101人以上" }
+        { "value": "solo",    "label": "個人・フリーランス" },
+        { "value": "small",   "label": "2〜10人" },
+        { "value": "growing", "label": "11〜50人" },
+        { "value": "medium",  "label": "51人以上" }
       ]
     },
     {
       "id": "q3",
       "number": 3,
-      "text": "特に困っている業務は？（複数選択可）",
+      "text": "特に効率化したい業務は？（複数選択可）",
       "type": "checkbox",
       "options": [
-        { "value": "customer_response", "label": "顧客対応・メール対応" },
-        { "value": "admin_work", "label": "営業事務・見積作成" },
-        { "value": "report_creation", "label": "レポート・資料作成" },
-        { "value": "schedule_management", "label": "スケジュール管理・会議準備" },
-        { "value": "content_creation", "label": "SNS投稿・コンテンツ生成" },
-        { "value": "training", "label": "社員教育・マニュアル作成" },
-        { "value": "inventory", "label": "在庫・売上管理" },
-        { "value": "other", "label": "その他" }
+        { "value": "customer",  "label": "顧客対応・メール返信" },
+        { "value": "admin",     "label": "営業事務・見積作成" },
+        { "value": "report",    "label": "レポート・資料作成" },
+        { "value": "schedule",  "label": "スケジュール管理" },
+        { "value": "content",   "label": "SNS・コンテンツ作成" },
+        { "value": "training",  "label": "社員教育・マニュアル" },
+        { "value": "data",      "label": "データ集計・分析" },
+        { "value": "other",     "label": "その他" }
       ]
     },
     {
       "id": "q4",
       "number": 4,
-      "text": "現在のAI利用度は？",
+      "text": "現在のAI活用レベルは？",
       "type": "radio",
       "options": [
-        { "value": "none", "label": "全く使っていない" },
-        { "value": "basic", "label": "ChatGPT等を少し使っている" },
-        { "value": "multiple", "label": "AIツールを複数導入している" },
-        { "value": "strategic", "label": "AIを戦略的に活用している" }
+        { "value": "none",      "label": "まだ使っていない" },
+        { "value": "basic",     "label": "ChatGPT等を個人的に試している" },
+        { "value": "multiple",  "label": "複数のAIツールを業務に導入済み" },
+        { "value": "strategic", "label": "AIを組織全体で活用している" }
       ]
     },
     {
       "id": "q5",
       "number": 5,
-      "text": "AI導入の優先度は？",
+      "text": "AI導入の温度感は？",
       "type": "radio",
       "options": [
-        { "value": "interest", "label": "興味段階（まず情報が欲しい）" },
-        { "value": "consideration", "label": "検討段階（予算や効果を検討中）" },
-        { "value": "implementation", "label": "導入段階（具体的に進めたい）" },
-        { "value": "urgent", "label": "急いでいる（3ヶ月以内に開始したい）" }
+        { "value": "interest",       "label": "まず情報収集したい" },
+        { "value": "consideration",  "label": "予算・効果を検討中" },
+        { "value": "implementation", "label": "具体的に進めたい" },
+        { "value": "urgent",         "label": "3ヶ月以内に始めたい" }
       ]
     }
   ],
 
   "patterns": {
     "PATTERN_A": {
-      "title": "AIエージェント構築【最適】",
-      "icon": "🤖",
-      "description": "あなたの業務は「AIエージェント」で大幅な効率化が可能です。",
+      "title": "AIエージェント構築が最適です",
+      "description": "あなたの業務・課題はAIエージェントによる自動化に最も向いています。具体的な業務をAIに置き換えることで、大幅な時間削減が見込めます。",
       "benefits": [
-        "選択いただいた業務はAI化に最適です",
-        "実装期間: 3-4週間",
-        "期待効果: 業務時間 40-60% 削減",
-        "年間効果: 約500-1000時間削減"
+        "業務時間を40〜60%削減できる見込みがあります",
+        "実装期間の目安は3〜4週間です",
+        "年間500〜1,000時間の自動化が期待できます",
+        "採用1名分のコストを削減できる可能性があります"
       ],
       "flow": [
         "ヒアリング・業務分析（1日）",
-        "AI戦略設計＋ロードマップ提案（1週間）",
-        "AIエージェント実装＆テスト（2-3週間）",
-        "社員研修・運用開始"
-      ],
-      "ctaStrength": "high",
-      "primaryCTA": "無料AI相談を予約する",
-      "secondaryCTA": "LINEで詳しく相談"
+        "AI戦略設計とロードマップの提案（1週間）",
+        "AIエージェントの実装とテスト（2〜3週間）",
+        "社員研修・運用開始・継続サポート"
+      ]
     },
     "PATTERN_B": {
-      "title": "AI導入戦略設計【検討推奨】",
-      "icon": "🎯",
-      "description": "あなたはAIを既に活用されていますが、さらに体系的なAI導入戦略で効果を最大化できます。",
+      "title": "AI戦略の体系化が次のステップです",
+      "description": "AIをすでに活用されていますが、複数ツールを統合・自動化することでさらに大きな効果が生まれます。全社的なAI戦略の設計が有効です。",
       "benefits": [
-        "現在のAI活用をさらに拡張可能",
-        "次のステップ: 複数AIツールの統合・自動化",
-        "期待効果: 現在効果 + 30-50% の効率化"
+        "現状のAI活用をさらに30〜50%拡張できます",
+        "複数ツールの統合でデータの一元管理が可能になります",
+        "業務フロー全体の自動化で工数をさらに削減できます",
+        "競合他社に対してAI活用の優位性を持てます"
       ],
       "flow": [
-        "現在のAI活用評価（無料診断）",
-        "導入すべき次のAIツール・エージェントの提案",
-        "統合ロードマップの作成",
-        "段階的な実装プラン"
-      ],
-      "ctaStrength": "medium",
-      "primaryCTA": "AI戦略設計の詳細を知る",
-      "secondaryCTA": "無料相談に申し込む"
+        "現在のAI活用状況を評価・整理（無料診断）",
+        "次に導入すべきツール・エージェントの提案",
+        "全社統合ロードマップの作成",
+        "段階的な実装と効果測定"
+      ]
     },
     "PATTERN_C": {
-      "title": "AIリテラシー教育から開始【基礎段階】",
-      "icon": "📚",
-      "description": "AIの導入前に、まず社内のAI活用スキルを高めることが重要です。",
+      "title": "AI基礎教育からスタートが効果的です",
+      "description": "まず社内のAIリテラシーを高めることが、長期的に最大の効果をもたらします。正しい基礎知識があれば、その後の導入がスムーズになります。",
       "benefits": [
-        "次のステップ: AI基礎知識＋実務活用法の習得",
-        "実装後の効果: 社内で主体的にAI活用が進む",
-        "投資効果: ROI 3-5倍"
+        "社員が自発的にAIを使いこなせるようになります",
+        "ツール導入後の定着率が大幅に上がります",
+        "教育投資のROIは3〜5倍が見込まれます",
+        "AIに関する判断・意思決定の精度が上がります"
       ],
       "flow": [
-        "社員向けAI基礎研修（1-2日）",
-        "実務別AI活用法（営業・事務・企画など）",
-        "継続サポート・質問対応",
-        "その後のAIエージェント導入もスムーズに"
-      ],
-      "ctaStrength": "low",
-      "primaryCTA": "AI教育プログラムの資料請求",
-      "secondaryCTA": "セミナーに参加する"
+        "社員向けAI基礎研修（1〜2日）",
+        "部門別・業務別のAI活用法を実践",
+        "継続的なサポートと質問対応",
+        "ステップアップとしてAIエージェント導入へ"
+      ]
     }
   }
 }

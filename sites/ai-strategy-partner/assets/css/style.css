@@ -543,6 +543,249 @@ section {
   line-height: 1.7;
 }
 
+/* =========================================
+   Diagnosis UI
+   ========================================= */
+
+.diag-block {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 48px;
+  text-align: left;
+}
+
+.diag-progress {
+  height: 2px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.diag-progress-bar {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.diag-step {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.diag-question {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 32px;
+  line-height: 1.4;
+}
+
+.diag-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.diag-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border: 1px solid rgba(255,255,255,0.12);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.diag-option:hover {
+  border-color: var(--accent);
+  background: rgba(0,113,227,0.08);
+}
+
+.diag-option input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+
+.diag-option-text {
+  font-size: 15px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.4;
+}
+
+.diag-next-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 980px;
+  padding: 14px 36px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.diag-next-btn:hover {
+  background: var(--accent-h);
+  transform: scale(1.02);
+}
+
+.diag-hint {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 14px;
+}
+
+@keyframes diagShake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-8px); }
+  40%       { transform: translateX(8px); }
+  60%       { transform: translateX(-6px); }
+  80%       { transform: translateX(6px); }
+}
+
+.diag-shake {
+  animation: diagShake 0.4s ease;
+}
+
+/* Result */
+.diag-result {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 56px 48px;
+  text-align: left;
+}
+
+.diag-result-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.diag-result-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.diag-result-desc {
+  font-size: 15px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.8;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.diag-result-section {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.diag-result-section h4 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 20px;
+}
+
+.diag-benefits {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.diag-benefits li {
+  font-size: 15px;
+  color: rgba(255,255,255,0.8);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.diag-benefits li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.diag-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.diag-flow-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  font-size: 15px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.5;
+}
+
+.diag-flow-num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  background: rgba(0,113,227,0.15);
+  padding: 3px 10px;
+  border-radius: 980px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.diag-result-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.diag-cta-btn {
+  font-size: 16px;
+  padding: 14px 32px;
+}
+
+.diag-retry-btn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.diag-retry-btn:hover {
+  color: rgba(255,255,255,0.7);
+}
+
+/* =========================================
+   Diagnosis Start Button
+   ========================================= */
+
 #diagnosisStartBtn {
   background: var(--accent);
   color: #fff;

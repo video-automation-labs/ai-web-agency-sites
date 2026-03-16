@@ -1,415 +1,209 @@
 /**
- * AI導入診断 - JavaScript Implementation
- *
- * 責務:
- * - 質問の段階的表示
- * - 回答の保存・管理
- * - スコアリングと結果判定
- * - 結果のレンダリング
+ * AI導入診断 — Rebuilt for Apple-inspired UI
  */
 
+const LINE_URL = 'https://lin.ee/kJu1w8C';
+
 class AIAdoptionDiagnosis {
-  constructor(configUrl = '/data/diagnosis-config.json') {
+  constructor() {
     this.config = null;
     this.answers = {};
     this.currentQuestion = 0;
     this.formContainer = document.getElementById('diagnosisForm');
     this.resultContainer = document.getElementById('diagnosisResult');
-    this.loadConfig(configUrl);
+    this.loadConfig();
   }
 
-  /**
-   * Config を JSON から読み込む
-   */
-  async loadConfig(url) {
+  async loadConfig() {
     try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`Failed to load config: ${response.status}`);
+      const response = await fetch('./data/diagnosis-config.json');
+      if (!response.ok) throw new Error(`${response.status}`);
       this.config = await response.json();
-      this.init();
-    } catch (error) {
-      console.error('Config load error:', error);
-      this.showError('診断データの読み込みに失敗しました');
+      this.setupStartButton();
+    } catch (e) {
+      console.error('Config load error:', e);
     }
   }
 
-  /**
-   * 初期化
-   */
-  init() {
-    this.attachEventListeners();
-    this.loadAnswersFromStorage();
-    this.setupStartButton();
-  }
-
-  /**
-   * 「診断スタート」ボタンのセットアップ
-   */
   setupStartButton() {
-    const startBtn = document.getElementById('diagnosisStartBtn');
-    if (startBtn) {
-      startBtn.addEventListener('click', () => this.startDiagnosis());
-    }
+    const btn = document.getElementById('diagnosisStartBtn');
+    if (btn) btn.addEventListener('click', () => this.start());
   }
 
-  /**
-   * 診断開始
-   */
-  startDiagnosis() {
-    // 回答をリセット
+  start() {
     this.answers = {};
     this.currentQuestion = 0;
-    localStorage.removeItem('diagnosis_answers');
 
-    // スタートボタンを非表示
-    const startBtn = document.getElementById('diagnosisStartBtn');
-    if (startBtn) startBtn.style.display = 'none';
+    const btn = document.getElementById('diagnosisStartBtn');
+    if (btn) btn.style.display = 'none';
 
-    // フォームコンテナをクリア＆表示
-    this.formContainer.innerHTML = '';
-    this.formContainer.style.display = 'block';
+    this.resultContainer.innerHTML = '';
     this.resultContainer.style.display = 'none';
+    this.formContainer.style.display = 'block';
 
-    // 最初の質問を表示
-    this.displayNextQuestion();
+    this.showQuestion();
   }
 
-  /**
-   * 次の質問を表示（段階的）
-   */
-  displayNextQuestion() {
-    if (this.currentQuestion < this.config.questions.length) {
-      const question = this.config.questions[this.currentQuestion];
-      this.renderQuestion(question);
-      this.currentQuestion++;
-    } else {
-      this.displayResult();
-    }
-  }
+  showQuestion() {
+    const questions = this.config.questions;
 
-  /**
-   * 質問をレンダリング
-   */
-  renderQuestion(question) {
-    const questionHtml = document.createElement('div');
-    questionHtml.className = 'question-group';
-    questionHtml.style.animation = 'slideIn 0.4s ease-out';
-
-    let optionsHtml = '';
-
-    if (question.type === 'radio') {
-      optionsHtml = question.options
-        .map(opt => `
-          <label class="option-label">
-            <input type="radio" name="${question.id}" value="${opt.value}" />
-            <span>${opt.label}</span>
-          </label>
-        `)
-        .join('');
-    } else if (question.type === 'checkbox') {
-      optionsHtml = question.options
-        .map(opt => `
-          <label class="option-label">
-            <input type="checkbox" name="${question.id}" value="${opt.value}" />
-            <span>${opt.label}</span>
-          </label>
-        `)
-        .join('');
+    if (this.currentQuestion >= questions.length) {
+      this.showResult();
+      return;
     }
 
-    questionHtml.innerHTML = `
-      <h3>Q${question.number}: ${question.text}</h3>
-      <div class="options-group">
-        ${optionsHtml}
-      </div>
-      <div class="question-nav">
-        <button class="btn-next" data-question-id="${question.id}">
-          ${this.currentQuestion === this.config.questions.length ? '診断結果を見る' : '次へ'}
+    const q = questions[this.currentQuestion];
+    const total = questions.length;
+    const current = this.currentQuestion + 1;
+    const progressPct = Math.round(((current - 1) / total) * 100);
+
+    const isLast = current === total;
+
+    const optionsHtml = q.options.map(opt => `
+      <label class="diag-option">
+        <input type="${q.type}" name="${q.id}" value="${opt.value}">
+        <span class="diag-option-text">${opt.label}</span>
+      </label>
+    `).join('');
+
+    this.formContainer.innerHTML = `
+      <div class="diag-block">
+        <div class="diag-progress">
+          <div class="diag-progress-bar" style="width:${progressPct}%"></div>
+        </div>
+        <div class="diag-step">${current} / ${total}</div>
+        <h3 class="diag-question">${q.text}</h3>
+        <div class="diag-options">${optionsHtml}</div>
+        <button class="diag-next-btn" id="diagNextBtn">
+          ${isLast ? '診断結果を見る' : '次へ →'}
         </button>
+        <p class="diag-hint">${q.type === 'checkbox' ? '複数選択できます' : '1つ選んでください'}</p>
       </div>
     `;
 
-    this.formContainer.innerHTML = '';
-    this.formContainer.appendChild(questionHtml);
-
-    // 前回の回答を復元
-    if (this.answers[question.id]) {
-      if (question.type === 'radio') {
-        const radio = questionHtml.querySelector(`input[value="${this.answers[question.id]}"]`);
-        if (radio) radio.checked = true;
-      } else if (question.type === 'checkbox') {
-        const selected = Array.isArray(this.answers[question.id]) ? this.answers[question.id] : [];
-        selected.forEach(val => {
-          const checkbox = questionHtml.querySelector(`input[value="${val}"]`);
-          if (checkbox) checkbox.checked = true;
-        });
-      }
-    }
-
-    // 次へボタンのイベント
-    const nextBtn = questionHtml.querySelector('.btn-next');
-    nextBtn.addEventListener('click', () => {
-      const isAnswered = this.captureAnswer(question);
-      if (isAnswered) {
-        this.displayNextQuestion();
+    document.getElementById('diagNextBtn').addEventListener('click', () => {
+      if (this.capture(q)) {
+        this.currentQuestion++;
+        this.showQuestion();
       }
     });
-
-    // Enter キーで次へ（radio のみ）
-    if (question.type === 'radio') {
-      const radios = questionHtml.querySelectorAll(`input[name="${question.id}"]`);
-      radios.forEach(radio => {
-        radio.addEventListener('change', () => {
-          nextBtn.focus();
-        });
-      });
-    }
   }
 
-  /**
-   * 回答をキャプチャして保存
-   */
-  captureAnswer(question) {
-    const inputs = this.formContainer.querySelectorAll(`input[name="${question.id}"]`);
-
-    if (question.type === 'radio') {
+  capture(q) {
+    const inputs = this.formContainer.querySelectorAll(`input[name="${q.id}"]`);
+    if (q.type === 'radio') {
       const checked = Array.from(inputs).find(i => i.checked);
-      if (!checked) {
-        alert('選択してください');
-        return false;
-      }
-      this.answers[question.id] = checked.value;
-    } else if (question.type === 'checkbox') {
-      const checked = Array.from(inputs)
-        .filter(i => i.checked)
-        .map(i => i.value);
-      if (checked.length === 0) {
-        alert('1つ以上選択してください');
-        return false;
-      }
-      this.answers[question.id] = checked;
+      if (!checked) { this.shake(); return false; }
+      this.answers[q.id] = checked.value;
+    } else {
+      const checked = Array.from(inputs).filter(i => i.checked).map(i => i.value);
+      if (!checked.length) { this.shake(); return false; }
+      this.answers[q.id] = checked;
     }
-
-    // localStorage に保存
-    this.saveAnswers();
     return true;
   }
 
-  /**
-   * 診断結果を計算・表示
-   */
-  displayResult() {
-    const pattern = this.determineDiagnosisPattern(this.answers);
-    const resultConfig = this.config.patterns[pattern];
+  shake() {
+    const block = this.formContainer.querySelector('.diag-block');
+    if (!block) return;
+    block.classList.add('diag-shake');
+    setTimeout(() => block.classList.remove('diag-shake'), 500);
+  }
+
+  showResult() {
+    const pattern = this.calcPattern();
+    const r = this.config.patterns[pattern];
 
     this.formContainer.style.display = 'none';
     this.resultContainer.style.display = 'block';
-    this.resultContainer.innerHTML = this.renderResultHTML(resultConfig);
 
-    // CTA イベント
-    this.attachResultCTAListeners();
+    const benefitsHtml = r.benefits.map(b => `<li>${b}</li>`).join('');
+    const flowHtml = r.flow.map((s, i) => `
+      <div class="diag-flow-step">
+        <span class="diag-flow-num">${String(i + 1).padStart(2, '0')}</span>
+        <span>${s}</span>
+      </div>
+    `).join('');
 
-    // やり直しボタン
-    const retryBtn = this.resultContainer.querySelector('.btn-retry');
-    if (retryBtn) {
-      retryBtn.addEventListener('click', () => this.startDiagnosis());
-    }
+    this.resultContainer.innerHTML = `
+      <div class="diag-result">
+        <div class="diag-result-label">診断結果</div>
+        <h3 class="diag-result-title">${r.title}</h3>
+        <p class="diag-result-desc">${r.description}</p>
 
-    // Google Analytics イベント記録
-    if (window.gtag) {
-      gtag('event', 'diagnosis_complete', {
-        pattern: pattern
-      });
-    }
-  }
-
-  /**
-   * パターン判定ロジック
-   */
-  determineDiagnosisPattern(answers) {
-    let score = {
-      aiAgent: 0,
-      strategy: 0,
-      education: 0
-    };
-
-    // Q1: 業種スコア
-    const industryMap = {
-      'sales': { aiAgent: 15, strategy: 5, education: 0 },
-      'admin': { aiAgent: 15, strategy: 5, education: 0 },
-      'support': { aiAgent: 15, strategy: 5, education: 0 },
-      'planning': { aiAgent: 10, strategy: 15, education: 5 },
-      'manufacturing': { aiAgent: 5, strategy: 10, education: 5 },
-      'other': { aiAgent: 0, strategy: 5, education: 10 }
-    };
-    const industryScore = industryMap[answers.q1] || {};
-    score.aiAgent += industryScore.aiAgent || 0;
-    score.strategy += industryScore.strategy || 0;
-    score.education += industryScore.education || 0;
-
-    // Q3: 困っている業務数
-    const troubleCount = (answers.q3 || []).length;
-    if (troubleCount >= 3) {
-      score.aiAgent += 20;
-    } else if (troubleCount === 2) {
-      score.strategy += 15;
-      score.aiAgent += 10;
-    } else if (troubleCount === 1) {
-      score.strategy += 15;
-      score.education += 10;
-    } else {
-      score.education += 20;
-    }
-
-    // Q4: AI利用度
-    const aiUsageMap = {
-      'none': { aiAgent: 10, strategy: 0, education: 5 },
-      'basic': { aiAgent: 15, strategy: 5, education: 0 },
-      'multiple': { aiAgent: 5, strategy: 15, education: 0 },
-      'strategic': { aiAgent: 0, strategy: 20, education: 0 }
-    };
-    const aiUsageScore = aiUsageMap[answers.q4] || {};
-    score.aiAgent += aiUsageScore.aiAgent || 0;
-    score.strategy += aiUsageScore.strategy || 0;
-    score.education += aiUsageScore.education || 0;
-
-    // Q5: 緊急度
-    const urgencyMap = {
-      'interest': { aiAgent: 0, strategy: 0, education: 5 },
-      'consideration': { aiAgent: 10, strategy: 10, education: 0 },
-      'implementation': { aiAgent: 20, strategy: 5, education: 0 },
-      'urgent': { aiAgent: 30, strategy: 10, education: 0 }
-    };
-    const urgencyScore = urgencyMap[answers.q5] || {};
-    score.aiAgent += urgencyScore.aiAgent || 0;
-    score.strategy += urgencyScore.strategy || 0;
-    score.education += urgencyScore.education || 0;
-
-    // 最もスコアが高いパターンを返す
-    const maxScore = Math.max(score.aiAgent, score.strategy, score.education);
-    if (score.aiAgent === maxScore) return 'PATTERN_A';
-    if (score.strategy === maxScore) return 'PATTERN_B';
-    return 'PATTERN_C';
-  }
-
-  /**
-   * 結果 HTML をレンダリング
-   */
-  renderResultHTML(resultConfig) {
-    const benefitsHtml = resultConfig.benefits
-      .map(b => `<li>✓ ${b}</li>`)
-      .join('');
-
-    const flowHtml = resultConfig.flow
-      .map((step, idx) => `<div class="flow-item"><span class="flow-number">${idx + 1}</span>${step}</div>`)
-      .join('');
-
-    const ctaButtonClass = resultConfig.ctaStrength === 'high'
-      ? 'btn-primary'
-      : 'btn-secondary';
-
-    const secondaryButtonClass = resultConfig.ctaStrength === 'high'
-      ? 'btn-secondary'
-      : 'btn-tertiary';
-
-    return `
-      <div class="diagnosis-result-content">
-        <div class="result-header">
-          <div class="result-icon">${resultConfig.icon}</div>
-          <h3 class="result-title">${resultConfig.title}</h3>
-          <p class="result-description">${resultConfig.description}</p>
-        </div>
-
-        <div class="result-benefits">
+        <div class="diag-result-section">
           <h4>期待される効果</h4>
-          <ul>
-            ${benefitsHtml}
-          </ul>
+          <ul class="diag-benefits">${benefitsHtml}</ul>
         </div>
 
-        <div class="result-flow">
-          <h4>導入フロー</h4>
-          <div class="flow-container">
-            ${flowHtml}
-          </div>
+        <div class="diag-result-section">
+          <h4>推奨ステップ</h4>
+          <div class="diag-flow">${flowHtml}</div>
         </div>
 
-        <div class="result-cta">
-          <button class="btn ${ctaButtonClass} btn-primary-cta">
-            ${resultConfig.primaryCTA}
-          </button>
-          <button class="btn ${secondaryButtonClass} btn-secondary-cta">
-            ${resultConfig.secondaryCTA}
-          </button>
-        </div>
-
-        <div class="result-footer">
-          <button class="btn-retry">診断をやり直す</button>
+        <div class="diag-result-cta">
+          <a href="${LINE_URL}" target="_blank" rel="noopener" class="btn-line diag-cta-btn">
+            <svg width="20" height="20" viewBox="0 0 48 48" fill="none"><path d="M40 22.3C40 15.5 33.2 10 24.8 10C16.4 10 9.6 15.5 9.6 22.3C9.6 28.4 14.9 33.5 22.2 34.4C22.7 34.5 23.4 34.7 23.6 35.1C23.8 35.5 23.7 36.1 23.6 36.5L23.3 38.1C23.2 38.5 22.9 39.5 24.8 38.7C26.7 37.9 34.9 32.8 38.4 28.8C40.8 26.3 40 24 40 22.3Z" fill="white"/></svg>
+            この結果をLINEで相談する（無料）
+          </a>
+          <button class="diag-retry-btn" id="diagRetryBtn">もう一度診断する</button>
         </div>
       </div>
     `;
+
+    document.getElementById('diagRetryBtn').addEventListener('click', () => this.start());
   }
 
-  /**
-   * 結果 CTA イベント設定
-   */
-  attachResultCTAListeners() {
-    const primaryCTA = this.resultContainer.querySelector('.btn-primary-cta');
-    const secondaryCTA = this.resultContainer.querySelector('.btn-secondary-cta');
+  calcPattern() {
+    const a = this.answers;
+    let score = { A: 0, B: 0, C: 0 };
 
-    if (primaryCTA) {
-      primaryCTA.addEventListener('click', () => {
-        window.location.href = '#contact';
-      });
-    }
+    // Q1: 業種
+    const q1map = {
+      sales:         { A: 15, B: 5,  C: 0  },
+      admin:         { A: 15, B: 5,  C: 0  },
+      support:       { A: 15, B: 5,  C: 0  },
+      planning:      { A: 10, B: 15, C: 5  },
+      manufacturing: { A: 5,  B: 10, C: 5  },
+      other:         { A: 0,  B: 5,  C: 10 }
+    };
+    const q1 = q1map[a.q1] || {};
+    score.A += q1.A || 0; score.B += q1.B || 0; score.C += q1.C || 0;
 
-    if (secondaryCTA) {
-      secondaryCTA.addEventListener('click', () => {
-        // LINE の友達追加 or メール送信フォーム
-        alert('詳しくはお問い合わせフォームからご相談ください');
-        window.location.href = '#contact';
-      });
-    }
-  }
+    // Q3: 困っている業務数
+    const cnt = (a.q3 || []).length;
+    if      (cnt >= 3) { score.A += 20; }
+    else if (cnt === 2) { score.B += 15; score.A += 10; }
+    else if (cnt === 1) { score.B += 15; score.C += 10; }
+    else               { score.C += 20; }
 
-  /**
-   * localStorage に回答を保存
-   */
-  saveAnswers() {
-    localStorage.setItem('diagnosis_answers', JSON.stringify(this.answers));
-  }
+    // Q4: AI利用度
+    const q4map = {
+      none:      { A: 10, B: 0,  C: 5  },
+      basic:     { A: 15, B: 5,  C: 0  },
+      multiple:  { A: 5,  B: 15, C: 0  },
+      strategic: { A: 0,  B: 20, C: 0  }
+    };
+    const q4 = q4map[a.q4] || {};
+    score.A += q4.A || 0; score.B += q4.B || 0; score.C += q4.C || 0;
 
-  /**
-   * localStorage から回答を復帰
-   */
-  loadAnswersFromStorage() {
-    const saved = localStorage.getItem('diagnosis_answers');
-    if (saved) {
-      this.answers = JSON.parse(saved);
-    }
-  }
+    // Q5: 緊急度
+    const q5map = {
+      interest:       { A: 0,  B: 0,  C: 5  },
+      consideration:  { A: 10, B: 10, C: 0  },
+      implementation: { A: 20, B: 5,  C: 0  },
+      urgent:         { A: 30, B: 10, C: 0  }
+    };
+    const q5 = q5map[a.q5] || {};
+    score.A += q5.A || 0; score.B += q5.B || 0; score.C += q5.C || 0;
 
-  /**
-   * イベントリスナー設定
-   */
-  attachEventListeners() {
-    // フォーム内のインタラクティブ要素を委譲で管理
-  }
-
-  /**
-   * エラー表示
-   */
-  showError(message) {
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'error-message';
-    errorDiv.textContent = message;
-    this.formContainer.appendChild(errorDiv);
+    const max = Math.max(score.A, score.B, score.C);
+    if (score.A === max) return 'PATTERN_A';
+    if (score.B === max) return 'PATTERN_B';
+    return 'PATTERN_C';
   }
 }
 
-/**
- * DOM 読み込み完了時に初期化
- */
 document.addEventListener('DOMContentLoaded', () => {
-  const diagnosis = new AIAdoptionDiagnosis('/data/diagnosis-config.json');
+  new AIAdoptionDiagnosis();
 });
