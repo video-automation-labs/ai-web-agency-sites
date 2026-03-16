@@ -207,27 +207,13 @@
       0%,100% { transform: translateY(0); }
       50%      { transform: translateY(-18px); }
     }
-    .hero-kohaku-wrap {
+    .hero-kohaku {
       position: relative;
       z-index: 2;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      overflow: hidden;
-      background: radial-gradient(circle at 50% 45%, #eef4ff 0%, #ddeaff 100%);
-      box-shadow:
-        0 0 0 2px rgba(0,212,255,0.25),
-        0 0 40px rgba(0,150,255,0.45),
-        0 0 100px rgba(0,100,220,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 360px;
+      height: auto;
+      filter: drop-shadow(0 0 32px rgba(0,180,255,0.5)) drop-shadow(0 16px 40px rgba(0,100,220,0.35));
       animation: float 6s ease-in-out infinite;
-    }
-    .hero-kohaku {
-      width: 88%;
-      height: 88%;
-      object-fit: contain;
     }
 
     @media (max-width: 900px) {
@@ -379,11 +365,12 @@
       width: 36px; height: 36px;
       border-radius: 50%;
       overflow: hidden;
-      background: #ddeaff;
+      background: var(--bg-card2);
       border: 1.5px solid var(--cyan);
       flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
     }
-    .chat-avatar img { width: 100%; height: 100%; object-fit: contain; }
+    .chat-avatar img { width: 90%; height: 90%; object-fit: contain; }
     .chat-header-name {
       font-size: 14px;
       font-weight: 700;
@@ -420,10 +407,11 @@
     }
     .msg-avatar.kohaku-av {
       overflow: hidden;
-      background: #ddeaff;
+      background: var(--bg-card2);
       border: 1px solid rgba(0,212,255,0.5);
+      display: flex; align-items: center; justify-content: center;
     }
-    .msg-avatar.kohaku-av img { width: 100%; height: 100%; object-fit: contain; }
+    .msg-avatar.kohaku-av img { width: 90%; height: 90%; object-fit: contain; }
     .msg-bubble {
       max-width: 78%;
       padding: 12px 16px;
@@ -702,19 +690,12 @@
                   var(--bg);
       text-align: center;
     }
-    .final-cta-kohaku-wrap {
-      width: 140px; height: 140px;
-      border-radius: 50%;
-      overflow: hidden;
-      background: radial-gradient(circle, #eef4ff 0%, #ddeaff 100%);
-      box-shadow: 0 0 40px rgba(0,150,255,0.45), 0 0 80px rgba(0,100,220,0.2);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 32px;
-    }
     .final-cta-kohaku {
-      width: 88%;
-      height: 88%;
-      object-fit: contain;
+      width: 160px;
+      height: auto;
+      margin: 0 auto 32px;
+      display: block;
+      filter: drop-shadow(0 0 24px rgba(0,180,255,0.5));
     }
     .final-cta h2 {
       font-size: clamp(36px, 5vw, 60px);
@@ -784,9 +765,7 @@
       </div>
       <div class="hero-visual">
         <div class="hero-glow"></div>
-        <div class="hero-kohaku-wrap">
-          <img src="assets/images/kohaku.png" alt="AI秘書 琥珀" class="hero-kohaku">
-        </div>
+        <img src="assets/images/kohaku.png" alt="AI秘書 琥珀" class="hero-kohaku">
       </div>
     </div>
   </section>
@@ -1116,9 +1095,7 @@
   <!-- FINAL CTA -->
   <section class="final-cta">
     <div class="container-narrow">
-      <div class="final-cta-kohaku-wrap">
-        <img src="assets/images/kohaku.png" alt="琥珀" class="final-cta-kohaku">
-      </div>
+      <img src="assets/images/kohaku.png" alt="琥珀" class="final-cta-kohaku">
       <h2><em>琥珀</em>と、<br>始めましょう。</h2>
       <p>通常¥15,000 → <strong style="color:var(--cyan)">¥10,000（¥5,000 OFF）</strong><br>期間限定。今すぐ申し込む。</p>
       <a href="https://discord.gg/CDZtp8J7" target="_blank" rel="noopener" class="btn-discord" style="font-size:18px;padding:20px 56px;">
