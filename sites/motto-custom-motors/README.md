@@ -18,4 +18,4 @@ open /Users/kobayashiyuuki/ai-web-agency-sites/sites/motto-custom-motors/index.h
 
 ## 公開URL
 
-https://vibe-os.github.io/ai-web-agency-sites/sites/motto-custom-motors/
+https://video-automation-labs.github.io/ai-web-agency-sites/sites/motto-custom-motors/

@@ -4,9 +4,9 @@ AIで自動生成されたホームページの実例集です。
 
 ## 📍 公開 URL
 
-- **トップ**: https://vibe-os.github.io/ai-web-agency-sites/
-- **AI Strategy Partner**: https://vibe-os.github.io/ai-web-agency-sites/sites/ai-strategy-partner/
-- **Motto Custom Motors**: https://vibe-os.github.io/ai-web-agency-sites/sites/motto-custom-motors/
+- **トップ**: https://video-automation-labs.github.io/ai-web-agency-sites/
+- **AI Strategy Partner**: https://video-automation-labs.github.io/ai-web-agency-sites/sites/ai-strategy-partner/
+- **Motto Custom Motors**: https://video-automation-labs.github.io/ai-web-agency-sites/sites/motto-custom-motors/
 
 ## 📁 フォルダ構成
 
@@ -73,6 +73,6 @@ git push origin main
 **営業時の活用例**
 
 > 「AIでサイト制作しています。デモはこちらです」
-> https://vibe-os.github.io/ai-web-agency-sites/
+> https://video-automation-labs.github.io/ai-web-agency-sites/
 >
 > スマホで見せる → 即座にリアルな制作実績を確認できる！
