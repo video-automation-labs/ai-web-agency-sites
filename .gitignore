@@ -1,3 +1,20 @@
+# 機密情報（絶対にGitHubに上げない）
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+credentials/
+*secret*
+*password*
+*token*
+*api_key*
+config/private/
+.auto_commit.log
+
 # OS
 .DS_Store
 Thumbs.db

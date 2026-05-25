@@ -9,7 +9,8 @@ commit_changes() {
   if ! git diff --quiet || ! git diff --cached --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
     git add -A
     git commit -m "auto: save point $(date '+%Y-%m-%d %H:%M:%S')"
-    echo "[$(date '+%H:%M:%S')] Saved."
+    git push origin main
+    echo "[$(date '+%H:%M:%S')] Pushed to GitHub."
   fi
 }
 
