@@ -6,6 +6,7 @@ AIで自動生成されたホームページの実例集です。
 
 - **トップ**: https://video-automation-labs.github.io/ai-web-agency-sites/
 - **AI Strategy Partner**: https://video-automation-labs.github.io/ai-web-agency-sites/sites/ai-strategy-partner/
+- **AI Strategy Partner LP**: https://video-automation-labs.github.io/ai-web-agency-sites/sites/ai-strategy-partner-lp/
 - **Motto Custom Motors**: https://video-automation-labs.github.io/ai-web-agency-sites/sites/motto-custom-motors/
 
 ## 📁 フォルダ構成
@@ -14,8 +15,9 @@ AIで自動生成されたホームページの実例集です。
 ai-web-agency-sites/
 ├── index.html                    # ランディングページ
 ├── sites/
-│   ├── ai-strategy-partner/     # デモサイト 1
-│   └── motto-custom-motors/     # デモサイト 2
+│   ├── ai-strategy-partner/     # AI Strategy Partner 公式サイト
+│   ├── ai-strategy-partner-lp/  # AI Strategy Partner LP
+│   └── motto-custom-motors/     # バイク・車サイト
 ├── README.md
 └── .gitignore
 ```
@@ -52,6 +54,10 @@ git push origin main
 ### AI Strategy Partner
 - AIエージェント導入で生産性向上
 - ターゲット: 中小企業・士業・成長企業
+
+### AI Strategy Partner LP
+- 法人AI研修・業務自動化・Discord Bot構築の相談導線
+- ターゲット: AI導入を現場で使える形にしたい企業
 
 ### Motto Custom Motors
 - カスタムバイク・カスタムカー製作専門店
