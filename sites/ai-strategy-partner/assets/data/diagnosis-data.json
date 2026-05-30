@@ -1,0 +1,127 @@
+{
+  "questions": [
+    {
+      "number": 1,
+      "id": "q1",
+      "type": "radio",
+      "text": "主に改善したい業務領域はどこですか？",
+      "options": [
+        { "value": "sales", "label": "営業・マーケティング" },
+        { "value": "admin", "label": "事務・バックオフィス" },
+        { "value": "support", "label": "顧客対応・問い合わせ対応" },
+        { "value": "planning", "label": "企画・データ分析" },
+        { "value": "manufacturing", "label": "製造・物流・現場管理" },
+        { "value": "other", "label": "まだ絞れていない" }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "q2",
+      "type": "radio",
+      "text": "従業員数を教えてください",
+      "options": [
+        { "value": "small", "label": "1-10人" },
+        { "value": "growing", "label": "11-50人" },
+        { "value": "mid", "label": "51-100人" },
+        { "value": "large", "label": "101人以上" }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "q3",
+      "type": "checkbox",
+      "text": "特に困っていることは何ですか？",
+      "options": [
+        { "value": "shortage", "label": "人手不足・採用難" },
+        { "value": "admin-work", "label": "事務作業・データ入力" },
+        { "value": "documents", "label": "資料作成・報告書作成" },
+        { "value": "customer", "label": "顧客対応・メール対応" },
+        { "value": "security", "label": "情報漏洩や社内ルールが不安" },
+        { "value": "training", "label": "社員教育・AI活用の定着" }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "q4",
+      "type": "radio",
+      "text": "現在のAI利用状況は？",
+      "options": [
+        { "value": "none", "label": "ほとんど使っていない" },
+        { "value": "basic", "label": "ChatGPTなどを少し使っている" },
+        { "value": "multiple", "label": "複数のAIツールを試している" },
+        { "value": "strategic", "label": "業務に組み込んでいる" }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "q5",
+      "type": "radio",
+      "text": "AI導入の優先度は？",
+      "options": [
+        { "value": "interest", "label": "まず情報収集したい" },
+        { "value": "consideration", "label": "費用対効果を検討したい" },
+        { "value": "implementation", "label": "具体的に導入を進めたい" },
+        { "value": "urgent", "label": "できるだけ早く相談したい" }
+      ]
+    }
+  ],
+  "patterns": {
+    "PATTERN_A": {
+      "icon": "📚",
+      "title": "法人向けAI研修から始めるのがおすすめです",
+      "description": "まずは情報漏洩対策と社内ルールを整え、社員が安全にAIを使える土台を作ると効果が出やすい状態です。",
+      "benefits": [
+        "AI活用の不安を減らし、社内で使える共通ルールを作れる",
+        "事務・営業・資料作成などの業務時間削減につながる",
+        "研修後にAI導入診断や顧問へ接続しやすい"
+      ],
+      "flow": [
+        "現状課題と対象部署をヒアリング",
+        "情報漏洩対策とAI利用ルールを整理",
+        "業務別のAI活用ワークを実施",
+        "研修後の改善タスクを決める"
+      ],
+      "primaryCTA": "無料AI診断を相談する",
+      "secondaryCTA": "研修内容を詳しく聞く",
+      "ctaStrength": "high"
+    },
+    "PATTERN_B": {
+      "icon": "🔎",
+      "title": "AI導入診断で優先順位を決めるのがおすすめです",
+      "description": "すでに課題が見え始めているため、どの業務からAI化すべきかを可視化すると投資判断がしやすくなります。",
+      "benefits": [
+        "AI化すべき業務と人が担当すべき業務を切り分けられる",
+        "削減時間・導入順序・必要な体制を整理できる",
+        "経営判断に使えるAI導入提案書が残る"
+      ],
+      "flow": [
+        "経営課題と業務フローをヒアリング",
+        "営業・事務・採用・マーケティングを棚卸し",
+        "優先順位と概算効果を整理",
+        "導入ロードマップを提案"
+      ],
+      "primaryCTA": "無料AI診断を相談する",
+      "secondaryCTA": "診断レポート例を聞く",
+      "ctaStrength": "high"
+    },
+    "PATTERN_C": {
+      "icon": "🤝",
+      "title": "AI顧問で継続改善するのがおすすめです",
+      "description": "AI活用を一度きりで終わらせず、月次で改善テーマを決めながら現場に定着させる段階です。",
+      "benefits": [
+        "月次で改善タスクと成果を確認できる",
+        "最新AI情報を自社業務に合わせて取り入れられる",
+        "プロンプト・テンプレート・運用ルールを継続的に整えられる"
+      ],
+      "flow": [
+        "初回MTGで改善テーマを決定",
+        "月次でAI活用状況を確認",
+        "プロンプトや業務テンプレートを作成",
+        "成果をレポート化して次月へ改善"
+      ],
+      "primaryCTA": "無料AI診断を相談する",
+      "secondaryCTA": "AI顧問について聞く",
+      "ctaStrength": "medium"
+    }
+  }
+}
