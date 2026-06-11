@@ -1,398 +1,1151 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AI Strategy Partner | 会社のAI導入を、研修で終わらせない。</title>
-    <meta
-      name="description"
-      content="法人AI研修、業務自動化、Discord Bot構築まで。御社の業務に合わせて、AI活用を設計・実装します。"
-    />
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="#top" aria-label="AI Strategy Partner トップへ">
-          <span class="brand-mark">AI</span>
-          <span>AI Strategy Partner</span>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Strategy Partner | 法人向けAI活用支援</title>
+  <meta name="description" content="AI Strategy Partnerは、業務改善診断・社員研修・自動化構築・月次伴走まで一気通貫で支援する法人向けAI活用支援サービスです。">
+  <style>
+    :root {
+      --navy: #061623;
+      --navy-2: #082336;
+      --ink: #102335;
+      --text: #31465a;
+      --muted: #6f8292;
+      --line: #d8e6ec;
+      --paper: #ffffff;
+      --bg: #f5f9fb;
+      --soft: #eaf4f7;
+      --teal: #129aa4;
+      --teal-dark: #087985;
+      --teal-soft: #dff4f5;
+      --gold: #b89448;
+      --gold-soft: #f6efd9;
+      --shadow: 0 18px 40px rgba(18, 42, 58, 0.08);
+      --serif: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Times New Roman", serif;
+      --sans: "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.75;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-shell {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.88), rgba(245,249,251,0.92) 560px),
+        radial-gradient(circle at 18% 6%, rgba(18,154,164,0.12), transparent 28%),
+        var(--bg);
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(6, 22, 35, 0.96);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: #fff;
+      backdrop-filter: blur(14px);
+    }
+
+    .topbar-inner {
+      align-items: center;
+      display: flex;
+      height: 64px;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      min-width: max-content;
+    }
+
+    .brand-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .brand-sub {
+      color: rgba(255,255,255,0.72);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .nav {
+      align-items: center;
+      display: flex;
+      gap: 24px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .nav a {
+      color: rgba(255,255,255,0.86);
+    }
+
+    .nav a:hover {
+      color: #fff;
+    }
+
+    .nav-cta,
+    .btn {
+      align-items: center;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      border-radius: 6px;
+      color: #fff;
+      display: inline-flex;
+      font-weight: 800;
+      gap: 10px;
+      justify-content: center;
+      letter-spacing: 0;
+      line-height: 1;
+      min-height: 48px;
+      padding: 0 22px;
+      box-shadow: 0 14px 26px rgba(18, 154, 164, 0.26);
+    }
+
+    .nav-cta {
+      min-height: 42px;
+      padding: 0 18px;
+      font-size: 12px;
+    }
+
+    .icon-small {
+      height: 18px;
+      width: 18px;
+    }
+
+    .hero {
+      min-height: 462px;
+      overflow: hidden;
+      position: relative;
+      background:
+        linear-gradient(90deg, #ffffff 0%, rgba(255,255,255,0.96) 37%, rgba(255,255,255,0.18) 58%, rgba(255,255,255,0) 100%),
+        url("assets/hero-ai-workflow.png") right center / 68% auto no-repeat,
+        #eaf4f7;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-inner {
+      display: grid;
+      min-height: 462px;
+      padding: 58px 0 34px;
+      position: relative;
+    }
+
+    .hero-copy {
+      max-width: 560px;
+      align-self: center;
+    }
+
+    .eyebrow {
+      color: var(--teal-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      margin: 0 0 14px;
+    }
+
+    .hero h1 {
+      color: #16263b;
+      font-family: var(--serif);
+      font-size: clamp(36px, 5.2vw, 62px);
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.22;
+      margin: 0 0 20px;
+    }
+
+    .hero p {
+      color: #3d5266;
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.85;
+      margin: 0 0 28px;
+      max-width: 520px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn {
+      font-size: 16px;
+      min-width: 300px;
+    }
+
+    .cta-note {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .trust-row {
+      background: rgba(255,255,255,0.92);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .trust-items {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      padding: 18px 0;
+    }
+
+    .trust-item {
+      align-items: center;
+      display: flex;
+      gap: 12px;
+      color: #446073;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .trust-mark,
+    .line-icon {
+      align-items: center;
+      border: 1px solid #bfd7df;
+      border-radius: 50%;
+      color: var(--teal-dark);
+      display: inline-flex;
+      flex: 0 0 auto;
+      height: 34px;
+      justify-content: center;
+      width: 34px;
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      margin: 0 auto 24px;
+      max-width: 760px;
+      text-align: center;
+    }
+
+    .section-head .kicker {
+      color: var(--teal-dark);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      margin: 0 0 8px;
+    }
+
+    .section-head h2 {
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: clamp(24px, 3.2vw, 34px);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 12px 0 0;
+    }
+
+    .cards-4 {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .pain-card,
+    .reason-card,
+    .service-card,
+    .support-card,
+    .voice-card,
+    .faq-item {
+      background: rgba(255,255,255,0.96);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .pain-card {
+      min-height: 184px;
+      padding: 20px 18px;
+      text-align: center;
+    }
+
+    .pain-icon {
+      border: 1px solid #cfe2e8;
+      border-radius: 50%;
+      height: 58px;
+      margin: 0 auto 12px;
+      overflow: hidden;
+      width: 58px;
+    }
+
+    .pain-card h3 {
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.5;
+      margin: 0 0 8px;
+    }
+
+    .pain-card p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .solution-box {
+      background: #fff;
+      border: 1px solid rgba(184,148,72,0.45);
+      border-radius: 8px;
+      display: grid;
+      grid-template-columns: 40% 1fr;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .solution-media {
+      min-height: 250px;
+    }
+
+    .solution-media img {
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .solution-content {
+      padding: 30px 34px;
+      text-align: center;
+    }
+
+    .solution-content .subline {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      margin: 0 0 8px;
+    }
+
+    .solution-content h2 {
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: clamp(23px, 3vw, 34px);
+      line-height: 1.5;
+      margin: 0 0 24px;
+    }
+
+    .solution-points {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .point {
+      border-left: 1px solid var(--line);
+      padding: 0 14px;
+    }
+
+    .point:first-child {
+      border-left: 0;
+    }
+
+    .line-icon {
+      border-radius: 8px;
+      height: 42px;
+      margin: 0 auto 10px;
+      width: 42px;
+    }
+
+    .point h3,
+    .reason-card h3,
+    .service-card h3,
+    .support-card h3 {
+      color: var(--ink);
+      font-size: 15px;
+      margin: 0 0 8px;
+    }
+
+    .point p,
+    .reason-card p,
+    .service-card p,
+    .support-card p,
+    .voice-card p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .reason-card {
+      min-height: 154px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .section-divider {
+      border-top: 1px solid var(--line);
+    }
+
+    .plans {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .service-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 246px;
+      padding: 22px 18px 18px;
+      text-align: center;
+    }
+
+    .service-card.featured {
+      border-color: rgba(18,154,164,0.44);
+      box-shadow: 0 18px 44px rgba(18,154,164,0.14);
+    }
+
+    .service-card.gold {
+      border-color: rgba(184,148,72,0.48);
+    }
+
+    .service-kicker {
+      color: var(--teal-dark);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .service-card.gold .service-kicker {
+      color: var(--gold);
+    }
+
+    .service-card ul {
+      list-style: none;
+      margin: 10px 0 16px;
+      padding: 0;
+      text-align: left;
+    }
+
+    .service-card li {
+      color: #53697b;
+      font-size: 12px;
+      line-height: 1.7;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .service-card li::before {
+      background: var(--teal);
+      border-radius: 50%;
+      content: "";
+      height: 4px;
+      left: 0;
+      position: absolute;
+      top: 11px;
+      width: 4px;
+    }
+
+    .price {
+      border-top: 1px solid var(--line);
+      color: var(--teal-dark);
+      font-size: 13px;
+      font-weight: 900;
+      margin-top: auto;
+      padding-top: 12px;
+    }
+
+    .price strong {
+      font-size: 18px;
+    }
+
+    .plan-note {
+      color: var(--muted);
+      font-size: 11px;
+      margin: 12px 0 0;
+      text-align: right;
+    }
+
+    .support-grid {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      display: grid;
+      gap: 0;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      box-shadow: var(--shadow);
+    }
+
+    .support-card {
+      border: 0;
+      border-left: 1px solid var(--line);
+      border-radius: 0;
+      box-shadow: none;
+      padding: 22px 18px;
+      text-align: center;
+    }
+
+    .support-card:first-child {
+      border-left: 0;
+    }
+
+    .curriculum {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      display: grid;
+      gap: 0;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .step {
+      border-left: 1px solid var(--line);
+      padding: 22px 14px 20px;
+      position: relative;
+      text-align: center;
+    }
+
+    .step:first-child {
+      border-left: 0;
+    }
+
+    .step-number {
+      color: var(--teal-dark);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .step h3 {
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.45;
+      margin: 0 0 8px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .fit-box {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 10px 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      padding: 18px 22px;
+    }
+
+    .fit-item {
+      color: #466174;
+      font-size: 13px;
+      font-weight: 700;
+      padding-left: 22px;
+      position: relative;
+    }
+
+    .fit-item::before {
+      color: var(--teal-dark);
+      content: "✓";
+      font-weight: 900;
+      left: 0;
+      position: absolute;
+    }
+
+    .voice-assets {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      margin: -6px auto 18px;
+      opacity: 0.95;
+      width: min(320px, 70%);
+    }
+
+    .voices {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .voice-card {
+      padding: 20px;
+    }
+
+    .voice-card p {
+      color: #455c70;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    .voice-name {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .faq-item {
+      padding: 20px 22px;
+    }
+
+    .faq-item h3 {
+      color: var(--ink);
+      font-size: 15px;
+      margin: 0 0 8px;
+    }
+
+    .faq-item p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .cta-band {
+      background: linear-gradient(135deg, var(--navy-2), #052f40);
+      border-radius: 8px;
+      box-shadow: 0 22px 48px rgba(8, 35, 54, 0.22);
+      color: #fff;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      padding: 30px 34px;
+    }
+
+    .cta-band h2 {
+      font-family: var(--serif);
+      font-size: clamp(22px, 3vw, 32px);
+      line-height: 1.45;
+      margin: 0 0 8px;
+    }
+
+    .cta-band p {
+      color: rgba(255,255,255,0.78);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .footer {
+      color: var(--muted);
+      font-size: 12px;
+      padding: 26px 0 38px;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .nav {
+        display: none;
+      }
+
+      .hero {
+        background:
+          linear-gradient(90deg, #ffffff 0%, rgba(255,255,255,0.94) 58%, rgba(255,255,255,0.68) 100%),
+          url("assets/hero-ai-workflow.png") right center / cover no-repeat,
+          #eaf4f7;
+      }
+
+      .cards-4,
+      .plans,
+      .support-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .solution-box {
+        grid-template-columns: 1fr;
+      }
+
+      .solution-media {
+        min-height: 220px;
+      }
+
+      .curriculum {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .fit-box,
+      .voices,
+      .faq-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .topbar-inner {
+        height: auto;
+        padding: 12px 0;
+      }
+
+      .brand {
+        display: block;
+      }
+
+      .brand-name {
+        font-size: 18px;
+      }
+
+      .brand-sub {
+        display: block;
+        margin-top: 2px;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .hero,
+      .hero-inner {
+        min-height: 520px;
+      }
+
+      .hero-inner {
+        padding-top: 44px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .btn {
+        min-width: 100%;
+        width: 100%;
+      }
+
+      .trust-items,
+      .cards-4,
+      .plans,
+      .support-grid,
+      .solution-points,
+      .curriculum {
+        grid-template-columns: 1fr;
+      }
+
+      .point,
+      .support-card,
+      .step {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .point:first-child,
+      .support-card:first-child,
+      .step:first-child {
+        border-top: 0;
+      }
+
+      .cta-band {
+        grid-template-columns: 1fr;
+        padding: 26px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="#top" aria-label="AI Strategy Partner">
+          <span class="brand-name">AI Strategy Partner</span>
+          <span class="brand-sub">法人向けAI活用支援</span>
         </a>
-        <nav class="nav" aria-label="主要ナビゲーション">
-          <a href="#pain">悩み</a>
-          <a href="#service">サービス</a>
-          <a href="#curriculum">カリキュラム</a>
-          <a href="#cases">事例</a>
-          <a href="#faq">FAQ</a>
+        <nav class="nav" aria-label="ページ内ナビゲーション">
+          <a href="#service">サービス内容</a>
+          <a href="#flow">支援の流れ</a>
+          <a href="#pricing">料金・プラン</a>
+          <a href="#fit">導入事例</a>
+          <a href="#faq">よくある質問</a>
         </nav>
-        <a class="header-cta" href="https://lin.ee/83dBmPj">公式LINEで相談</a>
+        <a class="nav-cta" href="#contact">
+          <svg class="icon-small" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3v3M17 3v3M4.5 9.5h15M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          30分の事前相談をする
+        </a>
       </div>
     </header>
 
     <main id="top">
-      <section class="hero">
-        <div class="container hero-grid">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero-inner">
           <div class="hero-copy">
-            <p class="eyebrow">AI研修・業務自動化・Bot構築</p>
-            <h1>会社のAI導入を、<br />研修で終わらせない。</h1>
-            <p class="hero-lead">
-              法人AI研修、業務自動化、Discord Bot構築まで。
-              御社の業務に合わせて、AI活用を設計・実装します。
-            </p>
+            <p class="eyebrow">AI導入の最初の一歩を、迷わず進める。</p>
+            <h1 id="hero-title">何から始めるべきかを明確にする、<br>法人向けAI活用支援。</h1>
+            <p>AI Strategy Partnerは、業務改善診断・社員研修・自動化構築・月次伴走まで一気通貫で支援します。</p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="https://lin.ee/83dBmPj">
-                <span class="btn-icon">LINE</span>
-                公式LINEで相談する
+              <a class="btn" href="#contact">
+                <svg class="icon-small" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3v3M17 3v3M4.5 9.5h15M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                30分の事前相談をする
               </a>
-              <a class="btn btn-secondary" href="https://discord.gg/FHpRaGyfK">
-                Discordデモを体験する
-              </a>
-            </div>
-            <p class="cta-note">
-              具体的な導入内容が決まっていなくても大丈夫です。まずは業務を整理するところから相談できます。
-            </p>
-            <div class="trust-row" aria-label="信頼材料">
-              <span>法人AI研修対応</span>
-              <span>Discord Bot構築</span>
-              <span>業務棚卸しから支援</span>
+              <span class="cta-note">相談したからといって契約する必要はありません</span>
             </div>
           </div>
-          <div class="hero-visual">
-            <img src="./assets/hero-ai-dashboard.png" alt="AI導入支援ダッシュボードのイメージ" />
-          </div>
         </div>
       </section>
 
-      <section id="pain" class="section section-soft">
+      <div class="trust-row">
+        <div class="container trust-items" aria-label="信頼材料">
+          <div class="trust-item"><span class="trust-mark">✓</span>中小企業の実務に合わせて支援</div>
+          <div class="trust-item"><span class="trust-mark">✓</span>研修・自動化まで一気通貫</div>
+          <div class="trust-item"><span class="trust-mark">✓</span>初回相談30分無料</div>
+          <div class="trust-item"><span class="trust-mark">✓</span>AI未経験でも導入可能</div>
+        </div>
+      </div>
+
+      <section id="problem">
         <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Problem</p>
-            <h2>AIを導入したい。でも、こんなところで止まっていませんか？</h2>
-            <p>
-              AIに詳しくないから進まないのではありません。自社に合う進め方が、まだ見えていないだけかもしれません。
-            </p>
+          <div class="section-head">
+            <h2>こんなお悩みはありませんか？</h2>
           </div>
-          <div class="pain-grid">
+          <div class="cards-4">
             <article class="pain-card">
-              <span class="line-icon question"></span>
-              <h3>何から始めるべきかわからない</h3>
-              <p>情報が多すぎて、自社に必要な一歩が見えない。</p>
+              <img class="pain-icon" src="assets/icon-pain-where-to-start.png" alt="">
+              <h3>何から始めればいいかわからない</h3>
+              <p>AIを活用した方がいいのはわかるけれど、最初の一歩が見えません。</p>
             </article>
             <article class="pain-card">
-              <span class="line-icon user"></span>
-              <h3>研修後に使われるか不安</h3>
-              <p>受けて満足で終わり、現場で使われないのが心配。</p>
+              <img class="pain-icon" src="assets/icon-pain-ai-chat.png" alt="">
+              <h3>ChatGPTを業務に活かせない</h3>
+              <p>使ってみたけれど、日々の仕事にどう組み込めばいいのかがわかりません。</p>
             </article>
             <article class="pain-card">
-              <span class="line-icon grid"></span>
-              <h3>ツールが多すぎて選べない</h3>
-              <p>自社に合うツールや組み合わせがわからない。</p>
+              <img class="pain-icon" src="assets/icon-pain-adoption.png" alt="">
+              <h3>社員に定着しない</h3>
+              <p>研修をしても、一部の人だけで社内全体には広がりづらい状態です。</p>
             </article>
             <article class="pain-card">
-              <span class="line-icon puzzle"></span>
-              <h3>Bot化したいが要件が固まらない</h3>
-              <p>やりたいことはあるが、実装範囲がまとまらない。</p>
+              <img class="pain-icon" src="assets/icon-pain-doc-time.png" alt="">
+              <h3>見積書・報告書・議事録に時間がかかる</h3>
+              <p>繰り返しの作業に追われ、本来やるべき仕事に集中できません。</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section">
-        <div class="container solution-centered">
-          <div class="section-heading">
-            <p class="eyebrow">Solution</p>
-            <h2>AI導入は、ツール選びではなく業務設計から。</h2>
-            <p>
-              いきなり高度な仕組みを作るより、まずは業務を整理し、AIが役立つ場所を見つけることが大切です。
-              そのうえで研修、テンプレート化、Bot構築、運用改善へ進めます。
-            </p>
-          </div>
-          <div class="workflow-panel">
-            <img src="./assets/workflow-before-after.png" alt="手作業中心の業務からAI活用業務へ移行する流れ" />
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-soft">
+      <section id="solution" class="section-divider">
         <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Benefit</p>
-            <h2>AIを知っているから、仕事で使える状態へ。</h2>
-            <p>受講後は、AIの知識だけでなく、日々の業務でどう使うかが見える状態を目指します。</p>
-          </div>
-          <div class="benefit-grid">
-            <article class="feature-card">
-              <span class="mini-icon target"></span>
-              <h3>始める順番がわかる</h3>
-              <p>御社の業務の中で、AI化しやすい場所と後回しでよい場所を整理できます。</p>
-            </article>
-            <article class="feature-card">
-              <span class="mini-icon team"></span>
-              <h3>社員に広げやすい</h3>
-              <p>社員に伝えやすい基本知識と、業務別の活用例を持ち帰れます。</p>
-            </article>
-            <article class="feature-card">
-              <span class="mini-icon chart"></span>
-              <h3>毎日の作業が軽くなる</h3>
-              <p>営業メール、資料作成、SNS投稿などをゼロから作る時間を減らせます。</p>
-            </article>
-            <article class="feature-card">
-              <span class="mini-icon bot"></span>
-              <h3>Bot化の方向性が見える</h3>
-              <p>Discord Botや社内問い合わせBotなど、必要なAIツールの方向性を考えやすくなります。</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="service" class="section">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Service</p>
-            <h2>提供できること</h2>
-            <p>研修だけ、Bot構築だけ、継続支援まで。目的に合わせて必要な支援を組み合わせます。</p>
-          </div>
-          <div class="service-grid">
-            <article class="service-card">
-              <span class="service-icon academy"></span>
-              <h3>法人AI研修</h3>
-              <ul>
-                <li>生成AIの基礎から実務まで</li>
-                <li>業務に即した演習・ワーク</li>
-                <li>ハンズオンで定着を支援</li>
-              </ul>
-            </article>
-            <article class="service-card">
-              <span class="service-icon monitor"></span>
-              <h3>実務別AI活用</h3>
-              <ul>
-                <li>部門別・業務別の活用設計</li>
-                <li>プロンプト設計支援</li>
-                <li>テンプレート・資料提供</li>
-              </ul>
-            </article>
-            <article class="service-card">
-              <span class="service-icon robot"></span>
-              <h3>Bot・AIツール構築</h3>
-              <ul>
-                <li>Discord Bot構築</li>
-                <li>各種API・外部サービス連携</li>
-                <li>要件定義から実装まで対応</li>
-              </ul>
-            </article>
-            <article class="service-card">
-              <span class="service-icon bars"></span>
-              <h3>運用改善・AI部署化</h3>
-              <ul>
-                <li>運用ルール・体制づくり</li>
-                <li>効果測定・改善サイクル</li>
-                <li>AI活用を組織に定着</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section demo-section">
-        <div class="container demo-grid">
-          <div>
-            <p class="eyebrow light">Demo</p>
-            <h2>DiscordでAI Botの利用イメージを体験</h2>
-            <p>
-              実用のBotと会話しながら、社内での活用シーンを体験できます。
-              体験後は公式LINEで、御社に合う導入方法を相談できます。
-            </p>
-            <ul class="check-list light-list">
-              <li>社内問い合わせの自動応答</li>
-              <li>講座資料・タスク化</li>
-              <li>データ検索・ナレッジ活用</li>
-            </ul>
-            <div class="demo-actions">
-              <a class="btn btn-primary" href="https://lin.ee/83dBmPj">公式LINEで相談する</a>
-              <a class="btn btn-dark-secondary" href="https://discord.gg/FHpRaGyfK">Discordデモを見る</a>
+          <div class="solution-box">
+            <div class="solution-media">
+              <img src="assets/solution-workflow-diagnosis.png" alt="業務フローを整理しているデスクイメージ">
+            </div>
+            <div class="solution-content">
+              <p class="subline">AI活用の成功は、ツール導入ではなく「業務の理解」から。</p>
+              <h2>まずは業務を整理し、<br>どこにAIを使うべきかを明確にします。</h2>
+              <div class="solution-points">
+                <div class="point">
+                  <span class="line-icon">01</span>
+                  <h3>業務の全体像を把握</h3>
+                  <p>現状の業務を棚卸しし、課題とボトルネックを可視化します。</p>
+                </div>
+                <div class="point">
+                  <span class="line-icon">02</span>
+                  <h3>AI活用の優先順位を決定</h3>
+                  <p>効果が出やすい業務から、小さく始める計画を立てます。</p>
+                </div>
+                <div class="point">
+                  <span class="line-icon">03</span>
+                  <h3>無理なく、着実に成果へ</h3>
+                  <p>研修・実装・改善まで一気通貫で伴走します。</p>
+                </div>
+              </div>
             </div>
           </div>
-          <img src="./assets/discord-demo-ui.png" alt="Discord風AI Botデモ画面のイメージ" />
         </div>
       </section>
 
-      <section id="curriculum" class="section">
+      <section id="reason">
         <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Curriculum</p>
-            <h2>現場で使えるようになる5ステップ</h2>
-            <p>業務整理から研修、実務活用、Bot化、改善運用まで順番に進めます。</p>
+          <div class="section-head">
+            <h2>AI Strategy Partnerが選ばれる理由</h2>
           </div>
-          <div class="timeline">
-            <article>
-              <span>1</span>
-              <h3>業務棚卸し</h3>
-              <p>業務の可視化と課題・優先順位を整理。</p>
+          <div class="cards-4">
+            <article class="reason-card">
+              <span class="line-icon">診</span>
+              <h3>業務改善診断</h3>
+              <p>現場ヒアリングで課題を特定し、AI活用の優先順位とロードマップを作成します。</p>
             </article>
-            <article>
-              <span>2</span>
-              <h3>生成AI基礎</h3>
-              <p>基本概念とプロンプトの基礎を習得。</p>
+            <article class="reason-card">
+              <span class="line-icon">学</span>
+              <h3>実務に強い研修</h3>
+              <p>業務で使えるプロンプト活用方法を、実務に合わせて丁寧に研修します。</p>
             </article>
-            <article>
-              <span>3</span>
-              <h3>実務別トレーニング</h3>
-              <p>部門・業務に合わせた実践トレーニング。</p>
+            <article class="reason-card">
+              <span class="line-icon">自</span>
+              <h3>自動化の構築力</h3>
+              <p>繰り返し作業を仕組み化し、手作業を減らす自動化を構築します。</p>
             </article>
-            <article>
-              <span>4</span>
-              <h3>Bot構築</h3>
-              <p>要件をまとめ、運用しやすいBotを実装。</p>
-            </article>
-            <article>
-              <span>5</span>
-              <h3>運用改善</h3>
-              <p>効果測定と改善で継続的に成果を創出。</p>
+            <article class="reason-card">
+              <span class="line-icon">伴</span>
+              <h3>月次の伴走サポート</h3>
+              <p>導入後も相談と改善のサポートで、改善を継続し定着まで伴走します。</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section section-soft">
+      <section id="service" class="section-divider">
         <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Recommended</p>
-            <h2>こんな企業におすすめ</h2>
+          <div class="section-head">
+            <h2>サービス内容・料金プラン</h2>
           </div>
-          <div class="recommend-grid">
-            <article class="recommend-card">
-              <h3>経営者・事業責任者の方</h3>
-              <ul class="check-list">
-                <li>AI活用の全体設計をしたい</li>
-                <li>競争力を高めたい</li>
-                <li>社内の理解と推進を進めたい</li>
+          <div class="plans" id="pricing">
+            <article class="service-card featured">
+              <div class="service-kicker">ENTRY</div>
+              <h3>AI業務改善診断</h3>
+              <ul>
+                <li>業務ヒアリング</li>
+                <li>課題の可視化</li>
+                <li>AI活用ロードマップ作成</li>
+                <li>優先順位と効果試算</li>
               </ul>
+              <div class="price">料金目安: <strong>198,000円</strong></div>
             </article>
-            <article class="recommend-card">
-              <h3>人事・研修担当の方</h3>
-              <ul class="check-list">
-                <li>研修を実務につなげたい</li>
-                <li>社員のスキルを底上げしたい</li>
-                <li>定着する仕組みを作りたい</li>
+            <article class="service-card">
+              <div class="service-kicker">TRAINING</div>
+              <h3>AI活用研修</h3>
+              <ul>
+                <li>AIの基礎と活用方法</li>
+                <li>実務プロンプト研修</li>
+                <li>業務別活用ワーク</li>
+                <li>社内向けカスタマイズ研修</li>
               </ul>
+              <div class="price">料金目安: <strong>200,000円/月〜</strong></div>
             </article>
-            <article class="recommend-card">
-              <h3>業務改善を進めたいチーム</h3>
-              <ul class="check-list">
-                <li>日々の作業を効率化したい</li>
-                <li>Botやツールで自動化したい</li>
-                <li>属人化を解消したい</li>
+            <article class="service-card">
+              <div class="service-kicker">BUILD</div>
+              <h3>自動化構築</h3>
+              <ul>
+                <li>業務自動化設計</li>
+                <li>ツール連携・構築</li>
+                <li>データ連携・RPA連携</li>
+                <li>テスト・運用設計</li>
               </ul>
+              <div class="price">料金目安: <strong>100,000円〜</strong></div>
+            </article>
+            <article class="service-card gold">
+              <div class="service-kicker">PARTNER</div>
+              <h3>AI顧問（月次伴走）</h3>
+              <ul>
+                <li>月次相談・改善提案</li>
+                <li>運用状況の確認</li>
+                <li>AIツールの最新情報提供</li>
+                <li>社内定着のサポート</li>
+              </ul>
+              <div class="price">料金目安: <strong>50,000円/月〜</strong></div>
             </article>
           </div>
+          <p class="plan-note">料金は目安です。内容・規模によりお見積りします。</p>
         </div>
       </section>
 
-      <section id="cases" class="section">
+      <section id="support">
         <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Credibility</p>
-            <h2>導入支援・デモ環境</h2>
-            <p>公開前の実績は「支援例」として掲載しています。実際の声に差し替えられる構成です。</p>
+          <div class="section-head">
+            <h2>導入後も安心の伴走体制</h2>
           </div>
-          <img class="avatars" src="./assets/testimonial-avatars.png" alt="講座生の声用の匿名アバターイメージ" />
-          <div class="voice-grid">
-            <article class="voice-card">
-              <p>専門用語をかみ砕いて説明してもらい、自社に合う活用方針を一緒に整理できました。</p>
-              <strong>製造業 / 取締役</strong>
+          <div class="support-grid">
+            <article class="support-card">
+              <span class="line-icon">月</span>
+              <h3>月次定例ミーティング</h3>
+              <p>活用状況の振り返りと改善提案を行います。</p>
             </article>
-            <article class="voice-card">
-              <p>研修だけで終わらず、実務で使えるテンプレートや台本まで確認してもらえました。</p>
-              <strong>サービス業 / 人事部長</strong>
+            <article class="support-card">
+              <span class="line-icon">問</span>
+              <h3>チャット相談サポート</h3>
+              <p>日々の疑問やトラブルも迅速にサポートします。</p>
             </article>
-            <article class="voice-card">
-              <p>Discord Botのデモが具体的で、要件整理も丁寧に伴走してくれました。</p>
-              <strong>IT企業 / マネージャー</strong>
+            <article class="support-card">
+              <span class="line-icon">推</span>
+              <h3>社内推進のサポート</h3>
+              <p>社内説明資料や勉強会など推進活動を支援します。</p>
             </article>
-          </div>
-          <div class="proof-grid">
-            <article>
-              <h3>AI顧問・伴走支援</h3>
-              <p>戦略設計から実行まで、伴走して支援します。</p>
-            </article>
-            <article>
-              <h3>資料・台本・Bot構築</h3>
-              <p>研修資料・台本・Botをまとめて設計します。</p>
-            </article>
-            <article>
-              <h3>AI会社OS設計</h3>
-              <p>AI活用の棚卸しと組織導入を支援します。</p>
+            <article class="support-card">
+              <span class="line-icon">報</span>
+              <h3>改善レポートのご提供</h3>
+              <p>効果や改善ポイントをレポートで可視化します。</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="faq" class="section section-soft">
-        <div class="container narrow">
-          <div class="section-heading">
-            <p class="eyebrow">FAQ</p>
+      <section id="flow" class="section-divider">
+        <div class="container">
+          <div class="section-head">
+            <h2>支援の流れ・カリキュラム例</h2>
+          </div>
+          <div class="curriculum">
+            <article class="step">
+              <div class="step-number">STEP 01</div>
+              <h3>業務改善診断</h3>
+              <p>現状の業務を整理し、課題とAI活用領域を特定します。</p>
+            </article>
+            <article class="step">
+              <div class="step-number">STEP 02</div>
+              <h3>AIの基礎理解</h3>
+              <p>AIの仕組みや注意点を理解し、安心して使える土台を作ります。</p>
+            </article>
+            <article class="step">
+              <div class="step-number">STEP 03</div>
+              <h3>プロンプト実践</h3>
+              <p>実務で使える指示の出し方を練習し、すぐに使えるスキルを身につけます。</p>
+            </article>
+            <article class="step">
+              <div class="step-number">STEP 04</div>
+              <h3>業務への適用</h3>
+              <p>自社の業務に合わせてAIの活用方法を設計・運用します。</p>
+            </article>
+            <article class="step">
+              <div class="step-number">STEP 05</div>
+              <h3>自動化・仕組み化</h3>
+              <p>繰り返し作業を自動化し、仕組みとして運用できる状態へ。</p>
+            </article>
+            <article class="step">
+              <div class="step-number">STEP 06</div>
+              <h3>継続改善</h3>
+              <p>運用状況を見直し、AI活用を継続的に改善していきます。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="fit">
+        <div class="container">
+          <div class="section-head">
+            <h2>こんな企業・チームにおすすめ</h2>
+          </div>
+          <div class="fit-box">
+            <div class="fit-item">AIを小さく始めて効果を出したい経営者・担当者</div>
+            <div class="fit-item">繰り返し業務を減らして生産性を上げたいチーム</div>
+            <div class="fit-item">社員にAIを使いこなしてほしい教育担当者</div>
+            <div class="fit-item">無駄なツール導入を避け、現場に活用を定着したい企業</div>
+            <div class="fit-item">見積書・報告書・議事録の作成時間を減らしたい企業</div>
+            <div class="fit-item">AI活用の進め方を相談できる相手がほしい企業</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="voice" class="section-divider">
+        <div class="container">
+          <div class="section-head">
+            <h2>お客様の声</h2>
+            <p>掲載許可をいただいた内容のみ、順次掲載します。</p>
+          </div>
+          <img class="voice-assets" src="assets/testimonial-avatars.png" alt="匿名のお客様アイコン">
+          <div class="voices">
+            <article class="voice-card">
+              <p>何から手をつけるべきかが明確になり、社内に説明できる順番を整理できました。</p>
+              <div class="voice-name">製造業 / 経営者</div>
+            </article>
+            <article class="voice-card">
+              <p>研修が実務に直結していて、社員の質問と行動が変わりました。</p>
+              <div class="voice-name">サービス業 / 部門マネージャー</div>
+            </article>
+            <article class="voice-card">
+              <p>自動化で毎月の作業時間が減り、本来やるべき仕事に集中できます。</p>
+              <div class="voice-name">卸売業 / 業務改善担当</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="container">
+          <div class="section-head">
             <h2>よくある質問</h2>
           </div>
           <div class="faq-list">
-            <details open>
-              <summary>相談やデモは本当に無料ですか？</summary>
-              <p>はい。まずは公式LINEで現状を伺い、必要に応じてデモや相談の流れをご案内します。</p>
-            </details>
-            <details>
-              <summary>研修だけの依頼も可能ですか？</summary>
-              <p>可能です。法人研修のみ、研修後のBot構築、継続支援まで必要な範囲でご提案します。</p>
-            </details>
-            <details>
-              <summary>対応できる業種や規模に制限はありますか？</summary>
-              <p>業種は限定していません。中小企業や成長企業を中心に、課題と導入範囲に合わせて設計します。</p>
-            </details>
+            <article class="faq-item">
+              <h3>AIに詳しくなくても相談できますか？</h3>
+              <p>はい。現在の業務内容や困っている作業を伺いながら、AIで改善できる範囲をこちらで整理します。</p>
+            </article>
+            <article class="faq-item">
+              <h3>診断だけの依頼もできますか？</h3>
+              <p>可能です。まず診断で優先順位を明確にし、その後に研修・構築・顧問へ進むかを判断できます。</p>
+            </article>
+            <article class="faq-item">
+              <h3>いきなり大きな開発が必要ですか？</h3>
+              <p>必要ありません。小さく始めて効果を見ながら広げる進め方を基本にしています。</p>
+            </article>
+            <article class="faq-item">
+              <h3>料金は固定ですか？</h3>
+              <p>診断や顧問は目安料金があります。構築や研修は内容・期間・規模に応じてお見積りします。</p>
+            </article>
           </div>
         </div>
       </section>
 
-      <section class="closing">
-        <div class="container closing-inner">
-          <h2>御社のAI導入、まずは一緒に整理しませんか。</h2>
-          <p>無料相談では、現状の課題整理とAI活用の方向性をご提案します。</p>
-          <div class="hero-actions center-actions">
-            <a class="btn btn-primary" href="https://lin.ee/83dBmPj">公式LINEで無料相談する</a>
-            <a class="btn btn-dark-secondary" href="https://discord.gg/FHpRaGyfK">Discordデモを見る</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="profile-section">
-        <div class="container profile-card">
-          <img src="./assets/operator-profile.png" alt="AI Strategy Partner運営者プロフィールのイメージ" />
-          <div>
-            <p class="eyebrow">Profile</p>
-            <h2>AI Strategy Partner</h2>
-            <p>
-              中小企業のAI活用を、戦略設計から研修・実装・運用まで一貫して支援します。
-              現場に寄り添い、実務で使えるAI活用を一緒に作ります。
-            </p>
-            <div class="profile-tags">
-              <span>法人AI研修</span>
-              <span>業務改善・自動化</span>
-              <span>Discord Bot構築</span>
-              <span>伴走支援</span>
+      <section id="contact">
+        <div class="container">
+          <div class="cta-band">
+            <div>
+              <h2>まずは30分の無料相談で、貴社の課題と改善のヒントを整理します。</h2>
+              <p>ご相談は30分でOK。しつこい営業はしません。オンラインで気軽に相談できます。</p>
             </div>
+            <a class="btn" href="mailto:contact@ai-strategy-partner.com?subject=AI活用支援の事前相談について">
+              <svg class="icon-small" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3v3M17 3v3M4.5 9.5h15M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              30分の事前相談をする
+            </a>
           </div>
-          <aside class="profile-contact">
-            <h3>お気軽にご相談ください</h3>
-            <a href="https://lin.ee/83dBmPj">公式LINEで相談</a>
-            <a href="https://discord.gg/FHpRaGyfK">Discordデモを体験</a>
-          </aside>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <div class="container footer-inner">
-        <small>© 2026 AI Strategy Partner. All Rights Reserved.</small>
-        <div>
-          <a href="#top">トップへ戻る</a>
-        </div>
-      </div>
+      <div class="container">AI Strategy Partner | 法人向けAI活用支援 | 2026</div>
     </footer>
-  </body>
+  </div>
+</body>
 </html>
