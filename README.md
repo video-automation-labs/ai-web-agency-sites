@@ -2,83 +2,110 @@
 
 AIで自動生成されたホームページの実例集です。
 
-## 📍 公開 URL
+## 公開 URL（Cloudflare Pages）
 
-- **トップ**: https://video-automation-labs.github.io/ai-web-agency-sites/
-- **AI Strategy Partner**: https://video-automation-labs.github.io/ai-web-agency-sites/sites/ai-strategy-partner/
-- **AI Strategy Partner LP**: https://video-automation-labs.github.io/ai-web-agency-sites/sites/ai-strategy-partner-lp/
-- **Motto Custom Motors**: https://video-automation-labs.github.io/ai-web-agency-sites/sites/motto-custom-motors/
+| サイト | URL |
+|-------|-----|
+| 琥珀ホームページ | https://kohaku-official.pages.dev |
+| 琥珀LP | https://kohaku-lp.pages.dev |
+| OpenClaw LP | https://openclaw-lp.pages.dev |
+| AI戦略パートナーHP | https://ai-strategy-partner.pages.dev |
+| AI戦略パートナーLP | https://ai-strategy-partner-lp.pages.dev |
+| AI4コマ漫画LP | https://ai-4koma-manga-lp.pages.dev |
 
-## 📁 フォルダ構成
+## フォルダ構成
 
 ```
 ai-web-agency-sites/
-├── index.html                    # ランディングページ
 ├── sites/
-│   ├── ai-strategy-partner/     # AI Strategy Partner 公式サイト
-│   ├── ai-strategy-partner-lp/  # AI Strategy Partner LP
-│   └── motto-custom-motors/     # バイク・車サイト
-├── README.md
-└── .gitignore
+│   ├── kohaku-official/         # 琥珀ホームページ
+│   ├── kohaku-lp/               # 琥珀LP
+│   ├── openclaw-lp/             # OpenClaw LP
+│   ├── ai-strategy-partner/     # AI戦略パートナーHP
+│   ├── ai-strategy-partner-lp/  # AI戦略パートナーLP
+│   ├── ai-4koma-manga-lp/       # AI4コマ漫画LP
+│   ├── motto-custom-motors/     # バイク屋HP（非公開）
+│   └── kobayashi-kigyojuku-lp/  # 小林起業塾LP（非公開）
+├── _archive/2026-06/            # 廃止・重複サイト
+└── README.md
 ```
 
-## 🚀 使用方法
-
-### ローカルで確認
+## ローカル確認
 
 ```bash
-python3 -m http.server 8000
+cd ~/ai-web-agency-sites
+python3 -m http.server 8181
+# http://localhost:8181/sites/<サイト名>/ で確認
 ```
 
-`http://localhost:8000` でアクセス
+## 新しいサイトを追加して公開する手順
 
-### 更新手順
+### 1. サイトをコピー
 
-1. VIBE_OS で開発
-2. このリポジトリのサイトをコピー
-3. git push
+VIBE_OS_MASTER で作成したサイトをこのリポジトリに追加する：
 
 ```bash
-# サイトをコピー
-cp -r ~/VIBE_OS/01_PROJECTS/web/AI_Web_Agency/sites/site-ai-strategy-partner sites/ai-strategy-partner
-cp -r ~/VIBE_OS/01_PROJECTS/web/AI_Web_Agency/sites/site-motto-custom-motors sites/motto-custom-motors
+cp -r ~/VIBE_OS_MASTER/06_OUTPUT/<カテゴリ>/<サイト名> ~/ai-web-agency-sites/sites/<サイト名>
+```
 
-# push
-git add .
-git commit -m "feat: Update demo sites"
+### 2. GitHubにプッシュ
+
+```bash
+cd ~/ai-web-agency-sites
+git add sites/<サイト名>
+git commit -m "feat: <サイト名>を追加"
 git push origin main
 ```
 
-## 📊 サイト一覧
+### 3. Cloudflare Pages にデプロイ（初回のみ）
 
-### AI Strategy Partner
-- AIエージェント導入で生産性向上
-- ターゲット: 中小企業・士業・成長企業
+wranglerでプロジェクトを作成してデプロイ：
 
-### AI Strategy Partner LP
-- 法人AI研修・業務自動化・Discord Bot構築の相談導線
-- ターゲット: AI導入を現場で使える形にしたい企業
+```bash
+cd ~/ai-web-agency-sites
 
-### Motto Custom Motors
-- カスタムバイク・カスタムカー製作専門店
-- ターゲット: バイク・車好きのカスタマー
+# プロジェクト作成
+npx wrangler pages project create <サイト名> --production-branch main
 
-## 🔧 技術
+# デプロイ（少し待ってから実行）
+npx wrangler pages deploy sites/<サイト名> --project-name <サイト名>
+```
 
-- HTML5
-- CSS3
-- JavaScript（Vanilla）
-- GitHub Pages（ホスティング）
+完了すると `https://<サイト名>.pages.dev` で公開される。
 
-## 📝 ライセンス
+### 4. 既存サイトを更新する場合
+
+```bash
+cd ~/ai-web-agency-sites
+
+# 最新ファイルをコピー
+cp -r ~/VIBE_OS_MASTER/06_OUTPUT/<カテゴリ>/<サイト名>/. sites/<サイト名>/
+
+# プッシュ（GitHubに連携済みのプロジェクトは自動で再デプロイされる）
+git add sites/<サイト名>
+git commit -m "feat: <サイト名>を更新"
+git push origin main
+
+# CLIデプロイのプロジェクトは手動で再デプロイ
+npx wrangler pages deploy sites/<サイト名> --project-name <サイト名>
+```
+
+### 注意点
+
+- Root directoryのパスはスペースなしで入力する（スペースがあるとデプロイ失敗する）
+- Build command・Build output directoryは空欄でOK（静的HTMLサイトの場合）
+- 公開不要なサイトは `sites/` に置いたままでも、Cloudflareプロジェクトを作らなければ非公開
+
+## 不要になったサイトを取り下げる
+
+```bash
+npx wrangler pages project delete <サイト名> --yes
+```
+
+## 技術
+
+- HTML5 / CSS3 / JavaScript（Vanilla）
+- Cloudflare Pages（ホスティング）
+- GitHub（ソース管理）
 
 © 2026 AI Web Agency
-
----
-
-**営業時の活用例**
-
-> 「AIでサイト制作しています。デモはこちらです」
-> https://video-automation-labs.github.io/ai-web-agency-sites/
->
-> スマホで見せる → 即座にリアルな制作実績を確認できる！
