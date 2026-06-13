@@ -11,137 +11,157 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header" data-header>
+  <header class="site-header">
     <div class="container nav">
       <a class="brand" href="#top" aria-label="AI社員構築プログラム">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span>AI社員構築<span>プログラム</span></span>
+        <span class="spark-mark" aria-hidden="true"></span>
+        <span>AI社員構築プログラム <small>by Kohaku</small></span>
       </a>
       <nav class="nav-links" aria-label="主要ナビゲーション">
         <a href="#features">特徴</a>
         <a href="#curriculum">カリキュラム</a>
         <a href="#pricing">料金</a>
-        <a href="#voices">声</a>
+        <a href="#faq">FAQ</a>
       </nav>
-      <a class="nav-cta" href="#contact">無料相談</a>
+      <a class="nav-cta" href="#contact">無料相談でAI社員の作り方を聞く</a>
     </div>
   </header>
 
   <main id="top">
-    <section class="hero section">
+    <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy reveal">
-          <p class="kicker">Claude Code研修 / AI社員構築プログラム</p>
-          <h1>採用せずに、外注せずに、<br>AI社員をあなたの事業に配属する</h1>
-          <p class="hero-lead">Claude Codeを使って、AI秘書・LP制作・SNS運用・集客導線まで。仕事に使えるAI社員チームを一緒に構築します。</p>
+          <p class="label">Claude Code研修</p>
+          <h1>採用せずに、外注せずに、<span>AI社員</span>をあなたの事業に配属する</h1>
+          <p class="lead">Claude Codeを使って、AI秘書・LP制作・SNS運用・集客導線まで。仕事に使えるAI社員チームを一緒に構築します。</p>
           <div class="hero-actions">
             <a class="btn-primary" href="#contact">無料相談でAI社員の作り方を聞く</a>
-            <a class="btn-secondary" href="#curriculum">カリキュラムを見る</a>
           </div>
           <p class="microcopy">無理な勧誘はありません。まずは現状整理だけでも大丈夫です。</p>
           <div class="trust-list" aria-label="信頼材料">
             <span>初心者OK</span>
-            <span>元教師が伴走</span>
+            <span>AI導入を伴走サポート</span>
             <span>7日・30日・60日プラン</span>
           </div>
         </div>
-        <div class="hero-media reveal reveal-delay-1">
-          <img src="assets/hero-ai-employee.png" alt="AI社員ダッシュボードとコハクちゃんのイメージ" width="1693" height="929">
+
+        <div class="hero-visual reveal reveal-delay-1" aria-label="AI社員ダッシュボードのイメージ">
+          <div class="monitor">
+            <div class="monitor-bar">
+              <span>Claude Code Workspace</span>
+              <i></i><i></i><i></i>
+            </div>
+            <div class="dashboard">
+              <p class="dash-title">AI社員ダッシュボード</p>
+              <div class="dash-grid">
+                <div class="dash-card"><span class="mini-claude"></span><strong>AI秘書</strong><small>タスク整理・文章作成</small></div>
+                <div class="dash-card"><span class="icon-box">LP</span><strong>LP制作</strong><small>構成・コピー作成</small></div>
+                <div class="dash-card"><span class="icon-box">SNS</span><strong>SNS運用</strong><small>投稿案・導線設計</small></div>
+                <div class="dash-card"><span class="mini-claude"></span><strong>AIリサーチャー</strong><small>調査・企画整理</small></div>
+              </div>
+              <div class="dash-bottom">
+                <div>
+                  <span>タスク進捗</span>
+                  <b style="width:72%"></b>
+                  <b style="width:54%"></b>
+                  <b style="width:88%"></b>
+                </div>
+                <ul>
+                  <li>業務整理</li>
+                  <li>AI社員設計</li>
+                  <li>実務で活用</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="pixel-claude big" aria-hidden="true"></div>
+          <img class="kohaku-hero" src="assets/kohaku-cta.png" alt="コハクちゃんがAI社員づくりを案内するイメージ">
+          <p class="hero-note">あなた専用の<br>AI社員チームを作ろう！</p>
         </div>
       </div>
     </section>
 
     <section class="section problems" id="problems">
       <div class="container">
-        <div class="section-heading reveal">
-          <p class="kicker">Problem</p>
+        <div class="section-title reveal">
+          <span class="ornament" aria-hidden="true">*</span>
           <h2>こんなお悩みはありませんか？</h2>
-          <p>AIを使えていないのは、努力不足ではありません。多くの人がつまずくのは、ツールの操作ではなく「自分の仕事のどこにAIを入れるか」が見えていないことです。</p>
         </div>
         <div class="problem-grid">
           <article class="problem-card reveal">
-            <img src="assets/problem-ai-use.png" alt="AI活用に迷う人のイメージ">
+            <div class="problem-icon soft">?</div>
+            <div class="pixel-claude small" aria-hidden="true"></div>
             <h3>AIを仕事でどう使えばいいかわからない</h3>
-            <p>便利そうなのは分かる。でも、自分の業務にどう落とし込めばいいのかが見えない。</p>
+            <p>便利そうだけど、自分の仕事にどう活かすかが見えていない。</p>
           </article>
           <article class="problem-card reveal reveal-delay-1">
-            <img src="assets/problem-claude-code.png" alt="Claude Codeに難しさを感じるイメージ">
-            <h3>Claude Codeが難しそうに感じる</h3>
-            <p>すごいと聞いても、プログラミング経験がないと無理なのではと不安になる。</p>
+            <div class="problem-icon screen"></div>
+            <div class="pixel-claude small" aria-hidden="true"></div>
+            <h3>Claude Codeが難しそう</h3>
+            <p>専門知識やプログラミングが必要なのではと、一歩が踏み出せない。</p>
           </article>
           <article class="problem-card reveal reveal-delay-2">
-            <img src="assets/problem-content-load.png" alt="SNSやLP制作に時間がかかるイメージ">
+            <div class="problem-icon clock"></div>
+            <div class="pixel-claude small" aria-hidden="true"></div>
             <h3>SNS・LP・資料作成に時間がかかる</h3>
-            <p>毎回ゼロから考えてしまい、発信や販売準備がなかなか進まない。</p>
+            <p>やることは多いのに、本業に集中する時間が取れない。</p>
           </article>
           <article class="problem-card reveal reveal-delay-3">
-            <img src="assets/problem-solo-overload.png" alt="一人で仕事を抱えるイメージ">
+            <div class="problem-icon person"></div>
+            <div class="pixel-claude small" aria-hidden="true"></div>
             <h3>一人で全部抱えている</h3>
-            <p>人を雇うほどではない。でも、誰かに手伝ってほしい仕事が増えている。</p>
+            <p>人を雇うほどではないけれど、誰かに手伝ってほしい仕事が多い。</p>
           </article>
         </div>
       </div>
     </section>
 
     <section class="section solution">
-      <div class="container solution-grid">
-        <div class="section-heading reveal">
-          <p class="kicker">Solution</p>
-          <h2>AIを学ぶのではなく、AIと働く準備をする講座です</h2>
-          <p>いきなりツールを使いこなそうとするのではなく、あなたの仕事を整理し、任せる役割を決め、実務で使える形にしていきます。</p>
+      <div class="container solution-panel reveal">
+        <div class="section-title">
+          <span class="ornament" aria-hidden="true">*</span>
+          <h2>AIを学ぶのではなく、<br>AIと働く準備をする講座です</h2>
+          <p>仕事を整理し、AIに任せる役割を決め、実務で使い、導線まで整える。順番に進めるので初心者でも始めやすい設計です。</p>
         </div>
-        <div class="flow reveal reveal-delay-1" aria-label="導入ステップ">
-          <div class="flow-step">
-            <span>01</span>
-            <h3>業務整理</h3>
-            <p>AIに任せられる仕事を見つける</p>
-          </div>
-          <div class="flow-step">
-            <span>02</span>
-            <h3>AI社員設計</h3>
-            <p>秘書・ライター・営業など役割を決める</p>
-          </div>
-          <div class="flow-step">
-            <span>03</span>
-            <h3>実務で使う</h3>
-            <p>LP、SNS、資料作成に落とし込む</p>
-          </div>
-          <div class="flow-step">
-            <span>04</span>
-            <h3>導線化</h3>
-            <p>相談・申込につながる流れを整える</p>
-          </div>
+        <div class="flow">
+          <div class="flow-step"><span class="flow-icon clipboard"></span><h3>業務整理</h3><p>今の仕事を棚卸し、AIに任せられる業務を見つけます。</p></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><span class="mini-claude"></span><h3>AI社員設計</h3><p>あなたの事業に合うAI社員の役割を決めます。</p></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><span class="flow-icon check"></span><h3>実務で使う</h3><p>日々の業務で使いながら、AI社員を育てます。</p></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><span class="flow-icon route"></span><h3>導線化</h3><p>集客・販売・サポートの流れに組み込みます。</p></div>
         </div>
+        <img class="solution-kohaku" src="assets/kohaku-cta.png" alt="コハクちゃんの案内イメージ">
       </div>
     </section>
 
     <section class="section features" id="features">
       <div class="container">
-        <div class="section-heading reveal">
-          <p class="kicker">Features</p>
-          <h2>Claude Codeを、仕事の戦力に変える4つの強み</h2>
-          <p>ツールの解説だけで終わらせず、毎日の仕事で使うところまで一緒に作ります。</p>
+        <div class="section-title reveal">
+          <span class="ornament" aria-hidden="true">*</span>
+          <h2>サービスの特徴・強み</h2>
         </div>
         <div class="feature-grid">
           <article class="feature-card reveal">
-            <span class="feature-icon">AI</span>
+            <div class="pixel-claude small" aria-hidden="true"></div>
             <h3>AI秘書構築</h3>
-            <p>タスク整理、文章の下書き、情報整理を手伝うAI秘書を作ります。</p>
+            <p>日々のタスク整理や文章作成を支えるAI秘書を作ります。</p>
           </article>
           <article class="feature-card reveal reveal-delay-1">
-            <span class="feature-icon">LP</span>
+            <span class="feature-icon green">LP</span>
             <h3>LP・SNS導線</h3>
-            <p>発信して終わりではなく、相談や申込につながる流れを整えます。</p>
+            <p>LP、LINE、SNSの導線を整え、集客から申込までつなげます。</p>
           </article>
           <article class="feature-card reveal reveal-delay-2">
-            <span class="feature-icon">CC</span>
+            <span class="spark-mark feature-spark" aria-hidden="true"></span>
             <h3>Claude Code実践</h3>
-            <p>難しい開発ツールとしてではなく、仕事を進める実践環境として使います。</p>
+            <p>Claude Codeを実際に使い、AI社員チームを作ります。</p>
           </article>
           <article class="feature-card reveal reveal-delay-3">
-            <span class="feature-icon">伴</span>
-            <h3>元教師の伴走</h3>
-            <p>専門用語を増やすより、初心者でも分かる順番で進めることを重視します。</p>
+            <span class="feature-icon support">人</span>
+            <h3>AI導入サポート</h3>
+            <p>初心者でも迷わないよう、業務整理から実装まで伴走します。</p>
           </article>
         </div>
       </div>
@@ -149,184 +169,182 @@
 
     <section class="section pricing" id="pricing">
       <div class="container">
-        <div class="section-heading reveal">
-          <p class="kicker">Service</p>
-          <h2>目的に合わせて選べる3つのプラン</h2>
-          <p>まず使える状態へ。次に販売導線へ。最後に事業全体の仕組み化へ。今の段階に合わせて進められます。</p>
+        <div class="section-title reveal">
+          <span class="ornament" aria-hidden="true">*</span>
+          <h2>サービス内容・プラン</h2>
         </div>
         <div class="price-grid">
           <article class="price-card reveal">
-            <p class="plan-label">7日間</p>
+            <p class="plan-sub">7日間で基礎を作る</p>
             <h3>AI社員構築チャレンジ</h3>
-            <p class="price">98,000<span>円</span></p>
-            <p>まずAIを仕事で使える状態にしたい方向け。</p>
+            <p class="price"><span>7日間</span>98,000<small>円</small></p>
             <ul>
-              <li>AI社員を雇う準備</li>
-              <li>強み・経験の棚卸し</li>
-              <li>AI秘書、LP、SNS環境</li>
+              <li>AI秘書・LP制作</li>
+              <li>SNS運用環境</li>
+              <li>AI開発環境</li>
             </ul>
+            <div class="pixel-claude small" aria-hidden="true"></div>
           </article>
           <article class="price-card featured reveal reveal-delay-1">
-            <p class="plan-label">30日間</p>
+            <p class="plan-sub">販売導線を整える</p>
             <h3>AI事業立ち上げプログラム</h3>
-            <p class="price">298,000<span>円</span></p>
-            <p>商品設計から販売導線まで整えたい方向け。</p>
+            <p class="price"><span>30日間</span>298,000<small>円</small></p>
             <ul>
               <li>商品設計</li>
-              <li>LP・LINE導線</li>
-              <li>SNS導線・販売導線</li>
+              <li>LINE導線・SNS導線</li>
+              <li>販売導線</li>
             </ul>
+            <div class="pixel-claude small" aria-hidden="true"></div>
           </article>
           <article class="price-card reveal reveal-delay-2">
-            <p class="plan-label">60日間</p>
+            <p class="plan-sub">事業を仕組み化する</p>
             <h3>AI会社化コンサルティング</h3>
-            <p class="price">498,000<span>円</span></p>
-            <p>AI社員を導入し、事業全体を仕組み化したい方向け。</p>
+            <p class="price"><span>60日間</span>498,000<small>円</small></p>
             <ul>
-              <li>AI営業・AIマーケター</li>
+              <li>AI秘書・AI営業・AIマーケター</li>
               <li>AIライター・AIリサーチャー</li>
               <li>業務改善設計</li>
             </ul>
+            <div class="pixel-claude small" aria-hidden="true"></div>
           </article>
         </div>
+        <p class="center-note">どのプランが合うか分からない方は、無料相談で一緒に整理します。</p>
       </div>
     </section>
 
     <section class="section community">
-      <div class="container community-grid">
-        <div class="section-heading reveal">
-          <p class="kicker">Community</p>
-          <h2>一人で止まらないためのサポート環境</h2>
-          <p>分からないまま抱え込まないように、質問、進捗共有、週次チェックで実装を前に進めます。</p>
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="ornament" aria-hidden="true">*</span>
+          <h2>コミュニティ・サポート</h2>
         </div>
-        <div class="support-panel reveal reveal-delay-1">
-          <div class="chat-card">
-            <p class="chat-name">Kohaku Support</p>
-            <p>今週はLPのCTAとLINE導線をつなげましょう。</p>
-          </div>
-          <div class="support-list">
-            <span>チャットサポート</span>
-            <span>週次チェック</span>
-            <span>Q&A共有</span>
-            <span>課題提出</span>
-          </div>
+        <div class="support-grid">
+          <article class="support-card reveal">
+            <h3>専用コミュニティ</h3>
+            <p>講座中の質問やできたことの共有に使える場所をご用意します。</p>
+            <div class="chat-bubble">Kohaku 10:30<br>この作り方で進めていきましょう。</div>
+          </article>
+          <article class="support-card reveal reveal-delay-1">
+            <h3>週次チェックイン</h3>
+            <p>進捗を確認しながら、次にやることを整理します。</p>
+            <div class="calendar-box">6月15日（土）20:00-21:00<br>Zoomオンライン</div>
+          </article>
+          <article class="support-card reveal reveal-delay-2">
+            <h3>Q&Aサポート</h3>
+            <p>分からないことはいつでも相談可能。実務に合わせて回答します。</p>
+            <div class="qa-box">Q. AIに任せる仕事の見つけ方は？<br>A. まずは毎日くり返す作業から整理します。</div>
+          </article>
+          <article class="support-card reveal reveal-delay-3">
+            <h3>成果のシェア</h3>
+            <p>LPやAI社員ができたら共有し、改善ポイントを確認できます。</p>
+            <div class="share-card">LPが完成しました！<br><span>AI社員活用</span></div>
+          </article>
         </div>
       </div>
     </section>
 
     <section class="section curriculum" id="curriculum">
       <div class="container">
-        <div class="section-heading reveal">
-          <p class="kicker">Curriculum</p>
-          <h2>AI社員は、順番に作れば難しくありません</h2>
-          <p>まず仕事を整理し、AIに任せる役割を決め、小さな成果物を作りながら、最後にAI社員チームとして仕組み化します。</p>
+        <div class="section-title reveal">
+          <span class="ornament" aria-hidden="true">*</span>
+          <h2>カリキュラム（7日間チャレンジの流れ）</h2>
         </div>
-        <div class="timeline">
-          <article class="timeline-item reveal">
-            <span>Day 1</span>
-            <h3>AI社員を雇う準備</h3>
-            <p>今の仕事を整理し、AIに任せる業務と自分がやる業務を分けます。</p>
-          </article>
-          <article class="timeline-item reveal">
-            <span>Day 2</span>
-            <h3>強み・経験の棚卸し</h3>
-            <p>あなたの強み、商品、ターゲットをAIが理解できる形に整理します。</p>
-          </article>
-          <article class="timeline-item reveal">
-            <span>Day 3</span>
-            <h3>AI秘書作成</h3>
-            <p>日々の相談、文章下書き、タスク整理を手伝うAI秘書を作ります。</p>
-          </article>
-          <article class="timeline-item reveal">
-            <span>Day 4</span>
-            <h3>LP・ホームページ制作</h3>
-            <p>商品価値が伝わる構成とコピーを作り、ページの土台を整えます。</p>
-          </article>
-          <article class="timeline-item reveal">
-            <span>Day 5</span>
-            <h3>SNS自動化・発信環境</h3>
-            <p>投稿テーマと文章の型を作り、発信を続けやすくします。</p>
-          </article>
-          <article class="timeline-item reveal">
-            <span>Day 6</span>
-            <h3>集客導線構築</h3>
-            <p>SNS、LP、LINE、無料相談をつなげて、迷わない流れを作ります。</p>
-          </article>
-          <article class="timeline-item reveal">
-            <span>Day 7</span>
-            <h3>AI社員チーム構築</h3>
-            <p>秘書、ライター、営業、マーケターなどの役割を分けて使える状態にします。</p>
-          </article>
+        <div class="day-row">
+          <article class="day-card reveal"><span>Day1</span><h3>AI社員を雇う準備</h3><p>仕事の棚卸しと任せる業務を見つける</p></article>
+          <article class="day-card reveal"><span>Day2</span><h3>強み・経験の棚卸し</h3><p>あなたの価値をサービスに整理する</p></article>
+          <article class="day-card reveal"><span>Day3</span><h3>AI秘書作成</h3><p>日々のタスクと文章作成を支えるAI秘書を作る</p></article>
+          <article class="day-card reveal"><span>Day4</span><h3>LP・ホームページ制作</h3><p>魅力を伝えるLPの構成と原稿を作る</p></article>
+          <article class="day-card reveal"><span>Day5</span><h3>SNS自動化</h3><p>発信の型を作り、投稿を続けやすくする</p></article>
+          <article class="day-card reveal"><span>Day6</span><h3>集客導線構築</h3><p>LP・LINE・相談まで流れをつなげる</p></article>
+          <article class="day-card reveal"><span>Day7</span><h3>AI社員チーム構築</h3><p>複数のAI社員をチームとして活用する</p></article>
         </div>
-        <div class="extension-note reveal">
-          <strong>30日・60日プランでは、ここから販売導線と業務改善まで拡張します。</strong>
-          <p>商品設計、LINE導線、SNS導線、AI営業、AIマーケター、AIリサーチャーまで、事業全体にAI社員を配属していきます。</p>
-        </div>
+        <p class="center-note">30日間プランでは商品設計から販売導線まで、60日間プランでは業務改善とAI社員の組織化まで広げます。</p>
       </div>
     </section>
 
     <section class="section recommend">
-      <div class="container recommend-grid">
-        <div class="section-heading reveal">
-          <p class="kicker">For You</p>
-          <h2>こんな方におすすめです</h2>
-          <p>AIに詳しくなることより、今の仕事を少しでも軽くし、発信や販売準備を進めたい方に向いています。</p>
+      <div class="container recommend-panel reveal">
+        <div class="section-title">
+          <span class="ornament" aria-hidden="true">*</span>
+          <h2>こんな方におすすめ</h2>
         </div>
-        <div class="check-list reveal reveal-delay-1">
-          <p>一人社長・個人事業主として仕事を抱えがち</p>
-          <p>講師・コーチ・カウンセラーとして発信やLPを整えたい</p>
-          <p>ChatGPTやClaudeを触ったが、実務利用で止まっている</p>
-          <p>外注前に、自分でAI活用の土台を持ちたい</p>
-          <p>AIを使った商品設計や販売導線を作りたい</p>
+        <div class="check-grid">
+          <p>一人社長・個人事業主の方</p>
+          <p>講師・コーチ・カウンセラーの方</p>
+          <p>セラピスト・士業・専門サービスの方</p>
+          <p>SNSや発信に時間を取られている方</p>
+          <p>商品づくりやLP制作に悩んでいる方</p>
+          <p>AIを仕事に活かして効率化したい方</p>
         </div>
+        <img class="recommend-kohaku" src="assets/kohaku-cta.png" alt="コハクちゃんのおすすめ案内イメージ">
       </div>
     </section>
 
     <section class="section voices" id="voices">
       <div class="container">
-        <div class="section-heading reveal">
-          <p class="kicker">Voices</p>
+        <div class="section-title reveal">
+          <span class="ornament" aria-hidden="true">*</span>
           <h2>講座生の声</h2>
-          <p>以下は掲載イメージです。実際の受講者の声が集まり次第、内容を差し替えて運用します。</p>
         </div>
         <div class="voice-grid">
           <article class="voice-card reveal">
             <img src="assets/avatar-coach.png" alt="コーチ受講者のイメージ">
             <div>
-              <h3>30代 コーチ</h3>
-              <p>SNS投稿と講座案内文をAIと一緒に作れるようになり、発信の手が止まりにくくなりました。</p>
+              <h3>佐藤 まいさん（40代）</h3>
+              <p>AI秘書を作ってから、発信や案内文の作成時間が短くなりました。自分の仕事に使える会話の作り方まで分かったのが良かったです。</p>
             </div>
           </article>
           <article class="voice-card reveal reveal-delay-1">
             <img src="assets/avatar-consultant.png" alt="コンサルタント受講者のイメージ">
             <div>
-              <h3>40代 一人社長</h3>
-              <p>AIに何を任せればいいかが整理でき、LPと無料相談までの流れが見えるようになりました。</p>
+              <h3>田中 健一さん（30代）</h3>
+              <p>AIに何を任せるかが明確になり、LPとLINE導線を整えることで、相談の流れがスムーズになりました。</p>
             </div>
           </article>
           <article class="voice-card reveal reveal-delay-2">
             <img src="assets/avatar-teacher.png" alt="講師受講者のイメージ">
             <div>
-              <h3>40代 講師</h3>
-              <p>Claude Codeへの苦手意識が減り、資料作成や商品設計に使うイメージが持てました。</p>
+              <h3>山本 紗希さん（30代）</h3>
+              <p>文章が苦手でも、AIと一緒に作れば大丈夫だと思えました。発信の続けられる形が見えました。</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section operator">
-      <div class="container operator-grid">
-        <div class="operator-image reveal">
-          <img src="assets/kohaku-cta.png" alt="コハクちゃんが講座を案内するイメージ">
+    <section class="section faq" id="faq">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="ornament" aria-hidden="true">*</span>
+          <h2>よくある質問</h2>
         </div>
-        <div class="section-heading reveal reveal-delay-1">
-          <p class="kicker">Support</p>
-          <h2>コハクちゃんと一緒に、AI社員づくりを進めます</h2>
-          <p>運営者の人物プロフィール画像は前面に出さず、コハクちゃんを案内役として設計しています。サポートでは、元教師としての分かりやすい伴走、AI社員導入支援、LP・導線設計の視点を組み合わせます。</p>
-          <div class="operator-points">
-            <span>元教師の分かりやすい進行</span>
+        <div class="faq-grid">
+          <details class="faq-item reveal" open>
+            <summary>Claude Codeを使ったことがなくても大丈夫ですか？</summary>
+            <p>大丈夫です。最初に業務整理を行い、必要なところから順番に使える形へ進めます。</p>
+          </details>
+          <details class="faq-item reveal reveal-delay-1">
+            <summary>プログラミング経験は必要ですか？</summary>
+            <p>必須ではありません。目的はコードを書くことではなく、仕事で使えるAI社員環境を作ることです。</p>
+          </details>
+          <details class="faq-item reveal reveal-delay-2">
+            <summary>どのプランを選べばいいか分かりません。</summary>
+            <p>無料相談で現在の状況を確認し、7日・30日・60日のどれが合うかを一緒に整理します。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section support-profile">
+      <div class="container support-profile-grid">
+        <img class="profile-kohaku reveal" src="assets/kohaku-cta.png" alt="コハクちゃんがサポートを案内するイメージ">
+        <div class="reveal reveal-delay-1">
+          <p class="label">Support</p>
+          <h2>AI社員づくりを、実務に合わせてサポートします</h2>
+          <p>サポートでは、AI社員導入支援、Claude Code活用、LP・販売導線設計の視点を組み合わせます。ツールの説明だけで終わらせず、あなたの仕事で使える形まで一緒に整えます。</p>
+          <div class="trust-list">
             <span>AI社員導入支援</span>
+            <span>Claude Code活用</span>
             <span>LP・販売導線設計</span>
           </div>
         </div>
@@ -334,12 +352,14 @@
     </section>
 
     <section class="final-cta" id="contact">
-      <div class="container final-cta-inner reveal">
-        <p class="kicker">Free Consultation</p>
-        <h2>まずは、あなたの仕事にAI社員をどう活かせるか相談してみませんか？</h2>
-        <p>今の業務、作りたい商品、発信や集客の課題を整理しながら、どのようなAI社員を作ると効果的かをご提案します。</p>
-        <a class="btn-primary light" href="https://lin.ee/pJj7Wf6">無料相談でAI社員の作り方を聞く</a>
-        <p class="microcopy">相談だけで終了しても大丈夫です。必要のないプランを無理におすすめすることはありません。</p>
+      <div class="container final-card reveal">
+        <div class="pixel-claude cta-mascot" aria-hidden="true"></div>
+        <div>
+          <h2>まずは、あなたの仕事にAI社員をどう活かせるか相談してみませんか？</h2>
+          <p>無理な勧誘はありません。今の業務や課題を整理しながら、必要なAI社員の作り方をご提案します。</p>
+          <a class="btn-light" href="https://lin.ee/pJj7Wf6">無料相談でAI社員の作り方を聞く</a>
+        </div>
+        <img class="final-kohaku" src="assets/kohaku-cta.png" alt="コハクちゃんの最終案内イメージ">
       </div>
     </section>
   </main>
