@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【セミナー参加者限定】AI業務診断 特別価格 ¥99,000 | AI Strategy Partner</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --teal: #0e9aa7;
+    --orange: #f97316;
+    --red: #dc2626;
+    --gold: #d97706;
+    --bg: #f1f5f9;
+    --line: #e2e8f0;
+    --muted: #64748b;
+    --text: #1e293b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+    background: var(--navy);
+    color: var(--text);
+  }
+
+  /* ── TOP BADGE ── */
+  .top-badge {
+    background: var(--red);
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: .05em;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .8; }
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--navy);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  .header-brand {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    color: var(--teal);
+    text-transform: uppercase;
+  }
+
+  .header-label {
+    font-size: 11px;
+    background: rgba(249,115,22,.15);
+    color: var(--orange);
+    border: 1px solid rgba(249,115,22,.3);
+    padding: 4px 10px;
+    border-radius: 99px;
+    font-weight: 800;
+    letter-spacing: .04em;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, #0f1f3d 0%, #0e2a4a 60%, #0a2240 100%);
+    padding: 52px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(14,154,167,.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .hero-price-block {
+    margin-bottom: 24px;
+  }
+
+  .hero-original {
+    font-size: 18px;
+    color: rgba(255,255,255,.4);
+    text-decoration: line-through;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .hero-arrow {
+    font-size: 20px;
+    color: var(--orange);
+    margin-bottom: 4px;
+  }
+
+  .hero-price {
+    font-size: 64px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -.02em;
+  }
+
+  .hero-price span {
+    font-size: 28px;
+    font-weight: 700;
+    vertical-align: super;
+  }
+
+  .hero-save {
+    display: inline-block;
+    background: var(--orange);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 900;
+    padding: 6px 18px;
+    border-radius: 99px;
+    margin-top: 12px;
+  }
+
+  .hero-title {
+    font-size: 22px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.5;
+    margin: 24px 0 10px;
+  }
+
+  .hero-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,.55);
+    line-height: 1.8;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  /* ── FEATURES ── */
+  .section {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 24px 0 0;
+  }
+
+  .section-head {
+    background: var(--navy);
+    color: #fff;
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: .04em;
+  }
+
+  .section-body { padding: 20px; }
+
+  .benefit-list { list-style: none; }
+
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .benefit-item:last-child { border-bottom: none; }
+
+  .b-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--teal), #0891b2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .b-body { flex: 1; }
+  .b-title { font-size: 14px; font-weight: 800; color: var(--navy); }
+  .b-desc  { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.6; }
+
+  /* ── URGENCY ── */
+  .urgency-box {
+    background: linear-gradient(135deg, #7f1d1d, #991b1b);
+    border-radius: 14px;
+    padding: 20px;
+    margin: 24px 0 0;
+    text-align: center;
+  }
+
+  .urg-title {
+    font-size: 16px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .urg-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,.7);
+    line-height: 1.7;
+  }
+
+  /* ── CTA ── */
+  .cta-block {
+    margin: 24px 0 0;
+    text-align: center;
+  }
+
+  .cta-price-summary {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 10px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .cta-original {
+    font-size: 13px;
+    color: rgba(255,255,255,.4);
+    text-decoration: line-through;
+  }
+
+  .cta-arrow { font-size: 16px; color: var(--orange); }
+
+  .cta-final {
+    font-size: 22px;
+    font-weight: 900;
+    color: #fff;
+  }
+
+  .cta-discount {
+    font-size: 12px;
+    background: var(--orange);
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-weight: 800;
+  }
+
+  .btn-main {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, var(--orange), #ea580c);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 900;
+    padding: 20px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    letter-spacing: .02em;
+    box-shadow: 0 6px 24px rgba(249,115,22,.4);
+    transition: transform .15s, box-shadow .15s;
+    margin-bottom: 12px;
+  }
+
+  .btn-main:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(249,115,22,.5);
+  }
+
+  .btn-main small {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    opacity: .85;
+    margin-top: 3px;
+  }
+
+  .btn-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background: #00b900;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    padding: 14px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background .15s;
+  }
+
+  .btn-line:hover { background: #009a00; }
+
+  .cta-note {
+    font-size: 11px;
+    color: rgba(255,255,255,.35);
+    margin-top: 12px;
+    line-height: 1.8;
+  }
+
+  /* ── FLOW ── */
+  .flow-list { list-style: none; }
+
+  .flow-item {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: flex-start;
+  }
+
+  .flow-item:last-child { border-bottom: none; }
+
+  .f-num {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .f-title { font-size: 14px; font-weight: 800; color: var(--navy); }
+  .f-desc  { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.6; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #060f1e;
+    text-align: center;
+    padding: 24px;
+    font-size: 11px;
+    color: rgba(255,255,255,.25);
+  }
+</style>
+</head>
+<body>
+
+<!-- 緊急バッジ -->
+<div class="top-badge">🔒 このページはセミナー参加者限定です — URLは公開しないでください</div>
+
+<!-- ヘッダー -->
+<div class="header">
+  <div class="header-brand">AI Strategy Partner</div>
+  <div class="header-label">限定オファー</div>
+</div>
+
+<!-- ヒーロー -->
+<div class="hero">
+  <div class="hero-eyebrow">セミナー参加者 特別価格</div>
+
+  <div class="hero-price-block">
+    <div class="hero-original">通常価格 ¥198,000</div>
+    <div class="hero-arrow">↓ 今日だけ</div>
+    <div class="hero-price"><span>¥</span>99,000</div>
+    <div class="hero-save">¥99,000 OFF — 50%割引</div>
+  </div>
+
+  <h1 class="hero-title">
+    あなたの会社のAI活用を<br>プロが診断してレポートにまとめます
+  </h1>
+  <p class="hero-sub">
+    何から始めればいいかを明確にする「AI業務改善診断」。<br>
+    今日このセミナーに参加された方だけへの特別価格です。
+  </p>
+</div>
+
+<div class="main">
+
+  <!-- 特典リスト -->
+  <div class="section">
+    <div class="section-head">🎁 このオファーに含まれるもの</div>
+    <div class="section-body">
+      <ul class="benefit-list">
+        <li class="benefit-item">
+          <div class="b-icon">📋</div>
+          <div class="b-body">
+            <div class="b-title">AI活用診断レポート</div>
+            <div class="b-desc">御社の業務を分析し、AIで改善できるポイントをまとめたオリジナルレポートを作成</div>
+          </div>
+        </li>
+        <li class="benefit-item">
+          <div class="b-icon">📊</div>
+          <div class="b-body">
+            <div class="b-title">AI化可能業務一覧</div>
+            <div class="b-desc">どの業務がAIに置き換えられるか、効果の高さ・難易度・優先順位を整理</div>
+          </div>
+        </li>
+        <li class="benefit-item">
+          <div class="b-icon">🗺️</div>
+          <div class="b-body">
+            <div class="b-title">優先順位マップ</div>
+            <div class="b-desc">コスト削減・効率化・売上貢献の3軸でどこから手をつけるべきかを可視化</div>
+          </div>
+        </li>
+        <li class="benefit-item">
+          <div class="b-icon">🚀</div>
+          <div class="b-body">
+            <div class="b-title">3ヶ月導入ロードマップ</div>
+            <div class="b-desc">現実的な導入スケジュールと、社内で進めるための具体的なアクションプランを提示</div>
+          </div>
+        </li>
+        <li class="benefit-item">
+          <div class="b-icon">💬</div>
+          <div class="b-body">
+            <div class="b-title">60分個別ヒアリング（Zoom）</div>
+            <div class="b-desc">御社の状況を直接お聞きするZoomセッション。課題の深掘りと方向性の確認</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 緊急性 -->
+  <div class="urgency-box">
+    <div class="urg-title">⚠️ このオファーは本日のセミナー後のみ有効です</div>
+    <div class="urg-sub">
+      このURLを知っている方だけへの特別価格です。<br>
+      通常は ¥198,000 でのご案内となります。
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-price-summary">
+      <span class="cta-original">通常 ¥198,000</span>
+      <span class="cta-arrow">→</span>
+      <span class="cta-final">¥99,000</span>
+      <span class="cta-discount">50% OFF</span>
+    </div>
+
+    <a class="btn-main" href="payment.html">
+      今すぐ申し込む（¥99,000 税込）
+      <small>銀行振込一括 / 振り込み後にヒアリングフォームをお送りします</small>
+    </a>
+
+    <a class="btn-line" href="https://lin.ee/vw5ZQ65" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.089c.195 0 .354.158.354.354 0 .195-.159.354-.354.354H17.77v1.086h1.595c.195 0 .354.158.354.354 0 .195-.159.354-.354.354H17.416a.354.354 0 0 1-.354-.354V9.089c0-.196.158-.354.354-.354h1.949zm-3.741 2.502c0 .195-.158.354-.354.354a.354.354 0 0 1-.281-.14l-1.973-2.688v2.474c0 .195-.158.354-.354.354a.354.354 0 0 1-.354-.354V9.09c0-.196.158-.354.354-.354a.354.354 0 0 1 .282.14l1.972 2.688V9.09c0-.196.158-.354.354-.354.196 0 .354.158.354.354v2.501zm-3.756 0c0 .195-.159.354-.354.354a.354.354 0 0 1-.354-.354V9.089c0-.196.158-.354.354-.354.195 0 .354.158.354.354v2.502zm-1.663.354H8.257a.354.354 0 0 1-.354-.354V9.089c0-.196.158-.354.354-.354.195 0 .354.158.354.354v2.148h1.594c.195 0 .354.159.354.354 0 .196-.159.354-.354.354zM24 10.316C24 4.635 18.615.024 12 .024S0 4.635 0 10.316c0 5.099 4.523 9.37 10.63 10.18.414.089.977.272 1.12.625.128.32.084.821.041 1.146l-.18 1.085c-.055.32-.255 1.252 1.097.683 1.352-.569 7.3-4.3 9.962-7.361C23.14 14.674 24 12.585 24 10.316z"/></svg>
+      まず質問したい方はLINEへ
+    </a>
+
+    <div class="cta-note">
+      強引な営業は一切しません｜オンライン完結OK<br>
+      申し込み後のキャンセルはZoomセッション前日まで承ります
+    </div>
+  </div>
+
+  <!-- 申し込み後の流れ -->
+  <div class="section">
+    <div class="section-head">📋 申し込み後の流れ</div>
+    <div class="section-body">
+      <ul class="flow-list">
+        <li class="flow-item">
+          <div class="f-num">1</div>
+          <div>
+            <div class="f-title">銀行振込（¥99,000）</div>
+            <div class="f-desc">「申し込む」ボタンから振込先をご確認ください。振込後にLINEへご連絡ください。</div>
+          </div>
+        </li>
+        <li class="flow-item">
+          <div class="f-num">2</div>
+          <div>
+            <div class="f-title">事前ヒアリングフォームが届く</div>
+            <div class="f-desc">入金確認後3営業日以内に、LINEに事前ヒアリングフォームをお送りします。（10問・約10分）</div>
+          </div>
+        </li>
+        <li class="flow-item">
+          <div class="f-num">3</div>
+          <div>
+            <div class="f-title">Zoom日程を調整</div>
+            <div class="f-desc">ご都合の良い日時でZoomセッション（60〜90分）を調整します。</div>
+          </div>
+        </li>
+        <li class="flow-item">
+          <div class="f-num">4</div>
+          <div>
+            <div class="f-title">診断レポートを納品</div>
+            <div class="f-desc">Zoomセッション後、1週間以内にオリジナルのAI業務改善レポートをお届けします。</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">© 2026 AI Strategy Partner — 小林 優希｜このページはセミナー参加者限定です</div>
+
+</body>
+</html>
