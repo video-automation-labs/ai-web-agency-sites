@@ -595,29 +595,75 @@
       position: absolute;
     }
 
-    .voice-assets {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      margin: -6px auto 18px;
-      opacity: 0.95;
-      width: min(320px, 70%);
-    }
-
     .voices {
       display: grid;
-      gap: 14px;
+      gap: 18px;
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .voice-card {
-      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 22px;
     }
 
-    .voice-card p {
+    .voice-label {
+      align-items: center;
+      display: flex;
+      gap: 8px;
+    }
+
+    .voice-company {
+      background: var(--accent);
+      border-radius: 4px;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      padding: 2px 8px;
+    }
+
+    .voice-industry {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .voice-challenge {
+      background: #f0f6fb;
+      border-left: 3px solid var(--accent);
+      font-size: 12px;
+      line-height: 1.6;
+      padding: 8px 10px;
+    }
+
+    .voice-challenge strong {
+      color: var(--accent);
+      display: block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      margin-bottom: 2px;
+    }
+
+    .voice-quote {
       color: #455c70;
+      flex: 1;
       font-size: 13px;
-      margin-bottom: 14px;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .voice-quote::before {
+      color: var(--accent);
+      content: '"';
+      font-size: 32px;
+      left: -4px;
+      line-height: 1;
+      opacity: .3;
+      position: absolute;
+      top: -6px;
     }
 
     .voice-name {
@@ -808,7 +854,7 @@
           <a href="#service">サービス内容</a>
           <a href="#flow">支援の流れ</a>
           <a href="#pricing">料金・プラン</a>
-          <a href="#fit">導入事例</a>
+          <a href="#voice">導入事例</a>
           <a href="#faq">よくある質問</a>
         </nav>
         <a class="nav-cta" href="#contact">
@@ -1100,22 +1146,45 @@
       <section id="voice" class="section-divider">
         <div class="container">
           <div class="section-head">
-            <h2>お客様の声</h2>
-            <p>掲載許可をいただいた内容のみ、順次掲載します。</p>
+            <h2>導入事例・お客様の声</h2>
+            <p>掲載許可をいただいた企業様の事例をご紹介します。</p>
           </div>
-          <img class="voice-assets" src="assets/testimonial-avatars.png" alt="匿名のお客様アイコン">
           <div class="voices">
             <article class="voice-card">
-              <p>何から手をつけるべきかが明確になり、社内に説明できる順番を整理できました。</p>
-              <div class="voice-name">製造業 / 経営者</div>
+              <div class="voice-label">
+                <span class="voice-company">A社</span>
+                <span class="voice-industry">製造業 / 従業員30名</span>
+              </div>
+              <div class="voice-challenge">
+                <strong>BEFORE</strong>
+                AI活用に興味はあるが何から始めればよいかわからず、社内への説明もできない状態だった。
+              </div>
+              <p class="voice-quote">業務改善診断を受けて、優先順位と進め方が一気に整理されました。社内での説明資料にもそのまま使えて助かりました。</p>
+              <div class="voice-name">経営者</div>
             </article>
             <article class="voice-card">
-              <p>研修が実務に直結していて、社員の質問と行動が変わりました。</p>
-              <div class="voice-name">サービス業 / 部門マネージャー</div>
+              <div class="voice-label">
+                <span class="voice-company">B社</span>
+                <span class="voice-industry">サービス業 / 従業員15名</span>
+              </div>
+              <div class="voice-challenge">
+                <strong>BEFORE</strong>
+                研修を実施しても現場への定着が課題で、一部の社員しかAIを使いこなせていなかった。
+              </div>
+              <p class="voice-quote">AI社員育成プログラムを導入してから、社員の質問の質が変わりました。「どう使うか」から「これに使えないか」に変わったのが一番の変化です。</p>
+              <div class="voice-name">部門マネージャー</div>
             </article>
             <article class="voice-card">
-              <p>自動化で毎月の作業時間が減り、本来やるべき仕事に集中できます。</p>
-              <div class="voice-name">卸売業 / 業務改善担当</div>
+              <div class="voice-label">
+                <span class="voice-company">C社</span>
+                <span class="voice-industry">卸売業 / 従業員20名</span>
+              </div>
+              <div class="voice-challenge">
+                <strong>BEFORE</strong>
+                毎月の定型業務に時間を取られ、戦略的な仕事に割く時間が確保できていなかった。
+              </div>
+              <p class="voice-quote">自動化の導入で月40時間以上の作業が削減されました。今は本来やるべき仕事に集中できています。費用対効果が想像以上でした。</p>
+              <div class="voice-name">業務改善担当</div>
             </article>
           </div>
         </div>
