@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI業務診断 — お申し込み・お支払い | AI Strategy Partner</title>
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --teal: #0e9aa7;
+    --orange: #f97316;
+    --green: #16a34a;
+    --bg: #f1f5f9;
+    --line: #e2e8f0;
+    --muted: #64748b;
+    --text: #1e293b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--navy);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-brand {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    color: var(--teal);
+    text-transform: uppercase;
+  }
+
+  .header-back {
+    font-size: 12px;
+    color: rgba(255,255,255,.5);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color .15s;
+  }
+
+  .header-back:hover { color: #fff; }
+
+  /* ── MAIN ── */
+  .main {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  /* ── PROGRESS ── */
+  .steps {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 36px;
+  }
+
+  .step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
+  }
+
+  .step-item::after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background: var(--line);
+  }
+
+  .step-item:last-child::after { display: none; }
+  .step-item.done::after { background: var(--teal); }
+
+  .step-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--line);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-item.active .step-circle {
+    background: var(--orange);
+    color: #fff;
+  }
+
+  .step-item.done .step-circle {
+    background: var(--teal);
+    color: #fff;
+  }
+
+  .step-label {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 5px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .step-item.active .step-label { color: var(--orange); font-weight: 800; }
+  .step-item.done .step-label   { color: var(--teal); }
+
+  /* ── SECTION HEADING ── */
+  .page-title {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .page-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .card-head {
+    background: var(--navy);
+    color: #fff;
+    padding: 14px 22px;
+    font-size: 13px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .card-body { padding: 22px; }
+
+  /* ── 注文サマリー ── */
+  .order-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+
+  .order-row:last-child { border-bottom: none; }
+  .order-row .label { color: var(--muted); }
+  .order-row .val   { font-weight: 700; color: var(--text); }
+  .order-row.total  { padding-top: 14px; }
+  .order-row.total .label { font-size: 15px; font-weight: 800; color: var(--navy); }
+  .order-row.total .val   { font-size: 22px; font-weight: 900; color: var(--orange); }
+
+  .tag-seminar {
+    display: inline-block;
+    background: #dcfce7;
+    color: var(--green);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 99px;
+    margin-left: 8px;
+  }
+
+  /* ── 振込先 ── */
+  .bank-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0;
+  }
+
+  .bank-row {
+    display: contents;
+  }
+
+  .bank-row > * {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .bank-row:last-child > * { border-bottom: none; }
+
+  .bank-key {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    padding-right: 12px;
+  }
+
+  .bank-val {
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 3px 9px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--teal);
+    cursor: pointer;
+    margin-left: 8px;
+    transition: background .15s;
+  }
+
+  .copy-btn:hover { background: var(--teal); color: #fff; }
+
+  /* ── 注意事項 ── */
+  .notice {
+    background: #fffbeb;
+    border: 1.5px solid #fcd34d;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #78350f;
+    margin-bottom: 16px;
+  }
+
+  .notice strong { font-weight: 800; }
+
+  /* ── 次のステップ ── */
+  .next-steps { list-style: none; }
+
+  .next-step {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: flex-start;
+  }
+
+  .next-step:last-child { border-bottom: none; }
+
+  .ns-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .ns-body { flex: 1; }
+  .ns-title { font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 2px; }
+  .ns-desc  { font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+  /* ── LINE CTA ── */
+  .line-cta {
+    background: #00b900;
+    border-radius: 10px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    transition: background .15s;
+    margin-bottom: 16px;
+  }
+
+  .line-cta:hover { background: #009a00; }
+
+  .line-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(255,255,255,.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .line-text { flex: 1; }
+  .line-title { font-size: 14px; font-weight: 900; color: #fff; }
+  .line-sub   { font-size: 12px; color: rgba(255,255,255,.8); margin-top: 2px; }
+  .line-arrow { font-size: 20px; color: rgba(255,255,255,.6); }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--navy);
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: rgba(255,255,255,.35);
+  }
+</style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<div class="header">
+  <div class="header-brand">AI Strategy Partner</div>
+  <a href="index.html" class="header-back">← LPに戻る</a>
+</div>
+
+<div class="main">
+
+  <!-- ステップ表示 -->
+  <div class="steps">
+    <div class="step-item done">
+      <div class="step-circle">✓</div>
+      <div class="step-label">内容確認</div>
+    </div>
+    <div class="step-item active">
+      <div class="step-circle">2</div>
+      <div class="step-label">お支払い</div>
+    </div>
+    <div class="step-item">
+      <div class="step-circle">3</div>
+      <div class="step-label">フォーム記入</div>
+    </div>
+    <div class="step-item">
+      <div class="step-circle">4</div>
+      <div class="step-label">Zoom日程調整</div>
+    </div>
+    <div class="step-item">
+      <div class="step-circle">5</div>
+      <div class="step-label">レポート納品</div>
+    </div>
+  </div>
+
+  <div class="page-title">お申し込み・お支払い</div>
+  <div class="page-sub">ご入金確認後、事前ヒアリングフォームをLINEにてお送りします。</div>
+
+  <!-- 注文内容 -->
+  <div class="card">
+    <div class="card-head">🧾 ご注文内容</div>
+    <div class="card-body">
+      <div class="order-row">
+        <span class="label">サービス</span>
+        <span class="val">AI業務改善診断</span>
+      </div>
+      <div class="order-row">
+        <span class="label">内容</span>
+        <span class="val" style="text-align:right;font-size:13px;line-height:1.7">
+          AI活用診断レポート・AI化可能業務一覧<br>
+          優先順位マップ・導入ロードマップ<br>
+          60分個別ヒアリング（Zoom）
+        </span>
+      </div>
+      <div class="order-row">
+        <span class="label">通常価格</span>
+        <span class="val" style="text-decoration:line-through;color:var(--muted)">¥198,000</span>
+      </div>
+      <div class="order-row total">
+        <span class="label">お支払い金額<span class="tag-seminar">セミナー特別価格</span></span>
+        <span class="val">¥99,000</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 振込先 -->
+  <div class="card">
+    <div class="card-head">🏦 銀行振込先</div>
+    <div class="card-body">
+      <div class="bank-grid">
+        <div class="bank-row">
+          <div class="bank-key">銀行名</div>
+          <div class="bank-val">住信SBIネット銀行（0038）</div>
+        </div>
+        <div class="bank-row">
+          <div class="bank-key">支店名</div>
+          <div class="bank-val">法人第一支店（106）</div>
+        </div>
+        <div class="bank-row">
+          <div class="bank-key">口座種別</div>
+          <div class="bank-val">普通預金</div>
+        </div>
+        <div class="bank-row">
+          <div class="bank-key">口座番号</div>
+          <div class="bank-val">
+            1534378
+            <button class="copy-btn" onclick="copyText('1534378', this)">コピー</button>
+          </div>
+        </div>
+        <div class="bank-row">
+          <div class="bank-key">口座名義</div>
+          <div class="bank-val">ド）コバヤシ</div>
+        </div>
+        <div class="bank-row">
+          <div class="bank-key">振込金額</div>
+          <div class="bank-val" style="color:var(--orange)">
+            ¥99,000
+            <span style="font-size:12px;font-weight:400;color:var(--muted)">（税込）</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 注意事項 -->
+  <div class="notice">
+    ⚠️ <strong>振込手数料はお客様負担</strong>にてお願いいたします。<br>
+    振込名義は、お申し込み者のお名前でお振り込みください。<br>
+    <strong>入金確認後3営業日以内</strong>に、LINEにてヒアリングフォームをお送りします。
+  </div>
+
+  <!-- 次のステップ -->
+  <div class="card">
+    <div class="card-head">📋 ご入金後の流れ</div>
+    <div class="card-body">
+      <ul class="next-steps">
+        <li class="next-step">
+          <div class="ns-num">1</div>
+          <div class="ns-body">
+            <div class="ns-title">振込完了後、LINEにご連絡ください</div>
+            <div class="ns-desc">「振込しました」とメッセージをお送りいただくとスムーズです。</div>
+          </div>
+        </li>
+        <li class="next-step">
+          <div class="ns-num">2</div>
+          <div class="ns-body">
+            <div class="ns-title">事前ヒアリングフォームをLINEで送付</div>
+            <div class="ns-desc">入金確認後3営業日以内に、10問の事前ヒアリングフォームをお送りします。（記入時間：約10分）</div>
+          </div>
+        </li>
+        <li class="next-step">
+          <div class="ns-num">3</div>
+          <div class="ns-body">
+            <div class="ns-title">Zoom日程を調整</div>
+            <div class="ns-desc">ご都合の良い日時でZoomセッション（60〜90分）を調整します。</div>
+          </div>
+        </li>
+        <li class="next-step">
+          <div class="ns-num">4</div>
+          <div class="ns-body">
+            <div class="ns-title">診断レポートを納品</div>
+            <div class="ns-desc">Zoomセッション後、1週間以内にAI業務改善レポートを納品します。</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- LINE CTA -->
+  <a href="https://lin.ee/vw5ZQ65" target="_blank" class="line-cta">
+    <div class="line-icon">💬</div>
+    <div class="line-text">
+      <div class="line-title">振込完了の連絡はこちら（LINE）</div>
+      <div class="line-sub">「振込しました」とメッセージをお送りください</div>
+    </div>
+    <div class="line-arrow">›</div>
+  </a>
+
+</div>
+
+<div class="footer">© 2026 AI Strategy Partner — 小林 優希</div>
+
+<script>
+  function copyText(text, btn) {
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'コピー済み ✓'
+      btn.style.background = 'var(--teal)'
+      btn.style.color = '#fff'
+      setTimeout(() => {
+        btn.textContent = 'コピー'
+        btn.style.background = ''
+        btn.style.color = ''
+      }, 2000)
+    })
+  }
+</script>
+
+</body>
+</html>
