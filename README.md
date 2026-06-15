@@ -77,23 +77,40 @@ npx wrangler pages deploy sites/<サイト名> --project-name <サイト名>
 
 ### 4. 既存サイトを更新する場合
 
+> ⚠️ **重要：git push だけでは本番サイトに反映されません**
+> 必ず wrangler デプロイコマンドを実行してください。
+
 ```bash
 cd ~/ai-web-agency-sites
 
-# 最新ファイルをコピー
-cp -r ~/VIBE_OS_MASTER/06_OUTPUT/<カテゴリ>/<サイト名>/. sites/<サイト名>/
-
-# プッシュ（GitHubに連携済みのプロジェクトは自動で再デプロイされる）
+# ① ファイルを編集後、GitHubにプッシュ
 git add sites/<サイト名>
 git commit -m "feat: <サイト名>を更新"
 git push origin main
 
-# CLIデプロイのプロジェクトは手動で再デプロイ
+# ② Cloudflare Pages に反映（← これを忘れると本番に反映されない）
 npx wrangler pages deploy sites/<サイト名> --project-name <サイト名>
+```
+
+#### よく使うサイトのデプロイコマンド（コピペ用）
+
+```bash
+# AI戦略パートナーLP
+cd ~/ai-web-agency-sites && npx wrangler pages deploy sites/ai-strategy-partner-lp --project-name ai-strategy-partner-lp
+
+# AI戦略パートナーHP
+cd ~/ai-web-agency-sites && npx wrangler pages deploy sites/ai-strategy-partner --project-name ai-strategy-partner
+
+# 琥珀LP
+cd ~/ai-web-agency-sites && npx wrangler pages deploy sites/kohaku-lp --project-name kohaku-lp
+
+# 琥珀ホームページ
+cd ~/ai-web-agency-sites && npx wrangler pages deploy sites/kohaku-official --project-name kohaku-official
 ```
 
 ### 注意点
 
+- **git push だけでは本番に反映されない**（wrangler deploy が必須）
 - Root directoryのパスはスペースなしで入力する（スペースがあるとデプロイ失敗する）
 - Build command・Build output directoryは空欄でOK（静的HTMLサイトの場合）
 - 公開不要なサイトは `sites/` に置いたままでも、Cloudflareプロジェクトを作らなければ非公開
