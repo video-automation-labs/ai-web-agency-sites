@@ -449,6 +449,16 @@
         font-size: 13px;
       }
 
+      .work-meta .by {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 6px;
+        color: var(--blue);
+        font-size: 11px;
+        font-weight: 800;
+      }
+
       .play {
         position: absolute;
         top: 14px;
@@ -1201,27 +1211,27 @@
             <div class="work-grid">
               <article class="work-card" data-category="アニメ" data-title="1つのアプリにAI秘書がいる生活" data-video="./assets/works/kuchu_2100.mp4" style="--thumb:url('./assets/works/thumb_kuchu_2100.jpg');--pos:50% 50%">
                 <span class="play" aria-hidden="true"></span>
-                <div class="work-meta"><span>アニメ</span><h3>1つのアプリにAI秘書がいる生活</h3><p>Seedanceで生成したAI秘書との日常映像</p></div>
+                <div class="work-meta"><span>アニメ</span><h3>1つのアプリにAI秘書がいる生活</h3><p>Seedanceで生成したAI秘書との日常映像</p><span class="by">by yuki</span></div>
               </article>
               <article class="work-card" data-category="広告" data-title="OP映像" data-video="./assets/works/op_video.mp4" style="--thumb:url('./assets/works/thumb_op_video.jpg');--pos:50% 50%">
                 <span class="play" aria-hidden="true"></span>
-                <div class="work-meta"><span>広告</span><h3>OP映像</h3><p>buzzy.nowを使ったオープニング映像</p></div>
+                <div class="work-meta"><span>広告</span><h3>OP映像</h3><p>buzzy.nowを使ったオープニング映像</p><span class="by">by yuki</span></div>
               </article>
               <article class="work-card" data-category="SNS" data-title="仕事の自動化" data-video="./assets/works/work_automation.mp4" style="--thumb:url('./assets/works/thumb_work_automation.jpg');--pos:50% 50%">
                 <span class="play" aria-hidden="true"></span>
-                <div class="work-meta"><span>SNS</span><h3>仕事の自動化</h3><p>AI×自動化をテーマにしたSNS動画</p></div>
+                <div class="work-meta"><span>SNS</span><h3>仕事の自動化</h3><p>AI×自動化をテーマにしたSNS動画</p><span class="by">by yuki</span></div>
               </article>
               <article class="work-card" data-category="SNS" data-title="動画編集自動化" data-video="./assets/works/edit_automation.mp4" style="--thumb:url('./assets/works/thumb_edit_automation.jpg');--pos:50% 50%">
                 <span class="play" aria-hidden="true"></span>
-                <div class="work-meta"><span>SNS</span><h3>動画編集自動化</h3><p>AI動画編集の自動化フローを紹介</p></div>
+                <div class="work-meta"><span>SNS</span><h3>動画編集自動化</h3><p>AI動画編集の自動化フローを紹介</p><span class="by">by yuki</span></div>
               </article>
               <article class="work-card" data-category="ブランド" data-title="未来都市へ" data-video="./assets/works/mirai_toshi.mp4" style="--thumb:url('./assets/works/thumb_mirai_toshi.jpg');--pos:50% 50%">
                 <span class="play" aria-hidden="true"></span>
-                <div class="work-meta"><span>ブランド</span><h3>未来都市へ</h3><p>Seedanceで生成した未来都市ブランド映像</p></div>
+                <div class="work-meta"><span>ブランド</span><h3>未来都市へ</h3><p>Seedanceで生成した未来都市ブランド映像</p><span class="by">by yuki</span></div>
               </article>
               <article class="work-card" data-category="MV" data-title="MV生成実験" data-video="./assets/works/mv_experiment.mp4" style="--thumb:url('./assets/works/thumb_mv_experiment.jpg');--pos:50% 50%">
                 <span class="play" aria-hidden="true"></span>
-                <div class="work-meta"><span>MV</span><h3>MV生成実験</h3><p>buzzy.nowを使ったMV映像制作の検証</p></div>
+                <div class="work-meta"><span>MV</span><h3>MV生成実験</h3><p>buzzy.nowを使ったMV映像制作の検証</p><span class="by">by yuki</span></div>
               </article>
             </div>
           </div>
@@ -1237,6 +1247,14 @@
               <p class="section-copy">専門分野、得意ジャンル、作品数、評価、受注件数を見ながら、依頼したいクリエイターを比較できます。</p>
             </div>
             <div class="creator-grid">
+              <article class="creator-card" style="border-color:rgba(24,200,255,.4);box-shadow:0 0 0 1px rgba(24,200,255,.1),0 22px 60px rgba(24,200,255,.08)">
+                <div class="avatar" style="background:linear-gradient(135deg,#18c8ff,#2d7dff)">YK</div>
+                <h3>yuki <span class="cert-badge platinum">Platinum</span></h3>
+                <p>AI動画 / SNS / ブランドムービー</p>
+                <div style="font-size:11px;color:var(--blue);font-weight:800;margin-bottom:10px">★ Platform Creator</div>
+                <div class="creator-stats"><div class="stat"><b>6</b><small>作品数</small></div><div class="stat"><b>NEW</b><small>評価</small></div><div class="stat"><b>—</b><small>受注</small></div><div class="stat"><b>全般</b><small>得意</small></div></div>
+                <a class="text-link" href="#contact">プロフィールを見る</a>
+              </article>
               <article class="creator-card">
                 <div class="avatar">AK</div>
                 <h3>Akira K. <span class="cert-badge gold">Gold</span></h3>
@@ -1310,9 +1328,9 @@
               </div>
             </div>
             <div class="rank-list">
-              <div class="rank-row"><span class="rank-num">4</span><div class="rank-avatar">MY</div><div class="rank-info"><strong>Maya Y.</strong><span>AIデザイン / 商品紹介</span></div><span class="cert-badge gold">Gold</span><span class="rank-score">2,410</span></div>
-              <div class="rank-row"><span class="rank-num">5</span><div class="rank-avatar">KT</div><div class="rank-info"><strong>Kota T.</strong><span>SNS動画 / ショート</span></div><span class="cert-badge silver">Silver</span><span class="rank-score">1,980</span></div>
-              <div class="rank-row"><span class="rank-num">6</span><div class="rank-avatar">HM</div><div class="rank-info"><strong>Hana M.</strong><span>アニメ / キャラクター</span></div><span class="cert-badge bronze">Bronze</span><span class="rank-score">1,750</span></div>
+              <div class="rank-row" style="border-color:rgba(24,200,255,.35);background:rgba(24,200,255,.05)"><span class="rank-num" style="color:var(--blue)">4</span><div class="rank-avatar" style="background:linear-gradient(135deg,#18c8ff,#2d7dff)">YK</div><div class="rank-info"><strong>yuki</strong><span>AI動画 / SNS / ブランドムービー</span></div><span class="cert-badge platinum">Platinum</span><span class="rank-score">2,200</span></div>
+              <div class="rank-row"><span class="rank-num">5</span><div class="rank-avatar">MY</div><div class="rank-info"><strong>Maya Y.</strong><span>AIデザイン / 商品紹介</span></div><span class="cert-badge gold">Gold</span><span class="rank-score">2,080</span></div>
+              <div class="rank-row"><span class="rank-num">6</span><div class="rank-avatar">KT</div><div class="rank-info"><strong>Kota T.</strong><span>SNS動画 / ショート</span></div><span class="cert-badge silver">Silver</span><span class="rank-score">1,750</span></div>
             </div>
           </div>
         </section>
