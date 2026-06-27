@@ -1569,7 +1569,10 @@
                 <li>コミュニティ参加と勉強会</li>
                 <li>案件紹介</li>
               </ul>
-              <div class="section-actions"><a class="btn primary" href="#" data-open="reg">クリエイター登録</a></div>
+              <div class="section-actions">
+                <a class="btn primary" href="#" data-open="reg">クリエイター登録</a>
+                <a class="btn ghost" href="#" data-open="edit" style="margin-left:12px">プロフィール編集</a>
+              </div>
             </article>
           </div>
         </section>
@@ -1863,6 +1866,10 @@
             <input type="text" name="name" required placeholder="例: yuki">
           </div>
           <div class="form-group">
+            <label>メールアドレス *（プロフィール編集時に使います）</label>
+            <input type="email" name="reg_email" required placeholder="you@example.com">
+          </div>
+          <div class="form-group">
             <label>専門分野 *</label>
             <select name="specialty" required>
               <option value="">選択してください</option>
@@ -1945,6 +1952,66 @@
       </div>
     </div>
 
+    <!-- プロフィール編集モーダル -->
+    <div class="fmodal" id="editModal" aria-hidden="true" role="dialog">
+      <div class="fmodal-box">
+        <button class="fmodal-close" id="editClose" aria-label="閉じる">×</button>
+        <!-- Step 1: メールアドレス入力 -->
+        <div id="editStep1">
+          <h2>プロフィール編集</h2>
+          <p class="fmodal-sub">登録したメールアドレスに確認リンクを送ります。クリックするとそのまま編集できます。</p>
+          <form id="editEmailForm">
+            <div class="form-group">
+              <label>登録メールアドレス *</label>
+              <input type="email" name="edit_email" required placeholder="you@example.com">
+            </div>
+            <button type="submit" class="form-submit">確認リンクを送信</button>
+            <div class="form-msg" id="editEmailMsg"></div>
+          </form>
+        </div>
+        <!-- Step 2: 編集フォーム（メールリンク認証後に表示） -->
+        <div id="editStep2" style="display:none">
+          <h2>プロフィールを編集</h2>
+          <p class="fmodal-sub">変更後「保存する」を押してください。</p>
+          <form id="editProfileForm">
+            <input type="hidden" name="creator_id">
+            <div class="form-group">
+              <label>名前 *</label>
+              <input type="text" name="name" required>
+            </div>
+            <div class="form-group">
+              <label>専門分野 *</label>
+              <select name="specialty" required>
+                <option value="">選択してください</option>
+                <option>AI動画</option>
+                <option>ブランドムービー</option>
+                <option>SNS動画</option>
+                <option>MV</option>
+                <option>3DCG・VFX</option>
+                <option>アニメ</option>
+                <option>広告映像</option>
+                <option>その他</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>使用ツール *</label>
+              <input type="text" name="tools" required>
+            </div>
+            <div class="form-group">
+              <label>SNS / ポートフォリオURL *</label>
+              <input type="url" name="sns_url" required>
+            </div>
+            <div class="form-group">
+              <label>自己紹介（一言）*</label>
+              <textarea name="bio" required></textarea>
+            </div>
+            <button type="submit" class="form-submit">保存する</button>
+            <div class="form-msg" id="editProfileMsg"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <script>
       // ─── Supabase 設定 ─────────────────────────────────────────────
       // supabase.com でプロジェクトを作成後、以下を書き換えてください
@@ -2019,6 +2086,7 @@
 
         const payload = {
           name:      form.querySelector("[name=name]").value.trim(),
+          email:     form.querySelector("[name=reg_email]").value.trim(),
           specialty: form.querySelector("[name=specialty]").value,
           tools:     form.querySelector("[name=tools]").value.trim(),
           sns_url:   form.querySelector("[name=sns_url]").value.trim(),
@@ -2110,9 +2178,103 @@
         grid.innerHTML = data.map(creatorCardHTML).join("");
       }
 
+      // ─── Profile edit (magic link flow) ──────────────────────
+      const editModal = document.getElementById("editModal");
+      document.getElementById("editClose").addEventListener("click", () => {
+        editModal.classList.remove("open"); editModal.setAttribute("aria-hidden", "true");
+      });
+      editModal.addEventListener("click", (e) => {
+        if (e.target === editModal) { editModal.classList.remove("open"); editModal.setAttribute("aria-hidden", "true"); }
+      });
+      document.querySelectorAll("[data-open='edit']").forEach(el => {
+        el.addEventListener("click", (e) => {
+          e.preventDefault();
+          document.getElementById("editStep1").style.display = "";
+          document.getElementById("editStep2").style.display = "none";
+          editModal.classList.add("open"); editModal.setAttribute("aria-hidden", "false");
+        });
+      });
+
+      document.getElementById("editEmailForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = e.target.querySelector("[name=edit_email]").value.trim();
+        const btn   = e.target.querySelector("button[type=submit]");
+        const msg   = document.getElementById("editEmailMsg");
+        btn.disabled = true; btn.textContent = "送信中...";
+
+        const { error } = await db.auth.signInWithOtp({
+          email,
+          options: { emailRedirectTo: window.location.href.split('#')[0] }
+        });
+        if (error) {
+          msg.textContent = "送信に失敗しました。登録したメールアドレスを確認してください。";
+          msg.className = "form-msg error";
+        } else {
+          msg.textContent = "✅ 確認メールを送信しました。メールのリンクをクリックしてください。";
+          msg.className = "form-msg success";
+        }
+        btn.disabled = false; btn.textContent = "確認リンクを送信";
+      });
+
+      document.getElementById("editProfileForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const btn  = form.querySelector("button[type=submit]");
+        const msg  = document.getElementById("editProfileMsg");
+        btn.disabled = true; btn.textContent = "保存中...";
+
+        const id = form.querySelector("[name=creator_id]").value;
+        const data = {
+          name:      form.querySelector("[name=name]").value.trim(),
+          specialty: form.querySelector("[name=specialty]").value,
+          tools:     form.querySelector("[name=tools]").value.trim(),
+          sns_url:   form.querySelector("[name=sns_url]").value.trim(),
+          bio:       form.querySelector("[name=bio]").value.trim(),
+        };
+        const { error } = await db.from("creators").update(data).eq("id", id);
+        if (error) {
+          msg.textContent = "保存に失敗しました。もう一度お試しください。";
+          msg.className = "form-msg error";
+        } else {
+          msg.textContent = "✅ 保存しました！";
+          msg.className = "form-msg success";
+          await db.auth.signOut();
+          setTimeout(() => {
+            editModal.classList.remove("open"); editModal.setAttribute("aria-hidden", "true");
+            loadCreators();
+          }, 1500);
+        }
+        btn.disabled = false; btn.textContent = "保存する";
+      });
+
+      // メールリンクからの戻り（magic link callback）
+      if (sbReady) {
+        db.auth.onAuthStateChange(async (event, session) => {
+          if (event === 'SIGNED_IN' && session?.user?.email) {
+            const email = session.user.email;
+            const { data: creator } = await db.from("creators").select("*").eq("email", email).single();
+            if (creator) {
+              const form = document.getElementById("editProfileForm");
+              form.querySelector("[name=creator_id]").value = creator.id;
+              form.querySelector("[name=name]").value       = creator.name || "";
+              form.querySelector("[name=specialty]").value  = creator.specialty || "";
+              form.querySelector("[name=tools]").value      = creator.tools || "";
+              form.querySelector("[name=sns_url]").value    = creator.sns_url || "";
+              form.querySelector("[name=bio]").value        = creator.bio || "";
+              document.getElementById("editStep1").style.display = "none";
+              document.getElementById("editStep2").style.display = "";
+              editModal.classList.add("open"); editModal.setAttribute("aria-hidden", "false");
+            }
+          }
+        });
+      }
+
       // ─── Global keyboard handler ──────────────────────────────
       window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") { closeWorkModal(); closeFModal("regModal"); closeFModal("inqModal"); }
+        if (e.key === "Escape") {
+          closeWorkModal(); closeFModal("regModal"); closeFModal("inqModal");
+          editModal.classList.remove("open"); editModal.setAttribute("aria-hidden", "true");
+        }
       });
 
       loadCreators();
