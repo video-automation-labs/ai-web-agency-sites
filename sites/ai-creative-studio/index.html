@@ -1,0 +1,1780 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Creative Studio | AIクリエイターと企業をつなぐプラットフォーム</title>
+    <meta name="description" content="AI Creative Studioは、企業とAIクリエイターをつなぐAIクリエイティブ専門のマッチングプラットフォームです。作品が営業し、才能が評価され、企業が理想のクリエイターと出会える場所をつくります。">
+    <style>
+      :root {
+        --bg: #050609;
+        --bg-soft: #0b0f15;
+        --panel: #101722;
+        --panel-2: #151d2a;
+        --line: rgba(150, 190, 255, .18);
+        --line-strong: rgba(99, 210, 255, .42);
+        --text: #f6f8ff;
+        --muted: #a8b3c7;
+        --subtle: #6f7b91;
+        --blue: #18c8ff;
+        --blue-2: #2d7dff;
+        --pink: #ff4fd8;
+        --amber: #ffb45e;
+        --green: #35e6a8;
+        --radius: 8px;
+        --shadow: 0 24px 80px rgba(0, 0, 0, .42);
+      }
+
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+        line-height: 1.65;
+        letter-spacing: 0;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
+        background-size: 56px 56px;
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,.5), transparent 65%);
+        z-index: 0;
+      }
+
+      a { color: inherit; text-decoration: none; }
+
+      img { max-width: 100%; display: block; }
+
+      button, input, select, textarea {
+        font: inherit;
+      }
+
+      .site {
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 14px clamp(18px, 4vw, 46px);
+        background: rgba(5, 6, 9, .72);
+        border-bottom: 1px solid rgba(255, 255, 255, .08);
+        backdrop-filter: blur(18px);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
+      .brand-mark {
+        width: 30px;
+        height: 30px;
+        border: 1px solid var(--line-strong);
+        border-radius: 7px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, rgba(24, 200, 255, .18), rgba(255, 79, 216, .12));
+        box-shadow: 0 0 26px rgba(24, 200, 255, .2);
+      }
+
+      .brand-mark::before {
+        content: "";
+        width: 12px;
+        height: 12px;
+        border: 2px solid var(--blue);
+        border-left-color: var(--pink);
+        transform: rotate(45deg);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: clamp(12px, 2vw, 26px);
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .nav-links a:hover { color: var(--text); }
+
+      .nav-action {
+        border: 1px solid var(--line-strong);
+        color: var(--text);
+        padding: 8px 13px;
+        border-radius: 6px;
+        background: rgba(24, 200, 255, .1);
+      }
+
+      .hero {
+        min-height: 92svh;
+        position: relative;
+        display: grid;
+        place-items: center;
+        padding: 112px 20px 72px;
+        isolation: isolate;
+      }
+
+      .hero-media {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+      }
+
+      .hero-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: .9;
+      }
+
+      .hero-media::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at center, rgba(0, 0, 0, .15), rgba(5, 6, 9, .22) 28%, rgba(5, 6, 9, .9) 76%),
+          linear-gradient(to bottom, rgba(5, 6, 9, .12), rgba(5, 6, 9, .96));
+      }
+
+      .hero-inner {
+        width: min(1040px, 100%);
+        text-align: center;
+        margin-top: 18px;
+      }
+
+      .status-line {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 22px;
+        padding: 7px 12px;
+        border: 1px solid rgba(255, 255, 255, .13);
+        background: rgba(8, 13, 20, .66);
+        color: var(--muted);
+        font-size: 12px;
+        border-radius: 999px;
+      }
+
+      .pulse {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 18px rgba(53, 230, 168, .85);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(46px, 9vw, 118px);
+        line-height: .9;
+        letter-spacing: 0;
+        font-weight: 900;
+      }
+
+      .hero-lead {
+        width: min(760px, 100%);
+        margin: 24px auto 0;
+        color: #d9e2f5;
+        font-size: clamp(16px, 2vw, 22px);
+        line-height: 1.8;
+      }
+
+      .hero-actions,
+      .section-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .btn {
+        min-height: 46px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        border: 1px solid rgba(255, 255, 255, .16);
+        background: rgba(255, 255, 255, .07);
+        color: var(--text);
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        border-color: rgba(24, 200, 255, .68);
+        background: rgba(24, 200, 255, .13);
+      }
+
+      .btn.primary {
+        border-color: transparent;
+        background: linear-gradient(135deg, var(--blue), var(--blue-2));
+        color: #00111c;
+        box-shadow: 0 12px 42px rgba(24, 200, 255, .28);
+      }
+
+      .btn.ghost {
+        background: rgba(5, 6, 9, .45);
+      }
+
+      .hero-strip {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        gap: 1px;
+        height: 78px;
+        border-top: 1px solid rgba(255,255,255,.08);
+        background: rgba(5, 6, 9, .58);
+        overflow: hidden;
+      }
+
+      .ticker {
+        display: flex;
+        min-width: 100%;
+        animation: drift 24s linear infinite;
+      }
+
+      .ticker span {
+        display: grid;
+        place-items: center;
+        min-width: 190px;
+        color: rgba(255,255,255,.72);
+        font-size: 12px;
+        border-right: 1px solid rgba(255,255,255,.07);
+      }
+
+      @keyframes drift {
+        to { transform: translateX(-50%); }
+      }
+
+      section {
+        padding: clamp(62px, 8vw, 104px) clamp(18px, 4vw, 46px);
+      }
+
+      .section-dark { background: #070a0f; }
+      .section-soft { background: #0a0f16; }
+
+      .container {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, .82fr) minmax(280px, .58fr);
+        gap: 36px;
+        align-items: end;
+        margin-bottom: 34px;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--blue);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(28px, 5vw, 56px);
+        line-height: 1.1;
+        letter-spacing: 0;
+      }
+
+      .section-copy {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 14px;
+      }
+
+      .statement {
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+        border-radius: var(--radius);
+        padding: 24px;
+        min-height: 190px;
+      }
+
+      .statement strong {
+        display: block;
+        font-size: 20px;
+        line-height: 1.35;
+        margin-bottom: 12px;
+      }
+
+      .statement p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .tabs {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        margin-bottom: 22px;
+      }
+
+      .tab {
+        white-space: nowrap;
+        border: 1px solid rgba(255,255,255,.12);
+        color: var(--muted);
+        background: rgba(255,255,255,.05);
+        border-radius: 999px;
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+
+      .tab.active,
+      .tab:hover {
+        color: var(--text);
+        border-color: rgba(24, 200, 255, .6);
+        background: rgba(24, 200, 255, .11);
+      }
+
+      .work-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+
+      .work-card {
+        position: relative;
+        min-height: 270px;
+        border: 1px solid rgba(255,255,255,.11);
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: #111;
+        box-shadow: var(--shadow);
+        cursor: pointer;
+      }
+
+      .work-card:nth-child(1),
+      .work-card:nth-child(6) { grid-column: span 2; }
+
+      .work-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: var(--thumb);
+        background-size: 240%;
+        background-position: var(--pos);
+        transition: transform .42s ease, filter .42s ease;
+      }
+
+      .work-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,.88), rgba(0,0,0,.1) 58%);
+      }
+
+      .work-card:hover::before {
+        transform: scale(1.08);
+        filter: saturate(1.22) brightness(1.08);
+      }
+
+      .work-meta {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        z-index: 2;
+      }
+
+      .work-meta span {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        color: var(--blue);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .work-meta span::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        background: currentColor;
+        border-radius: 50%;
+        box-shadow: 0 0 16px currentColor;
+      }
+
+      .work-meta h3 {
+        margin: 7px 0 4px;
+        font-size: 19px;
+        line-height: 1.25;
+      }
+
+      .work-meta p {
+        margin: 0;
+        color: rgba(255,255,255,.72);
+        font-size: 13px;
+      }
+
+      .play {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        z-index: 2;
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        border: 1px solid rgba(255,255,255,.22);
+        background: rgba(0,0,0,.42);
+      }
+
+      .play::before {
+        content: "";
+        border-left: 10px solid #fff;
+        border-top: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+        margin-left: 3px;
+      }
+
+      .creator-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+
+      .creator-card,
+      .reason-card,
+      .price-card,
+      .faq-item,
+      .flow-card {
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+        border-radius: var(--radius);
+      }
+
+      .creator-card {
+        padding: 18px;
+      }
+
+      .avatar {
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: #031019;
+        font-weight: 900;
+        background: linear-gradient(135deg, var(--blue), var(--pink));
+        margin-bottom: 15px;
+      }
+
+      .creator-card h3 {
+        margin: 0 0 4px;
+        font-size: 18px;
+      }
+
+      .creator-card p {
+        margin: 0 0 12px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .creator-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin: 14px 0;
+      }
+
+      .stat {
+        padding: 8px;
+        border-radius: 6px;
+        background: rgba(255,255,255,.05);
+      }
+
+      .stat b {
+        display: block;
+        font-size: 16px;
+      }
+
+      .stat small {
+        color: var(--subtle);
+        font-size: 11px;
+      }
+
+      .text-link {
+        color: var(--blue);
+        font-weight: 800;
+        font-size: 13px;
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+      }
+
+      .category {
+        min-height: 76px;
+        display: flex;
+        align-items: end;
+        padding: 12px;
+        border: 1px solid rgba(255,255,255,.1);
+        border-radius: 7px;
+        background:
+          linear-gradient(135deg, rgba(24,200,255,.12), transparent),
+          rgba(255,255,255,.035);
+        color: #e9f2ff;
+        font-weight: 800;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .audience {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 28px;
+        background: #0c1119;
+      }
+
+      .audience h3 {
+        margin: 0 0 16px;
+        font-size: 25px;
+      }
+
+      .check-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .check-list li {
+        position: relative;
+        padding-left: 24px;
+        color: var(--muted);
+      }
+
+      .check-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: .62em;
+        width: 9px;
+        height: 9px;
+        border-radius: 2px;
+        background: var(--blue);
+        box-shadow: 0 0 15px rgba(24, 200, 255, .72);
+      }
+
+      .reason-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+
+      .reason-card {
+        padding: 20px;
+        min-height: 155px;
+      }
+
+      .reason-card b {
+        display: block;
+        font-size: 18px;
+        margin-bottom: 8px;
+      }
+
+      .reason-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .results-row {
+        display: grid;
+        grid-template-columns: 1.4fr .9fr .9fr;
+        gap: 14px;
+      }
+
+      .result-feature {
+        min-height: 360px;
+        border-radius: var(--radius);
+        border: 1px solid rgba(255,255,255,.11);
+        overflow: hidden;
+        position: relative;
+        background: #111;
+      }
+
+      .result-feature::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("./assets/creative-wall.png");
+        background-size: 180%;
+        background-position: 16% 52%;
+        filter: saturate(1.12);
+      }
+
+      .result-feature::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,.9), rgba(0,0,0,.12));
+      }
+
+      .result-copy {
+        position: absolute;
+        left: 22px;
+        right: 22px;
+        bottom: 22px;
+        z-index: 2;
+      }
+
+      .result-copy h3 {
+        margin: 0 0 8px;
+        font-size: 25px;
+      }
+
+      .mini-results {
+        display: grid;
+        gap: 14px;
+      }
+
+      .mini-result {
+        min-height: 173px;
+        border: 1px solid rgba(255,255,255,.11);
+        border-radius: var(--radius);
+        padding: 18px;
+        background: linear-gradient(135deg, rgba(24,200,255,.1), rgba(255,255,255,.035));
+      }
+
+      .mini-result strong {
+        display: block;
+        margin-bottom: 7px;
+        font-size: 18px;
+      }
+
+      .mini-result p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .flow-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .flow-card {
+        padding: 24px;
+      }
+
+      .flow-card h3 {
+        margin: 0 0 18px;
+      }
+
+      .flow-steps {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 7px;
+      }
+
+      .flow-steps span {
+        min-height: 58px;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        border-radius: 6px;
+        background: rgba(255,255,255,.055);
+        color: #dce8ff;
+        font-size: 12px;
+        font-weight: 800;
+        padding: 6px;
+      }
+
+      .price-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      .price-card {
+        padding: 24px;
+      }
+
+      .price-card.featured {
+        border-color: rgba(24, 200, 255, .58);
+        box-shadow: 0 0 0 1px rgba(24,200,255,.16), 0 22px 70px rgba(24,200,255,.12);
+      }
+
+      .price-card h3 {
+        margin: 0 0 8px;
+        font-size: 23px;
+      }
+
+      .price {
+        margin: 0 0 15px;
+        color: var(--text);
+        font-size: 31px;
+        font-weight: 900;
+      }
+
+      .price small {
+        font-size: 13px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .faq-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .faq-item {
+        padding: 18px;
+      }
+
+      .faq-item h3 {
+        margin: 0 0 8px;
+        font-size: 16px;
+      }
+
+      .faq-item p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .contact {
+        min-height: 72svh;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        background:
+          linear-gradient(rgba(5,6,9,.72), rgba(5,6,9,.92)),
+          url("./assets/creative-wall.png") center / cover;
+      }
+
+      .contact h2 {
+        font-size: clamp(36px, 7vw, 86px);
+      }
+
+      .contact p {
+        width: min(720px, 100%);
+        margin: 22px auto 0;
+        color: #d9e2f5;
+      }
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        display: none;
+        place-items: center;
+        padding: 22px;
+        background: rgba(0, 0, 0, .76);
+        backdrop-filter: blur(10px);
+      }
+
+      .modal.open { display: grid; }
+
+      .modal-panel {
+        width: min(940px, 100%);
+        border: 1px solid rgba(255,255,255,.16);
+        border-radius: var(--radius);
+        background: #080c12;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .modal-media {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        background-image: url("./assets/creative-wall.png");
+        background-size: 180%;
+        background-position: center;
+      }
+
+      .modal-media::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,.74), transparent);
+      }
+
+      .modal-body {
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .modal-body h3 {
+        margin: 0 0 4px;
+      }
+
+      .modal-body p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .close {
+        border: 1px solid rgba(255,255,255,.18);
+        background: rgba(255,255,255,.06);
+        color: var(--text);
+        width: 42px;
+        height: 42px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .future-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .future-list span {
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,.12);
+        color: var(--muted);
+        background: rgba(255,255,255,.04);
+        font-size: 12px;
+      }
+
+      /* ── Ranking ── */
+      .rank-podium {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr 1fr;
+        gap: 12px;
+        align-items: end;
+        margin-bottom: 20px;
+      }
+      .rank-top {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 20px 16px;
+        text-align: center;
+        background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+      }
+      .rank-top.gold {
+        border-color: rgba(255,180,94,.45);
+        box-shadow: 0 0 0 1px rgba(255,180,94,.12), 0 22px 60px rgba(255,180,94,.1);
+      }
+      .rank-medal { font-size: 28px; display: block; margin-bottom: 10px; }
+      .rank-list { display: grid; gap: 8px; }
+      .rank-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 16px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: rgba(255,255,255,.03);
+      }
+      .rank-num { width: 24px; color: var(--subtle); font-weight: 900; font-size: 14px; text-align: center; flex-shrink: 0; }
+      .rank-avatar {
+        width: 40px; height: 40px; border-radius: 50%;
+        display: grid; place-items: center;
+        color: #031019; font-weight: 900; font-size: 12px;
+        background: linear-gradient(135deg, var(--blue), var(--pink));
+        flex-shrink: 0;
+      }
+      .rank-info { flex: 1; }
+      .rank-info strong { display: block; font-size: 15px; }
+      .rank-info span { color: var(--muted); font-size: 12px; }
+      .rank-score { color: var(--blue); font-weight: 900; font-size: 14px; flex-shrink: 0; }
+
+      /* ── Certification Badges ── */
+      .cert-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 3px 9px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: .04em;
+      }
+      .cert-badge.bronze { background: rgba(205,127,50,.15); color: #cd7f32; border: 1px solid rgba(205,127,50,.3); }
+      .cert-badge.silver { background: rgba(192,192,192,.12); color: #c0c0c0; border: 1px solid rgba(192,192,192,.25); }
+      .cert-badge.gold   { background: rgba(255,180,94,.14);  color: var(--amber); border: 1px solid rgba(255,180,94,.3); }
+      .cert-badge.platinum { background: rgba(24,200,255,.13); color: var(--blue); border: 1px solid rgba(24,200,255,.3); }
+
+      /* ── Certification Tiers ── */
+      .cert-tiers {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+      .cert-tier {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 24px 20px;
+        text-align: center;
+        background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+      }
+      .cert-icon { font-size: 36px; display: block; margin-bottom: 10px; }
+      .cert-tier h3 { margin: 10px 0 7px; font-size: 17px; }
+      .cert-tier p { margin: 0; color: var(--muted); font-size: 13px; }
+
+      /* ── Contest ── */
+      .contest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .contest-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+      }
+      .contest-badge {
+        display: block;
+        padding: 7px 16px;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: .07em;
+        text-transform: uppercase;
+      }
+      .contest-badge.live     { background: rgba(53,230,168,.13); color: var(--green); }
+      .contest-badge.upcoming { background: rgba(24,200,255,.11); color: var(--blue); }
+      .contest-badge.ended    { background: rgba(255,255,255,.06); color: var(--subtle); }
+      .contest-body { padding: 14px 18px 20px; }
+      .contest-body h3 { margin: 0 0 6px; font-size: 18px; }
+      .contest-body p { margin: 0 0 16px; color: var(--muted); font-size: 13px; }
+      .contest-meta { display: flex; justify-content: space-between; align-items: flex-end; }
+      .prize { font-size: 20px; font-weight: 900; color: var(--amber); }
+      .prize small { font-size: 11px; color: var(--muted); font-weight: 600; display: block; }
+      .deadline { font-size: 12px; color: var(--muted); text-align: right; line-height: 1.6; }
+
+      /* ── Project Board ── */
+      .project-grid { display: grid; gap: 10px; }
+      .project-row {
+        display: grid;
+        grid-template-columns: 1fr auto auto auto;
+        align-items: center;
+        gap: 18px;
+        padding: 16px 20px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: rgba(255,255,255,.03);
+        cursor: pointer;
+        transition: border-color .18s ease, background .18s ease;
+      }
+      .project-row:hover {
+        border-color: rgba(24,200,255,.4);
+        background: rgba(24,200,255,.05);
+      }
+      .project-info h3 { margin: 0 0 3px; font-size: 16px; }
+      .project-info p  { margin: 0; color: var(--muted); font-size: 13px; }
+      .project-tag {
+        padding: 5px 11px; border-radius: 999px;
+        border: 1px solid rgba(255,255,255,.12);
+        color: var(--muted); font-size: 12px;
+        background: rgba(255,255,255,.04);
+        white-space: nowrap;
+      }
+      .project-budget { font-weight: 900; color: var(--green); white-space: nowrap; }
+      .project-due { color: var(--subtle); font-size: 12px; white-space: nowrap; text-align: right; }
+
+      /* ── Courses ── */
+      .course-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+      .course-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+      }
+      .course-thumb {
+        aspect-ratio: 16 / 9;
+        display: grid;
+        place-items: center;
+        font-size: 36px;
+        background: linear-gradient(135deg, var(--panel-2), #0a1622);
+        position: relative;
+      }
+      .course-thumb::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 70% 30%, rgba(24,200,255,.16), transparent 60%);
+      }
+      .course-body { padding: 14px 16px 18px; }
+      .course-level { font-size: 11px; font-weight: 800; color: var(--blue); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 6px; }
+      .course-body h3 { margin: 0 0 6px; font-size: 16px; line-height: 1.35; }
+      .course-body p  { margin: 0 0 12px; color: var(--muted); font-size: 12px; }
+      .course-footer { display: flex; align-items: center; justify-content: space-between; }
+      .course-price { font-weight: 900; font-size: 16px; }
+      .course-instructor { color: var(--subtle); font-size: 12px; }
+
+      @media (max-width: 980px) {
+        .nav-links { display: none; }
+        .section-head,
+        .about-grid,
+        .split,
+        .results-row,
+        .flow-grid,
+        .price-grid,
+        .faq-grid {
+          grid-template-columns: 1fr;
+        }
+        .work-grid,
+        .creator-grid,
+        .reason-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .category-grid { grid-template-columns: repeat(3, 1fr); }
+        .flow-steps { grid-template-columns: repeat(3, 1fr); }
+        .rank-podium,
+        .contest-grid,
+        .cert-tiers { grid-template-columns: 1fr; }
+        .course-grid { grid-template-columns: repeat(2, 1fr); }
+        .project-row { grid-template-columns: 1fr auto; }
+        .project-due { display: none; }
+      }
+
+      @media (max-width: 620px) {
+        .hero {
+          min-height: 88svh;
+          padding-top: 92px;
+        }
+        .hero-media img {
+          object-position: center;
+        }
+        .hero-actions,
+        .section-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .work-grid,
+        .creator-grid,
+        .reason-grid,
+        .category-grid {
+          grid-template-columns: 1fr;
+        }
+        .work-card,
+        .work-card:nth-child(1),
+        .work-card:nth-child(6) {
+          grid-column: auto;
+          min-height: 240px;
+        }
+        .course-grid { grid-template-columns: 1fr; }
+        .project-row { grid-template-columns: 1fr; }
+        .project-tag, .project-due { display: none; }
+        .status-line {
+          max-width: 100%;
+          white-space: normal;
+          justify-content: center;
+        }
+        .hero-strip { height: 58px; }
+        .ticker span { min-width: 150px; }
+        .modal-body {
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site">
+      <header class="nav" aria-label="サイトナビゲーション">
+        <a class="brand" href="#top" aria-label="AI Creative Studio トップへ">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>AI Creative Studio</span>
+        </a>
+        <nav class="nav-links" aria-label="主要リンク">
+          <a href="#works">作品</a>
+          <a href="#creators">クリエイター</a>
+          <a href="#company">企業向け</a>
+          <a href="#creator">登録</a>
+          <a href="#price">料金</a>
+          <a class="nav-action" href="#contact">相談する</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero" id="top">
+          <div class="hero-media" aria-hidden="true">
+            <img src="./assets/creative-wall.png" alt="">
+          </div>
+          <div class="hero-inner">
+            <div class="status-line"><span class="pulse" aria-hidden="true"></span>Portfolio × Matching × Community</div>
+            <h1>AI Creative Studio</h1>
+            <p class="hero-lead">AIクリエイターと企業をつなぐ、クリエイティブプラットフォーム。作品が営業し、才能が評価され、企業が理想のクリエイターと出会える場所をつくります。</p>
+            <div class="hero-actions">
+              <a class="btn primary" href="#works">作品を見る</a>
+              <a class="btn" href="#creator">クリエイター登録</a>
+              <a class="btn ghost" href="#contact">案件を相談する</a>
+            </div>
+          </div>
+          <div class="hero-strip" aria-hidden="true">
+            <div class="ticker">
+              <span>MV</span><span>CM</span><span>Brand Movie</span><span>SNS Short</span><span>Anime</span><span>Product</span><span>VFX</span><span>Recruiting</span>
+              <span>MV</span><span>CM</span><span>Brand Movie</span><span>SNS Short</span><span>Anime</span><span>Product</span><span>VFX</span><span>Recruiting</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-dark" id="about">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">What We Are</p>
+                <h2>私たちは動画制作会社ではありません。</h2>
+              </div>
+              <p class="section-copy">AI Creative Studioは、企業とAIクリエイターをつなぐAIクリエイティブ専門のマッチングプラットフォームです。作品を通じて、最適な出会いを創ります。</p>
+            </div>
+            <div class="about-grid">
+              <article class="statement">
+                <strong>作品が営業する</strong>
+                <p>企業は作品から感性と実力を見極め、クリエイターはポートフォリオで仕事を獲得できます。</p>
+              </article>
+              <article class="statement">
+                <strong>作品だけで、仕事が集まる</strong>
+                <p>クリエイターはポートフォリオを公開するだけ。動画・画像・MV・ブランドムービーまで、AI表現のあらゆる領域に対応します。</p>
+              </article>
+              <article class="statement">
+                <strong>才能が評価される世界へ</strong>
+                <p>肩書きより作品。知名度より成果。AIクリエイターが作品だけで選ばれる環境を整えます。</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-soft" id="works">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Featured Works</p>
+                <h2>注目作品</h2>
+              </div>
+              <p class="section-copy">広告、ブランド、MV、イベント、SNS、アニメ、商品紹介、採用。AIクリエイティブの作品から、相性の良いクリエイターを探せます。</p>
+            </div>
+            <div class="tabs" aria-label="作品カテゴリー">
+              <button class="tab active" data-filter="all">すべて</button>
+              <button class="tab" data-filter="広告">広告</button>
+              <button class="tab" data-filter="ブランド">ブランド</button>
+              <button class="tab" data-filter="MV">MV</button>
+              <button class="tab" data-filter="アニメ">アニメ</button>
+              <button class="tab" data-filter="SNS">SNS</button>
+            </div>
+            <div class="work-grid">
+              <article class="work-card" data-category="アニメ" data-title="1つのアプリにAI秘書がいる生活" data-video="./assets/works/kuchu_2100.mp4" style="--thumb:url('./assets/works/thumb_kuchu_2100.jpg');--pos:50% 50%">
+                <span class="play" aria-hidden="true"></span>
+                <div class="work-meta"><span>アニメ</span><h3>1つのアプリにAI秘書がいる生活</h3><p>Seedanceで生成したAI秘書との日常映像</p></div>
+              </article>
+              <article class="work-card" data-category="広告" data-title="OP映像" data-video="./assets/works/op_video.mp4" style="--thumb:url('./assets/works/thumb_op_video.jpg');--pos:50% 50%">
+                <span class="play" aria-hidden="true"></span>
+                <div class="work-meta"><span>広告</span><h3>OP映像</h3><p>buzzy.nowを使ったオープニング映像</p></div>
+              </article>
+              <article class="work-card" data-category="SNS" data-title="仕事の自動化" data-video="./assets/works/work_automation.mp4" style="--thumb:url('./assets/works/thumb_work_automation.jpg');--pos:50% 50%">
+                <span class="play" aria-hidden="true"></span>
+                <div class="work-meta"><span>SNS</span><h3>仕事の自動化</h3><p>AI×自動化をテーマにしたSNS動画</p></div>
+              </article>
+              <article class="work-card" data-category="SNS" data-title="動画編集自動化" data-video="./assets/works/edit_automation.mp4" style="--thumb:url('./assets/works/thumb_edit_automation.jpg');--pos:50% 50%">
+                <span class="play" aria-hidden="true"></span>
+                <div class="work-meta"><span>SNS</span><h3>動画編集自動化</h3><p>AI動画編集の自動化フローを紹介</p></div>
+              </article>
+              <article class="work-card" data-category="ブランド" data-title="未来都市へ" data-video="./assets/works/mirai_toshi.mp4" style="--thumb:url('./assets/works/thumb_mirai_toshi.jpg');--pos:50% 50%">
+                <span class="play" aria-hidden="true"></span>
+                <div class="work-meta"><span>ブランド</span><h3>未来都市へ</h3><p>Seedanceで生成した未来都市ブランド映像</p></div>
+              </article>
+              <article class="work-card" data-category="MV" data-title="MV生成実験" data-video="./assets/works/mv_experiment.mp4" style="--thumb:url('./assets/works/thumb_mv_experiment.jpg');--pos:50% 50%">
+                <span class="play" aria-hidden="true"></span>
+                <div class="work-meta"><span>MV</span><h3>MV生成実験</h3><p>buzzy.nowを使ったMV映像制作の検証</p></div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-dark" id="creators">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Popular Creators</p>
+                <h2>人気クリエイター</h2>
+              </div>
+              <p class="section-copy">専門分野、得意ジャンル、作品数、評価、受注件数を見ながら、依頼したいクリエイターを比較できます。</p>
+            </div>
+            <div class="creator-grid">
+              <article class="creator-card">
+                <div class="avatar">AK</div>
+                <h3>Akira K. <span class="cert-badge gold">Gold</span></h3>
+                <p>AI動画 / ブランドムービー</p>
+                <div class="creator-stats"><div class="stat"><b>42</b><small>作品数</small></div><div class="stat"><b>4.9</b><small>評価</small></div><div class="stat"><b>31</b><small>受注</small></div><div class="stat"><b>広告</b><small>得意</small></div></div>
+                <a class="text-link" href="#contact">プロフィールを見る</a>
+              </article>
+              <article class="creator-card">
+                <div class="avatar">RN</div>
+                <h3>Rin N. <span class="cert-badge silver">Silver</span></h3>
+                <p>MV / モーションデザイン</p>
+                <div class="creator-stats"><div class="stat"><b>58</b><small>作品数</small></div><div class="stat"><b>4.8</b><small>評価</small></div><div class="stat"><b>27</b><small>受注</small></div><div class="stat"><b>MV</b><small>得意</small></div></div>
+                <a class="text-link" href="#contact">プロフィールを見る</a>
+              </article>
+              <article class="creator-card">
+                <div class="avatar">MY</div>
+                <h3>Maya Y. <span class="cert-badge gold">Gold</span></h3>
+                <p>AIデザイン / 商品紹介</p>
+                <div class="creator-stats"><div class="stat"><b>36</b><small>作品数</small></div><div class="stat"><b>5.0</b><small>評価</small></div><div class="stat"><b>19</b><small>受注</small></div><div class="stat"><b>EC</b><small>得意</small></div></div>
+                <a class="text-link" href="#contact">プロフィールを見る</a>
+              </article>
+              <article class="creator-card">
+                <div class="avatar">SO</div>
+                <h3>Sora O. <span class="cert-badge platinum">Platinum</span></h3>
+                <p>3DCG / VFX / アニメ</p>
+                <div class="creator-stats"><div class="stat"><b>64</b><small>作品数</small></div><div class="stat"><b>4.9</b><small>評価</small></div><div class="stat"><b>34</b><small>受注</small></div><div class="stat"><b>VFX</b><small>得意</small></div></div>
+                <a class="text-link" href="#contact">プロフィールを見る</a>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-soft" id="ranking">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Ranking</p>
+                <h2>クリエイターランキング</h2>
+              </div>
+              <p class="section-copy">作品数・評価・受注件数をもとに集計。今注目のAIクリエイターをチェックできます。</p>
+            </div>
+            <div class="tabs" style="margin-bottom:22px">
+              <button class="tab active">今週</button>
+              <button class="tab">今月</button>
+              <button class="tab">年間</button>
+            </div>
+            <div class="rank-podium">
+              <div class="rank-top">
+                <span class="rank-medal">🥈</span>
+                <div class="avatar" style="margin:0 auto 10px">RN</div>
+                <strong>Rin N.</strong>
+                <p style="color:var(--muted);font-size:13px;margin:4px 0 10px">MV / モーション</p>
+                <span class="cert-badge silver">Silver</span>
+                <p style="margin:10px 0 0;color:var(--muted);font-size:13px">スコア <b style="color:var(--text)">2,840</b></p>
+              </div>
+              <div class="rank-top gold">
+                <span class="rank-medal">🥇</span>
+                <div class="avatar" style="margin:0 auto 10px">SO</div>
+                <strong>Sora O.</strong>
+                <p style="color:var(--muted);font-size:13px;margin:4px 0 10px">3DCG / VFX</p>
+                <span class="cert-badge platinum">Platinum</span>
+                <p style="margin:10px 0 0;color:var(--muted);font-size:13px">スコア <b style="color:var(--amber)">3,510</b></p>
+              </div>
+              <div class="rank-top">
+                <span class="rank-medal">🥉</span>
+                <div class="avatar" style="margin:0 auto 10px">AK</div>
+                <strong>Akira K.</strong>
+                <p style="color:var(--muted);font-size:13px;margin:4px 0 10px">広告 / ブランド</p>
+                <span class="cert-badge gold">Gold</span>
+                <p style="margin:10px 0 0;color:var(--muted);font-size:13px">スコア <b style="color:var(--text)">2,670</b></p>
+              </div>
+            </div>
+            <div class="rank-list">
+              <div class="rank-row"><span class="rank-num">4</span><div class="rank-avatar">MY</div><div class="rank-info"><strong>Maya Y.</strong><span>AIデザイン / 商品紹介</span></div><span class="cert-badge gold">Gold</span><span class="rank-score">2,410</span></div>
+              <div class="rank-row"><span class="rank-num">5</span><div class="rank-avatar">KT</div><div class="rank-info"><strong>Kota T.</strong><span>SNS動画 / ショート</span></div><span class="cert-badge silver">Silver</span><span class="rank-score">1,980</span></div>
+              <div class="rank-row"><span class="rank-num">6</span><div class="rank-avatar">HM</div><div class="rank-info"><strong>Hana M.</strong><span>アニメ / キャラクター</span></div><span class="cert-badge bronze">Bronze</span><span class="rank-score">1,750</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-soft" id="categories">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Categories</p>
+                <h2>カテゴリーから探す</h2>
+              </div>
+              <p class="section-copy">ブランドムービーからTikTok、3DCG、採用動画、教育コンテンツまで。AIクリエイティブの多彩な制作領域から、理想の表現を探せます。</p>
+            </div>
+            <div class="category-grid">
+              <div class="category">ブランドムービー</div><div class="category">広告動画</div><div class="category">CM</div><div class="category">イベント映像</div><div class="category">MV</div>
+              <div class="category">SNS動画</div><div class="category">YouTube</div><div class="category">TikTok</div><div class="category">3DCG</div><div class="category">VFX</div>
+              <div class="category">キャラクター</div><div class="category">企業PV</div><div class="category">採用動画</div><div class="category">商品紹介</div><div class="category">教育コンテンツ</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-dark" id="contest">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Contest &amp; Award</p>
+                <h2>コンテスト &amp; アワード</h2>
+              </div>
+              <p class="section-copy">テーマに沿った作品を投稿して腕を競う。優秀作品はアワードとして表彰され、クリエイターの実績になります。</p>
+            </div>
+            <div class="contest-grid">
+              <article class="contest-card">
+                <span class="contest-badge live">開催中</span>
+                <div class="contest-body">
+                  <h3>ブランドムービー部門</h3>
+                  <p>企業ブランドの世界観をAI映像で表現。審査員賞・人気賞の2部門で選出。</p>
+                  <div class="contest-meta">
+                    <div><div class="prize">¥100,000 <small>最優秀賞</small></div></div>
+                    <div class="deadline">締切<br>2026/07/31</div>
+                  </div>
+                </div>
+              </article>
+              <article class="contest-card">
+                <span class="contest-badge upcoming">近日開始</span>
+                <div class="contest-body">
+                  <h3>SNS短尺動画部門</h3>
+                  <p>TikTok・Reels向けの縦型ショート動画。AIを使った新しい表現を競う。</p>
+                  <div class="contest-meta">
+                    <div><div class="prize">¥50,000 <small>最優秀賞</small></div></div>
+                    <div class="deadline">開始<br>2026/08/01</div>
+                  </div>
+                </div>
+              </article>
+              <article class="contest-card">
+                <span class="contest-badge ended">結果発表</span>
+                <div class="contest-body">
+                  <h3>MV制作部門</h3>
+                  <p>アーティストへの楽曲提供とAIによるMV制作。音楽×AI映像の可能性を競った。</p>
+                  <div class="contest-meta">
+                    <div><div class="prize">¥80,000 <small>受賞作品</small></div></div>
+                    <div class="deadline">結果<br>2026/06/20</div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-soft" id="certification">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Certification</p>
+                <h2>AIクリエイター認定制度</h2>
+              </div>
+              <p class="section-copy">作品の質と実績をもとに4段階の認定バッジを授与。認定クリエイターは企業からのスカウトや案件紹介で優先されます。</p>
+            </div>
+            <div class="cert-tiers">
+              <article class="cert-tier">
+                <span class="cert-icon">🥉</span>
+                <span class="cert-badge bronze">Bronze</span>
+                <h3>ブロンズ</h3>
+                <p>作品5点以上、評価4.0以上。スタートラインの証明。</p>
+              </article>
+              <article class="cert-tier">
+                <span class="cert-icon">🥈</span>
+                <span class="cert-badge silver">Silver</span>
+                <h3>シルバー</h3>
+                <p>受注10件以上、評価4.5以上。安定した実力の証明。</p>
+              </article>
+              <article class="cert-tier" style="border-color:rgba(255,180,94,.35)">
+                <span class="cert-icon">🥇</span>
+                <span class="cert-badge gold">Gold</span>
+                <h3>ゴールド</h3>
+                <p>受注30件以上、評価4.8以上。高品質クリエイターの証明。</p>
+              </article>
+              <article class="cert-tier" style="border-color:rgba(24,200,255,.35)">
+                <span class="cert-icon">💎</span>
+                <span class="cert-badge platinum">Platinum</span>
+                <h3>プラチナ</h3>
+                <p>招待制・審査通過者のみ。企業から最優先でスカウトされる。</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-dark">
+          <div class="container split">
+            <article class="audience" id="company">
+              <p class="eyebrow">For Companies</p>
+              <h3>企業向け</h3>
+              <ul class="check-list">
+                <li>AIクリエイターを探す</li>
+                <li>作品から探す</li>
+                <li>予算から探す</li>
+                <li>ジャンルから探す</li>
+                <li>案件を相談する</li>
+              </ul>
+              <div class="section-actions"><a class="btn primary" href="#contact">案件を相談する</a></div>
+            </article>
+            <article class="audience" id="creator">
+              <p class="eyebrow">For Creators</p>
+              <h3>クリエイター向け</h3>
+              <ul class="check-list">
+                <li>無料登録</li>
+                <li>作品掲載とプロフィール作成</li>
+                <li>仕事応募と企業スカウト</li>
+                <li>コミュニティ参加と勉強会</li>
+                <li>案件紹介</li>
+              </ul>
+              <div class="section-actions"><a class="btn primary" href="#contact">クリエイター登録</a></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-soft" id="reason">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Why Chosen</p>
+                <h2>選ばれる理由</h2>
+              </div>
+              <p class="section-copy">AIクリエイティブに特化しているから、作品から探せて依頼しやすい。クリエイターとの出会い方が、ここだけ違います。</p>
+            </div>
+            <div class="reason-grid">
+              <article class="reason-card"><b>作品で選べる</b><p>ポートフォリオを起点に、感性と成果物の相性で判断できます。</p></article>
+              <article class="reason-card"><b>プロフィールが充実</b><p>得意領域、制作実績、評価、受注状況まで確認できます。</p></article>
+              <article class="reason-card"><b>AIクリエイティブ専門</b><p>AI動画、画像、3DCG、VFXなど、新しい制作手法に特化したプラットフォームです。</p></article>
+              <article class="reason-card"><b>コミュニティ運営</b><p>勉強会、案件紹介、認定制度など、継続的な成長を支えます。</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-dark" id="results">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Case Gallery</p>
+                <h2>制作実績</h2>
+              </div>
+              <p class="section-copy">企業案件、ブランドムービー、MV、広告、イベント、商品紹介、SNS。気になった作品があれば、担当クリエイターに直接相談できます。</p>
+            </div>
+            <div class="results-row">
+              <article class="result-feature">
+                <div class="result-copy">
+                  <p class="eyebrow">Enterprise Case</p>
+                  <h3>AI Brand Launch Movie</h3>
+                  <p class="section-copy">ブランドの世界観をAI映像で拡張したローンチ案件。</p>
+                </div>
+              </article>
+              <div class="mini-results">
+                <article class="mini-result"><strong>広告キャンペーン</strong><p>短尺広告、SNS展開、LP用KVまで一括制作。</p></article>
+                <article class="mini-result"><strong>イベント映像</strong><p>オープニング、ステージ背景、配信用素材を制作。</p></article>
+              </div>
+              <div class="mini-results">
+                <article class="mini-result"><strong>商品紹介</strong><p>EC、店頭、SNS向けの高品質な商品映像。</p></article>
+                <article class="mini-result"><strong>採用動画</strong><p>企業文化を未来感のある映像表現で伝える。</p></article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-soft" id="projects">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Project Board</p>
+                <h2>案件掲示板</h2>
+              </div>
+              <p class="section-copy">企業が掲載した案件を一覧で確認できます。予算・カテゴリー・納期から、相性の良い案件を探してください。</p>
+            </div>
+            <div class="project-grid">
+              <div class="project-row">
+                <div class="project-info"><h3>新製品ローンチ用ブランドムービー制作</h3><p>食品メーカー様・関東</p></div>
+                <span class="project-tag">ブランドムービー</span>
+                <span class="project-budget">¥200,000〜</span>
+                <span class="project-due">7/31 締切</span>
+              </div>
+              <div class="project-row">
+                <div class="project-info"><h3>採用サイト向け企業紹介動画（3分尺）</h3><p>IT企業様・リモート可</p></div>
+                <span class="project-tag">採用動画</span>
+                <span class="project-budget">¥80,000〜</span>
+                <span class="project-due">8/15 締切</span>
+              </div>
+              <div class="project-row">
+                <div class="project-info"><h3>ECサイト掲載用 商品紹介ショート動画 ×10本</h3><p>アパレルブランド様・リモート可</p></div>
+                <span class="project-tag">商品紹介</span>
+                <span class="project-budget">¥150,000〜</span>
+                <span class="project-due">随時</span>
+              </div>
+              <div class="project-row">
+                <div class="project-info"><h3>イベントオープニング映像（90秒）</h3><p>イベント会社様・全国</p></div>
+                <span class="project-tag">イベント映像</span>
+                <span class="project-budget">¥120,000〜</span>
+                <span class="project-due">9/01 締切</span>
+              </div>
+              <div class="project-row">
+                <div class="project-info"><h3>TikTok / Instagram Reels 縦型動画 月5本</h3><p>スタートアップ様・リモート可</p></div>
+                <span class="project-tag">SNS動画</span>
+                <span class="project-budget">¥60,000〜/月</span>
+                <span class="project-due">長期歓迎</span>
+              </div>
+            </div>
+            <div class="section-actions" style="margin-top:24px">
+              <a class="btn" href="#contact">すべての案件を見る</a>
+              <a class="btn primary" href="#contact">案件を掲載する</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-soft" id="flow">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Flow</p>
+                <h2>利用の流れ</h2>
+              </div>
+              <p class="section-copy">作品を中心に、企業とクリエイターがスムーズにつながれる流れを整えています。</p>
+            </div>
+            <div class="flow-grid">
+              <article class="flow-card">
+                <h3>企業</h3>
+                <div class="flow-steps"><span>作品を見る</span><span>クリエイターを見る</span><span>相談</span><span>見積</span><span>制作</span><span>納品</span></div>
+              </article>
+              <article class="flow-card">
+                <h3>クリエイター</h3>
+                <div class="flow-steps"><span>登録</span><span>作品掲載</span><span>プロフィール公開</span><span>企業から相談</span><span>契約</span><span>制作</span></div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-dark" id="price">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Pricing</p>
+                <h2>料金</h2>
+              </div>
+              <p class="section-copy">企業は相談無料、案件掲載無料。クリエイターは無料掲載から始められ、プレミアムで露出と案件機会を広げられます。</p>
+            </div>
+            <div class="price-grid">
+              <article class="price-card">
+                <h3>企業</h3>
+                <p class="price">無料 <small>相談・掲載</small></p>
+                <ul class="check-list">
+                  <li>案件相談無料</li>
+                  <li>案件掲載無料</li>
+                  <li>制作費はクリエイターごとに異なる</li>
+                </ul>
+              </article>
+              <article class="price-card">
+                <h3>クリエイター無料</h3>
+                <p class="price">0円 <small>公開開始</small></p>
+                <ul class="check-list">
+                  <li>作品掲載</li>
+                  <li>プロフィール公開</li>
+                  <li>企業からの相談受付</li>
+                </ul>
+              </article>
+              <article class="price-card featured">
+                <h3>プレミアム</h3>
+                <p class="price">Coming Soon</p>
+                <ul class="check-list">
+                  <li>上位表示</li>
+                  <li>案件優先紹介</li>
+                  <li>限定コミュニティ</li>
+                  <li>認定バッジと分析機能</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-soft" id="courses">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Online Courses</p>
+                <h2>オンライン講座</h2>
+              </div>
+              <p class="section-copy">AIクリエイティブのスキルを実践的に学べる講座。現役クリエイターによる、すぐに使える技術を習得できます。</p>
+            </div>
+            <div class="course-grid">
+              <article class="course-card">
+                <div class="course-thumb">🎬</div>
+                <div class="course-body">
+                  <div class="course-level">Beginner</div>
+                  <h3>AIで始める動画制作入門</h3>
+                  <p>Sora / Runway / Seedance を使った基礎から応用まで</p>
+                  <div class="course-footer"><span class="course-price">¥9,800</span><span class="course-instructor">by Sora O.</span></div>
+                </div>
+              </article>
+              <article class="course-card">
+                <div class="course-thumb">🎨</div>
+                <div class="course-body">
+                  <div class="course-level">Intermediate</div>
+                  <h3>ブランドムービー制作マスター</h3>
+                  <p>世界観設計からAI映像表現、納品まで一貫したワークフロー</p>
+                  <div class="course-footer"><span class="course-price">¥19,800</span><span class="course-instructor">by Akira K.</span></div>
+                </div>
+              </article>
+              <article class="course-card">
+                <div class="course-thumb">🎵</div>
+                <div class="course-body">
+                  <div class="course-level">Intermediate</div>
+                  <h3>MV制作 実践コース</h3>
+                  <p>楽曲分析、演出設計、AIアニメーション生成の全プロセス</p>
+                  <div class="course-footer"><span class="course-price">¥14,800</span><span class="course-instructor">by Rin N.</span></div>
+                </div>
+              </article>
+              <article class="course-card">
+                <div class="course-thumb">🤖</div>
+                <div class="course-body">
+                  <div class="course-level">Advanced</div>
+                  <h3>3DCG × AI映像 上級編</h3>
+                  <p>Blender と AI を組み合わせた次世代映像表現の最前線</p>
+                  <div class="course-footer"><span class="course-price">¥29,800</span><span class="course-instructor">by Sora O.</span></div>
+                </div>
+              </article>
+            </div>
+            <div class="section-actions">
+              <a class="btn" href="#contact">講座の詳細を見る</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-soft" id="future">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Roadmap</p>
+                <h2>将来追加予定</h2>
+              </div>
+              <p class="section-copy">マッチングだけにとどまらず、コミュニティ、教育、契約管理まで。AIクリエイティブ市場を支えるプラットフォームへと成長していきます。</p>
+            </div>
+            <div class="future-list">
+              <span>チーム制作機能</span><span>チャット</span><span>契約管理</span><span>請求管理</span><span>ポートフォリオ自動生成</span><span>AIアシスタント</span><span>企業レビュー</span><span>クリエイター評価</span><span>求人</span><span>イベント</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-dark" id="faq">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">FAQ</p>
+                <h2>よくある質問</h2>
+              </div>
+              <p class="section-copy">企業向け、クリエイター向け、著作権、支払い、納期、契約、利用料金に関する基本情報を整理しています。</p>
+            </div>
+            <div class="faq-grid">
+              <article class="faq-item"><h3>制作会社ですか？</h3><p>いいえ。企業とAIクリエイターをつなぐマッチングプラットフォームです。</p></article>
+              <article class="faq-item"><h3>企業の相談費用は？</h3><p>相談と案件掲載は無料です。制作費は依頼するクリエイターや内容により異なります。</p></article>
+              <article class="faq-item"><h3>著作権や契約は？</h3><p>案件ごとに権利範囲、納品形式、利用用途を確認し、明確な契約条件を整えます。</p></article>
+              <article class="faq-item"><h3>クリエイター登録は無料ですか？</h3><p>無料プランで作品掲載とプロフィール公開ができます。プレミアム機能は追加予定です。</p></article>
+              <article class="faq-item"><h3>納期はどれくらいですか？</h3><p>動画尺、修正回数、表現難易度により変動します。相談時に目安を確認できます。</p></article>
+              <article class="faq-item"><h3>支払い方法は？</h3><p>正式リリース時に、案件単位で分かりやすい支払い導線を整備します。</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="contact" id="contact">
+          <div class="container">
+            <p class="eyebrow">Contact</p>
+            <h2>AIクリエイティブの未来を、ここから。</h2>
+            <p>企業相談、クリエイター登録、パートナー募集を受け付けています。作品が営業し、才能が評価され、企業と理想のクリエイターが出会える場所をつくっています。</p>
+            <div class="hero-actions">
+              <a class="btn primary" href="mailto:contact@example.com?subject=AI Creative Studio 企業相談">企業相談</a>
+              <a class="btn" href="mailto:contact@example.com?subject=AI Creative Studio クリエイター登録">クリエイター登録</a>
+              <a class="btn ghost" href="mailto:contact@example.com?subject=AI Creative Studio パートナー募集">パートナー募集</a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal" id="workModal" aria-hidden="true" role="dialog" aria-label="作品詳細">
+      <div class="modal-panel">
+        <div class="modal-media">
+          <video id="modalVideo" controls playsinline style="width:100%;height:100%;object-fit:contain;display:block;background:#000"></video>
+        </div>
+        <div class="modal-body">
+          <div>
+            <h3 id="modalTitle">作品詳細</h3>
+            <p id="modalText">作品からクリエイターに直接相談できます。</p>
+          </div>
+          <button class="close" type="button" aria-label="閉じる" id="modalClose">×</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const filterTabs = document.querySelectorAll(".tab[data-filter]");
+      const cards = document.querySelectorAll(".work-card");
+      const modal = document.getElementById("workModal");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalText = document.getElementById("modalText");
+      const modalVideo = document.getElementById("modalVideo");
+      const modalClose = document.getElementById("modalClose");
+
+      filterTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const filter = tab.dataset.filter;
+          filterTabs.forEach((item) => item.classList.toggle("active", item === tab));
+          cards.forEach((card) => {
+            const show = filter === "all" || card.dataset.category === filter;
+            card.style.display = show ? "" : "none";
+          });
+        });
+      });
+
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          const videoSrc = card.dataset.video;
+          const metaP = card.querySelector(".work-meta p");
+          modalTitle.textContent = card.dataset.title;
+          modalText.textContent = metaP ? metaP.textContent : "";
+          if (videoSrc) {
+            modalVideo.src = videoSrc;
+            modalVideo.load();
+            modalVideo.play().catch(() => {});
+          }
+          modal.classList.add("open");
+          modal.setAttribute("aria-hidden", "false");
+        });
+      });
+
+      const closeModal = () => {
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+        modalVideo.pause();
+        modalVideo.src = "";
+      };
+
+      modalClose.addEventListener("click", closeModal);
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeModal();
+      });
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeModal();
+      });
+    </script>
+  </body>
+</html>
