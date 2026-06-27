@@ -2020,7 +2020,9 @@
       const SUPABASE_ANON = 'sb_publishable_BnctpR4KXqtvrGBG0Edn8Q_SMxsO2NV';
       // ──────────────────────────────────────────────────────────────
       const sbReady = SUPABASE_URL !== 'YOUR_SUPABASE_URL';
-      const db = sbReady ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON) : null;
+      const db = sbReady ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON, {
+        auth: { flowType: 'implicit', detectSessionInUrl: true }
+      }) : null;
 
       // ─── Work card filter tabs ────────────────────────────────────
       const filterTabs = document.querySelectorAll(".tab[data-filter]");
@@ -2265,11 +2267,25 @@
       }
 
       if (sbReady) {
-        // ページ読み込み時に既存セッションを確認（マジックリンクからの戻り対応）
-        db.auth.getSession().then(({ data: { session } }) => {
-          if (session?.user?.email) openEditFormWithCreator(session.user.email);
-        });
-        // セッション状態変化も監視
+        // URLハッシュにトークンがあれば直接処理（静的サイト用）
+        const hash = window.location.hash;
+        if (hash.includes('access_token')) {
+          const params = new URLSearchParams(hash.substring(1));
+          db.auth.setSession({
+            access_token:  params.get('access_token'),
+            refresh_token: params.get('refresh_token'),
+          }).then(({ data }) => {
+            if (data?.session?.user?.email) {
+              openEditFormWithCreator(data.session.user.email);
+              history.replaceState(null, '', window.location.pathname);
+            }
+          });
+        } else {
+          // 通常のセッション確認
+          db.auth.getSession().then(({ data: { session } }) => {
+            if (session?.user?.email) openEditFormWithCreator(session.user.email);
+          });
+        }
         db.auth.onAuthStateChange((event, session) => {
           if ((event === 'SIGNED_IN' || event === 'USER_UPDATED') && session?.user?.email) {
             openEditFormWithCreator(session.user.email);
