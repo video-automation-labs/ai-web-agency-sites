@@ -2242,6 +2242,7 @@
           msg.textContent = "✅ 保存しました！";
           msg.className = "form-msg success";
           await db.auth.signOut();
+          editFormOpened = false;
           setTimeout(() => {
             editModal.classList.remove("open"); editModal.setAttribute("aria-hidden", "true");
             loadCreators();
@@ -2251,9 +2252,12 @@
       });
 
       // メールリンクからの戻り（magic link callback）
+      let editFormOpened = false;
       async function openEditFormWithCreator(email) {
+        if (editFormOpened) return;
+        editFormOpened = true;
         const { data: creator } = await db.from("creators").select("*").eq("email", email).single();
-        if (!creator) return;
+        if (!creator) { editFormOpened = false; return; }
         const form = document.getElementById("editProfileForm");
         form.querySelector("[name=creator_id]").value = creator.id;
         form.querySelector("[name=name]").value       = creator.name || "";
