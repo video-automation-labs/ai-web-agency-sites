@@ -2210,7 +2210,7 @@
           options: { emailRedirectTo: window.location.href.split('#')[0] }
         });
         if (error) {
-          msg.textContent = "送信に失敗しました。登録したメールアドレスを確認してください。";
+          msg.textContent = "エラー: " + error.message;
           msg.className = "form-msg error";
         } else {
           msg.textContent = "✅ 確認メールを送信しました。メールのリンクをクリックしてください。";
