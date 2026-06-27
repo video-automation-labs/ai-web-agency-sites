@@ -2210,7 +2210,10 @@
           options: { emailRedirectTo: window.location.href.split('#')[0] }
         });
         if (error) {
-          msg.textContent = "エラー: " + error.message;
+          const isRateLimit = error.message.toLowerCase().includes("rate limit");
+          msg.textContent = isRateLimit
+            ? "⏳ 送信回数の上限に達しました。しばらく時間をおいてから再度お試しください。"
+            : "メールの送信に失敗しました。もう一度お試しください。";
           msg.className = "form-msg error";
         } else {
           msg.textContent = "✅ 確認メールを送信しました。メールのリンクをクリックしてください。";
