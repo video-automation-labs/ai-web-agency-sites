@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AI Creative Studio | AIクリエイターと企業をつなぐプラットフォーム</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <meta name="description" content="AI Creative Studioは、企業とAIクリエイターをつなぐAIクリエイティブ専門のマッチングプラットフォームです。作品が営業し、才能が評価され、企業が理想のクリエイターと出会える場所をつくります。">
     <style>
       :root {
@@ -1124,6 +1125,113 @@
         }
       }
     </style>
+    <style>
+      /* ─── Form modals ───────────────────────────────────── */
+      .fmodal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,.7);
+        backdrop-filter: blur(6px);
+        z-index: 1100;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .fmodal.open { display: flex; }
+      .fmodal-box {
+        background: #0f1117;
+        border: 1px solid rgba(255,255,255,.1);
+        border-radius: 20px;
+        padding: 40px;
+        width: 100%;
+        max-width: 520px;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+      }
+      .fmodal-box h2 {
+        font-size: 22px;
+        font-weight: 800;
+        margin: 0 0 6px;
+        color: #fff;
+      }
+      .fmodal-box .fmodal-sub {
+        font-size: 13px;
+        color: rgba(255,255,255,.5);
+        margin: 0 0 28px;
+      }
+      .fmodal-close {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: rgba(255,255,255,.5);
+        font-size: 22px;
+        cursor: pointer;
+        line-height: 1;
+      }
+      .fmodal-close:hover { color: #fff; }
+      .form-group {
+        margin-bottom: 18px;
+      }
+      .form-group label {
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+        color: rgba(255,255,255,.6);
+        letter-spacing: .06em;
+        margin-bottom: 7px;
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        background: rgba(255,255,255,.06);
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 10px;
+        color: #fff;
+        font-size: 14px;
+        padding: 11px 14px;
+        box-sizing: border-box;
+        outline: none;
+        font-family: inherit;
+        transition: border-color .2s;
+      }
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--blue);
+      }
+      .form-group select option { background: #1a1d2e; }
+      .form-group textarea { resize: vertical; min-height: 90px; }
+      .form-submit {
+        width: 100%;
+        background: var(--blue);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 800;
+        padding: 14px;
+        cursor: pointer;
+        transition: opacity .2s;
+        margin-top: 6px;
+      }
+      .form-submit:hover { opacity: .85; }
+      .form-submit:disabled { opacity: .5; cursor: default; }
+      .form-msg {
+        margin-top: 12px;
+        font-size: 13px;
+        padding: 10px 14px;
+        border-radius: 8px;
+        display: none;
+      }
+      .form-msg.success { display: block; background: rgba(0,230,118,.15); color: #00e676; border: 1px solid rgba(0,230,118,.3); }
+      .form-msg.error   { display: block; background: rgba(255,80,80,.12);  color: #ff8080; border: 1px solid rgba(255,80,80,.3); }
+      #creatorGrid { transition: opacity .3s; }
+    </style>
   </head>
   <body>
     <div class="site">
@@ -1138,7 +1246,7 @@
           <a href="#company">企業向け</a>
           <a href="#creator">登録</a>
           <a href="#price">料金</a>
-          <a class="nav-action" href="#contact">相談する</a>
+          <a class="nav-action" href="#" data-open="inq">相談する</a>
         </nav>
       </header>
 
@@ -1153,8 +1261,8 @@
             <p class="hero-lead">学んで、競って、稼ぐ。AIクリエイターのための、マッチング × コンペ × スクールが一体になったプラットフォームです。</p>
             <div class="hero-actions">
               <a class="btn primary" href="#works">作品を見る</a>
-              <a class="btn" href="#creator">クリエイター登録</a>
-              <a class="btn ghost" href="#contact">案件を相談する</a>
+              <a class="btn" href="#" data-open="reg">クリエイター登録</a>
+              <a class="btn ghost" href="#" data-open="inq">案件を相談する</a>
             </div>
           </div>
           <div class="hero-strip" aria-hidden="true">
@@ -1246,7 +1354,7 @@
               </div>
               <p class="section-copy">専門分野、得意ジャンル、作品数、評価、受注件数を見ながら、依頼したいクリエイターを比較できます。</p>
             </div>
-            <div class="creator-grid">
+            <div class="creator-grid" id="creatorGrid">
               <article class="creator-card" style="border-color:rgba(24,200,255,.4);box-shadow:0 0 0 1px rgba(24,200,255,.1),0 22px 60px rgba(24,200,255,.08)">
                 <div class="avatar" style="background:linear-gradient(135deg,#18c8ff,#2d7dff)">YK</div>
                 <h3>yuki <span class="cert-badge platinum">Platinum</span></h3>
@@ -1449,7 +1557,7 @@
                 <li>ジャンルから探す</li>
                 <li>案件を相談する</li>
               </ul>
-              <div class="section-actions"><a class="btn primary" href="#contact">案件を相談する</a></div>
+              <div class="section-actions"><a class="btn primary" href="#" data-open="inq">案件を相談する</a></div>
             </article>
             <article class="audience" id="creator">
               <p class="eyebrow">For Creators</p>
@@ -1461,7 +1569,7 @@
                 <li>コミュニティ参加と勉強会</li>
                 <li>案件紹介</li>
               </ul>
-              <div class="section-actions"><a class="btn primary" href="#contact">クリエイター登録</a></div>
+              <div class="section-actions"><a class="btn primary" href="#" data-open="reg">クリエイター登録</a></div>
             </article>
           </div>
         </section>
@@ -1720,7 +1828,7 @@
             <p>企業相談、クリエイター登録、パートナー募集を受け付けています。作品が営業し、才能が評価され、企業と理想のクリエイターが出会える場所をつくっています。</p>
             <div class="hero-actions">
               <a class="btn primary" href="mailto:contact@example.com?subject=AI Creative Studio 企業相談">企業相談</a>
-              <a class="btn" href="mailto:contact@example.com?subject=AI Creative Studio クリエイター登録">クリエイター登録</a>
+              <a class="btn" href="#" data-open="reg">クリエイター登録</a>
               <a class="btn ghost" href="mailto:contact@example.com?subject=AI Creative Studio パートナー募集">パートナー募集</a>
             </div>
           </div>
@@ -1743,56 +1851,271 @@
       </div>
     </div>
 
+    <!-- クリエイター登録モーダル -->
+    <div class="fmodal" id="regModal" aria-hidden="true" role="dialog">
+      <div class="fmodal-box">
+        <button class="fmodal-close" id="regClose" aria-label="閉じる">×</button>
+        <h2>クリエイター登録</h2>
+        <p class="fmodal-sub">登録すると即座にプラットフォームに掲載されます。無料です。</p>
+        <form id="regForm">
+          <div class="form-group">
+            <label>名前 / ハンドルネーム *</label>
+            <input type="text" name="name" required placeholder="例: yuki">
+          </div>
+          <div class="form-group">
+            <label>専門分野 *</label>
+            <select name="specialty" required>
+              <option value="">選択してください</option>
+              <option>AI動画</option>
+              <option>ブランドムービー</option>
+              <option>SNS動画</option>
+              <option>MV</option>
+              <option>3DCG・VFX</option>
+              <option>アニメ</option>
+              <option>広告映像</option>
+              <option>その他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>使用ツール（カンマ区切りでOK）</label>
+            <input type="text" name="tools" placeholder="例: Seedance, Runway, fal.ai">
+          </div>
+          <div class="form-group">
+            <label>SNS / ポートフォリオURL</label>
+            <input type="url" name="sns_url" placeholder="https://x.com/yourid">
+          </div>
+          <div class="form-group">
+            <label>自己紹介（一言）</label>
+            <textarea name="bio" placeholder="どんなものを作っていますか？"></textarea>
+          </div>
+          <button type="submit" class="form-submit">登録する</button>
+          <div class="form-msg" id="regMsg"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 企業お問い合わせモーダル -->
+    <div class="fmodal" id="inqModal" aria-hidden="true" role="dialog">
+      <div class="fmodal-box">
+        <button class="fmodal-close" id="inqClose" aria-label="閉じる">×</button>
+        <h2>案件のご相談</h2>
+        <p class="fmodal-sub">内容を送信後、担当者よりご連絡いたします。</p>
+        <form id="inqForm">
+          <div class="form-group">
+            <label>会社名 *</label>
+            <input type="text" name="company_name" required placeholder="株式会社〇〇">
+          </div>
+          <div class="form-group">
+            <label>ご担当者名 *</label>
+            <input type="text" name="contact_name" required placeholder="山田 太郎">
+          </div>
+          <div class="form-group">
+            <label>メールアドレス *</label>
+            <input type="email" name="email" required placeholder="you@company.com">
+          </div>
+          <div class="form-group">
+            <label>案件の種類</label>
+            <select name="project_type">
+              <option value="">選択してください</option>
+              <option>ブランドムービー</option>
+              <option>SNS広告動画</option>
+              <option>商品紹介動画</option>
+              <option>採用動画</option>
+              <option>MV</option>
+              <option>その他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>予算感</label>
+            <select name="budget">
+              <option value="">未定</option>
+              <option>〜5万円</option>
+              <option>5〜20万円</option>
+              <option>20〜50万円</option>
+              <option>50万円〜</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>ご相談内容</label>
+            <textarea name="message" placeholder="どんな映像を作りたいか、参考になる情報があればご記入ください。"></textarea>
+          </div>
+          <button type="submit" class="form-submit">送信する</button>
+          <div class="form-msg" id="inqMsg"></div>
+        </form>
+      </div>
+    </div>
+
     <script>
+      // ─── Supabase 設定 ─────────────────────────────────────────────
+      // supabase.com でプロジェクトを作成後、以下を書き換えてください
+      const SUPABASE_URL  = 'YOUR_SUPABASE_URL';
+      const SUPABASE_ANON = 'YOUR_SUPABASE_ANON_KEY';
+      // ──────────────────────────────────────────────────────────────
+      const sbReady = SUPABASE_URL !== 'YOUR_SUPABASE_URL';
+      const db = sbReady ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON) : null;
+
+      // ─── Work card filter tabs ────────────────────────────────────
       const filterTabs = document.querySelectorAll(".tab[data-filter]");
       const cards = document.querySelectorAll(".work-card");
-      const modal = document.getElementById("workModal");
-      const modalTitle = document.getElementById("modalTitle");
-      const modalText = document.getElementById("modalText");
-      const modalVideo = document.getElementById("modalVideo");
-      const modalClose = document.getElementById("modalClose");
-
       filterTabs.forEach((tab) => {
         tab.addEventListener("click", () => {
           const filter = tab.dataset.filter;
-          filterTabs.forEach((item) => item.classList.toggle("active", item === tab));
-          cards.forEach((card) => {
-            const show = filter === "all" || card.dataset.category === filter;
-            card.style.display = show ? "" : "none";
-          });
+          filterTabs.forEach((t) => t.classList.toggle("active", t === tab));
+          cards.forEach((c) => { c.style.display = (filter === "all" || c.dataset.category === filter) ? "" : "none"; });
         });
       });
+
+      // ─── Work modal ────────────────────────────────────────────
+      const workModal  = document.getElementById("workModal");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalText  = document.getElementById("modalText");
+      const modalVideo = document.getElementById("modalVideo");
+      const modalClose = document.getElementById("modalClose");
 
       cards.forEach((card) => {
         card.addEventListener("click", () => {
           const videoSrc = card.dataset.video;
-          const metaP = card.querySelector(".work-meta p");
+          const metaP   = card.querySelector(".work-meta p");
           modalTitle.textContent = card.dataset.title;
-          modalText.textContent = metaP ? metaP.textContent : "";
-          if (videoSrc) {
-            modalVideo.src = videoSrc;
-            modalVideo.load();
-            modalVideo.play().catch(() => {});
-          }
-          modal.classList.add("open");
-          modal.setAttribute("aria-hidden", "false");
+          modalText.textContent  = metaP ? metaP.textContent : "";
+          if (videoSrc) { modalVideo.src = videoSrc; modalVideo.load(); modalVideo.play().catch(() => {}); }
+          workModal.classList.add("open");
+          workModal.setAttribute("aria-hidden", "false");
         });
       });
-
-      const closeModal = () => {
-        modal.classList.remove("open");
-        modal.setAttribute("aria-hidden", "true");
-        modalVideo.pause();
-        modalVideo.src = "";
+      const closeWorkModal = () => {
+        workModal.classList.remove("open");
+        workModal.setAttribute("aria-hidden", "true");
+        modalVideo.pause(); modalVideo.src = "";
       };
+      modalClose.addEventListener("click", closeWorkModal);
+      workModal.addEventListener("click", (e) => { if (e.target === workModal) closeWorkModal(); });
 
-      modalClose.addEventListener("click", closeModal);
-      modal.addEventListener("click", (event) => {
-        if (event.target === modal) closeModal();
+      // ─── Open fmodal helpers ─────────────────────────────────
+      document.querySelectorAll("[data-open]").forEach((el) => {
+        el.addEventListener("click", (e) => {
+          e.preventDefault();
+          const id = el.dataset.open === "reg" ? "regModal" : "inqModal";
+          const m = document.getElementById(id);
+          m.classList.add("open"); m.setAttribute("aria-hidden", "false");
+        });
       });
-      window.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") closeModal();
+      const closeFModal = (id) => {
+        const m = document.getElementById(id);
+        m.classList.remove("open"); m.setAttribute("aria-hidden", "true");
+      };
+      document.getElementById("regClose").addEventListener("click", () => closeFModal("regModal"));
+      document.getElementById("inqClose").addEventListener("click", () => closeFModal("inqModal"));
+      document.getElementById("regModal").addEventListener("click", (e) => { if (e.target === e.currentTarget) closeFModal("regModal"); });
+      document.getElementById("inqModal").addEventListener("click", (e) => { if (e.target === e.currentTarget) closeFModal("inqModal"); });
+
+      // ─── Creator registration ────────────────────────────────
+      document.getElementById("regForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const btn  = form.querySelector("button[type=submit]");
+        const msg  = document.getElementById("regMsg");
+        btn.disabled = true; btn.textContent = "送信中...";
+
+        const payload = {
+          name:      form.querySelector("[name=name]").value.trim(),
+          specialty: form.querySelector("[name=specialty]").value,
+          tools:     form.querySelector("[name=tools]").value.trim(),
+          sns_url:   form.querySelector("[name=sns_url]").value.trim(),
+          bio:       form.querySelector("[name=bio]").value.trim(),
+          badge:     "bronze",
+          works_count: 0,
+        };
+
+        if (!sbReady) {
+          msg.textContent = "⚠ 現在受付準備中です。もうしばらくお待ちください。";
+          msg.className = "form-msg error";
+        } else {
+          const { error } = await db.from("creators").insert(payload);
+          if (error) {
+            msg.textContent = "エラーが発生しました。もう一度お試しください。";
+            msg.className = "form-msg error";
+          } else {
+            msg.textContent = "✅ 登録完了！まもなくページに反映されます。";
+            msg.className = "form-msg success";
+            form.reset();
+            setTimeout(() => { closeFModal("regModal"); loadCreators(); }, 2000);
+          }
+        }
+        btn.disabled = false; btn.textContent = "登録する";
       });
+
+      // ─── Inquiry form ────────────────────────────────────────
+      document.getElementById("inqForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const btn  = form.querySelector("button[type=submit]");
+        const msg  = document.getElementById("inqMsg");
+        btn.disabled = true; btn.textContent = "送信中...";
+
+        const payload = {
+          company_name: form.querySelector("[name=company_name]").value.trim(),
+          contact_name: form.querySelector("[name=contact_name]").value.trim(),
+          email:        form.querySelector("[name=email]").value.trim(),
+          project_type: form.querySelector("[name=project_type]").value,
+          budget:       form.querySelector("[name=budget]").value,
+          message:      form.querySelector("[name=message]").value.trim(),
+        };
+
+        if (!sbReady) {
+          msg.textContent = "⚠ 現在受付準備中です。もうしばらくお待ちください。";
+          msg.className = "form-msg error";
+        } else {
+          const { error } = await db.from("inquiries").insert(payload);
+          if (error) {
+            msg.textContent = "エラーが発生しました。もう一度お試しください。";
+            msg.className = "form-msg error";
+          } else {
+            msg.textContent = "✅ お問い合わせを受け付けました。担当者よりご連絡いたします。";
+            msg.className = "form-msg success";
+            form.reset();
+            setTimeout(() => closeFModal("inqModal"), 2500);
+          }
+        }
+        btn.disabled = false; btn.textContent = "送信する";
+      });
+
+      // ─── Dynamic creator loading ─────────────────────────────
+      const BADGE_JP = { bronze: 'Bronze', silver: 'Silver', gold: 'Gold', platinum: 'Platinum' };
+      function creatorCardHTML(c) {
+        const initials = (c.name || "??").slice(0, 2).toUpperCase();
+        const badge    = c.badge || 'bronze';
+        const link     = c.sns_url || '#';
+        const target   = c.sns_url ? 'target="_blank" rel="noopener"' : '';
+        return `<article class="creator-card">
+          <div class="avatar">${initials}</div>
+          <h3>${c.name} <span class="cert-badge ${badge}">${BADGE_JP[badge] || badge}</span></h3>
+          <p>${c.specialty || ''}${c.tools ? ' / ' + c.tools.split(',')[0].trim() : ''}</p>
+          <div class="creator-stats">
+            <div class="stat"><b>${c.works_count || 0}</b><small>作品数</small></div>
+            <div class="stat"><b>NEW</b><small>評価</small></div>
+            <div class="stat"><b>—</b><small>受注</small></div>
+          </div>
+          ${c.bio ? `<p style="font-size:12px;color:rgba(255,255,255,.5);margin-top:8px">${c.bio}</p>` : ''}
+          <a class="text-link" href="${link}" ${target}>プロフィールを見る</a>
+        </article>`;
+      }
+
+      async function loadCreators() {
+        if (!sbReady) return;
+        const grid = document.getElementById("creatorGrid");
+        if (!grid) return;
+        const { data, error } = await db.from("creators").select("*").order("created_at", { ascending: false });
+        if (error || !data || !data.length) return;
+        grid.innerHTML = data.map(creatorCardHTML).join("");
+      }
+
+      // ─── Global keyboard handler ──────────────────────────────
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") { closeWorkModal(); closeFModal("regModal"); closeFModal("inqModal"); }
+      });
+
+      loadCreators();
     </script>
   </body>
 </html>
