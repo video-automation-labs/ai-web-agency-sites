@@ -2249,23 +2249,30 @@
       });
 
       // メールリンクからの戻り（magic link callback）
+      async function openEditFormWithCreator(email) {
+        const { data: creator } = await db.from("creators").select("*").eq("email", email).single();
+        if (!creator) return;
+        const form = document.getElementById("editProfileForm");
+        form.querySelector("[name=creator_id]").value = creator.id;
+        form.querySelector("[name=name]").value       = creator.name || "";
+        form.querySelector("[name=specialty]").value  = creator.specialty || "";
+        form.querySelector("[name=tools]").value      = creator.tools || "";
+        form.querySelector("[name=sns_url]").value    = creator.sns_url || "";
+        form.querySelector("[name=bio]").value        = creator.bio || "";
+        document.getElementById("editStep1").style.display = "none";
+        document.getElementById("editStep2").style.display = "";
+        editModal.classList.add("open"); editModal.setAttribute("aria-hidden", "false");
+      }
+
       if (sbReady) {
-        db.auth.onAuthStateChange(async (event, session) => {
-          if (event === 'SIGNED_IN' && session?.user?.email) {
-            const email = session.user.email;
-            const { data: creator } = await db.from("creators").select("*").eq("email", email).single();
-            if (creator) {
-              const form = document.getElementById("editProfileForm");
-              form.querySelector("[name=creator_id]").value = creator.id;
-              form.querySelector("[name=name]").value       = creator.name || "";
-              form.querySelector("[name=specialty]").value  = creator.specialty || "";
-              form.querySelector("[name=tools]").value      = creator.tools || "";
-              form.querySelector("[name=sns_url]").value    = creator.sns_url || "";
-              form.querySelector("[name=bio]").value        = creator.bio || "";
-              document.getElementById("editStep1").style.display = "none";
-              document.getElementById("editStep2").style.display = "";
-              editModal.classList.add("open"); editModal.setAttribute("aria-hidden", "false");
-            }
+        // ページ読み込み時に既存セッションを確認（マジックリンクからの戻り対応）
+        db.auth.getSession().then(({ data: { session } }) => {
+          if (session?.user?.email) openEditFormWithCreator(session.user.email);
+        });
+        // セッション状態変化も監視
+        db.auth.onAuthStateChange((event, session) => {
+          if ((event === 'SIGNED_IN' || event === 'USER_UPDATED') && session?.user?.email) {
+            openEditFormWithCreator(session.user.email);
           }
         });
       }
