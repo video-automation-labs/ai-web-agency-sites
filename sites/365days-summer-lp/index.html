@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>365日夏休みプロジェクト | 人生の教科を一緒に学ぼう</title>
+  <meta name="description" content="学校では教えてくれなかったお金・働き方・AI・マーケティング・自己理解・習慣・人生設計を、超初心者向けに一緒に学ぶプロジェクトです。">
+  <style>
+    :root {
+      --ink: #24313a;
+      --muted: #63727d;
+      --blue: #8fd4f4;
+      --blue-soft: #e8f7ff;
+      --cream: #fff6df;
+      --yellow: #ffd86f;
+      --green: #9ccf8d;
+      --pink: #f4b8bd;
+      --paper: #fffdf7;
+      --line: #d9e4e8;
+      --board: #315a53;
+      --shadow: 0 18px 44px rgba(45, 74, 87, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      line-height: 1.8;
+      letter-spacing: 0;
+      background:
+        linear-gradient(180deg, rgba(232, 247, 255, 0.75), rgba(255, 253, 247, 0.92) 32rem),
+        var(--paper);
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .site-nav {
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      min-width: 0;
+      font-weight: 800;
+      line-height: 1.25;
+      text-shadow: 0 1px 18px rgba(255, 255, 255, 0.92);
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      flex: 0 0 2.35rem;
+      width: 2.35rem;
+      height: 2.35rem;
+      border: 2px solid rgba(36, 49, 58, 0.72);
+      background: rgba(255, 253, 247, 0.78);
+      font-size: 0.82rem;
+    }
+
+    .nav-cta,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3rem;
+      padding: 0.78rem 1.15rem;
+      border: 2px solid #24313a;
+      border-radius: 8px;
+      background: var(--yellow);
+      color: #22303a;
+      font-weight: 800;
+      line-height: 1.35;
+      box-shadow: 5px 5px 0 rgba(36, 49, 58, 0.16);
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .nav-cta:hover,
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 7px 7px 0 rgba(36, 49, 58, 0.16);
+      background: #ffe08a;
+    }
+
+    .button.secondary {
+      background: rgba(255, 253, 247, 0.78);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 88svh;
+      overflow: hidden;
+      isolation: isolate;
+      display: grid;
+      align-items: center;
+      padding: 7.2rem 1rem 3.6rem;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(255, 253, 247, 0.95) 0%, rgba(255, 253, 247, 0.82) 32%, rgba(255, 253, 247, 0.36) 58%, rgba(255, 253, 247, 0.1) 100%),
+        url("assets/hero-summer-classroom.png") center / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      z-index: -1;
+      height: 10rem;
+      background: linear-gradient(180deg, rgba(255, 253, 247, 0), var(--paper));
+    }
+
+    .hero-inner {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero-copy {
+      width: min(680px, 100%);
+      text-shadow: 0 1px 22px rgba(255, 255, 255, 0.92);
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin: 0 0 1.15rem;
+      padding: 0.22rem 0.52rem;
+      border-left: 5px solid var(--yellow);
+      background: rgba(255, 253, 247, 0.72);
+      color: #36525c;
+      font-size: 0.95rem;
+      font-weight: 800;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 1.05rem;
+      font-size: 3.55rem;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    .hero-catch {
+      margin-bottom: 1.1rem;
+      font-size: 1.34rem;
+      line-height: 1.65;
+      font-weight: 800;
+    }
+
+    .hero-lead {
+      margin-bottom: 1.8rem;
+      color: #31434e;
+      font-size: 1.08rem;
+      line-height: 2;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .small-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .section {
+      padding: 5.5rem 1rem;
+    }
+
+    .section.compact {
+      padding-top: 4.2rem;
+      padding-bottom: 4.2rem;
+    }
+
+    .section.blue {
+      background: linear-gradient(180deg, #f2fbff, #ffffff);
+    }
+
+    .section.cream {
+      background:
+        repeating-linear-gradient(0deg, rgba(121, 151, 161, 0.1) 0, rgba(121, 151, 161, 0.1) 1px, transparent 1px, transparent 2.15rem),
+        var(--cream);
+    }
+
+    .section.board {
+      background:
+        radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.13), transparent 18rem),
+        linear-gradient(135deg, #294e49, var(--board));
+      color: #f6fbf3;
+    }
+
+    .container {
+      width: min(1040px, 100%);
+      margin: 0 auto;
+    }
+
+    .narrow {
+      width: min(820px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-title {
+      margin-bottom: 1.05rem;
+      font-size: 2.45rem;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .section-lead {
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+
+    .board .section-lead,
+    .board .small-note {
+      color: rgba(246, 251, 243, 0.82);
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .paper-panel,
+    .story-panel,
+    .line-panel {
+      border: 1px solid rgba(91, 119, 130, 0.18);
+      border-radius: 8px;
+      background:
+        linear-gradient(90deg, rgba(255, 216, 111, 0.24) 0 3.3rem, transparent 3.3rem),
+        repeating-linear-gradient(0deg, transparent 0, transparent 2rem, rgba(141, 170, 178, 0.18) 2rem, rgba(141, 170, 178, 0.18) calc(2rem + 1px)),
+        #fffefa;
+      box-shadow: var(--shadow);
+    }
+
+    .paper-panel {
+      padding: 2rem 2rem 2rem 4.4rem;
+    }
+
+    .check-list,
+    .simple-list,
+    .receive-list {
+      display: grid;
+      gap: 0.75rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .check-list li,
+    .simple-list li,
+    .receive-list li {
+      position: relative;
+      padding-left: 1.8rem;
+    }
+
+    .check-list li::before,
+    .receive-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.62rem;
+      width: 0.75rem;
+      height: 0.75rem;
+      border: 2px solid var(--green);
+      background: #f7fff4;
+    }
+
+    .simple-list li::before {
+      content: "";
+      position: absolute;
+      left: 0.15rem;
+      top: 0.72rem;
+      width: 0.58rem;
+      height: 0.58rem;
+      background: var(--yellow);
+      border: 1px solid rgba(36, 49, 58, 0.16);
+    }
+
+    .message-box {
+      margin-top: 1.6rem;
+      padding: 1.15rem 1.25rem;
+      border-left: 6px solid var(--blue);
+      background: rgba(255, 255, 255, 0.76);
+      font-weight: 800;
+    }
+
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .subject-card {
+      min-height: 17.5rem;
+      padding: 1.35rem;
+      border: 1px solid rgba(36, 49, 58, 0.13);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 12px 28px rgba(45, 74, 87, 0.08);
+    }
+
+    .subject-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.24rem;
+      line-height: 1.45;
+    }
+
+    .subject-number {
+      display: grid;
+      place-items: center;
+      flex: 0 0 2.1rem;
+      width: 2.1rem;
+      height: 2.1rem;
+      border: 2px solid rgba(36, 49, 58, 0.72);
+      background: var(--blue-soft);
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .subject-card:nth-child(2n) .subject-number {
+      background: var(--cream);
+    }
+
+    .subject-card:nth-child(3n) .subject-number {
+      background: #f8e3e5;
+    }
+
+    .subject-card ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: var(--muted);
+    }
+
+    .story-panel {
+      padding: 2rem;
+      background:
+        linear-gradient(135deg, rgba(255, 253, 247, 0.98), rgba(255, 246, 223, 0.88)),
+        #fffefa;
+    }
+
+    .story-panel p:last-child,
+    .line-panel p:last-child,
+    .paper-panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .definition-item {
+      min-height: 12rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(246, 251, 243, 0.26);
+      border-radius: 8px;
+      background: rgba(246, 251, 243, 0.08);
+    }
+
+    .definition-item strong {
+      display: block;
+      margin-bottom: 0.6rem;
+      color: var(--yellow);
+      font-size: 1.2rem;
+    }
+
+    .stance {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .chalk-note {
+      position: relative;
+      min-height: 17rem;
+      padding: 2rem;
+      border: 8px solid rgba(196, 151, 83, 0.72);
+      border-radius: 8px;
+      background: #315a53;
+      color: #f6fbf3;
+      box-shadow: var(--shadow);
+    }
+
+    .chalk-note p {
+      margin-bottom: 0;
+      font-size: 1.28rem;
+      line-height: 1.85;
+      font-weight: 800;
+    }
+
+    .line-panel {
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid rgba(36, 49, 58, 0.14);
+      box-shadow: var(--shadow);
+    }
+
+    .line-copy {
+      padding: 2rem;
+    }
+
+    .line-side {
+      padding: 2rem;
+      background:
+        linear-gradient(135deg, rgba(143, 212, 244, 0.28), rgba(255, 216, 111, 0.28)),
+        #fffefa;
+    }
+
+    .final-cta {
+      position: relative;
+      overflow: hidden;
+      border: 2px solid rgba(36, 49, 58, 0.18);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(255, 253, 247, 0.94), rgba(232, 247, 255, 0.94)),
+        url("assets/hero-summer-classroom.png") center / cover no-repeat;
+      box-shadow: var(--shadow);
+    }
+
+    .final-cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 253, 247, 0.74);
+    }
+
+    .final-cta-inner {
+      position: relative;
+      z-index: 1;
+      width: min(820px, 100%);
+      padding: 3.2rem 2rem;
+    }
+
+    .footer {
+      padding: 2.2rem 1rem;
+      color: var(--muted);
+      text-align: center;
+      background: #fffdf7;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        min-height: 86svh;
+        padding-top: 6.8rem;
+      }
+
+      .hero::before {
+        background:
+          linear-gradient(180deg, rgba(255, 253, 247, 0.96) 0%, rgba(255, 253, 247, 0.76) 50%, rgba(255, 253, 247, 0.34) 100%),
+          url("assets/hero-summer-classroom.png") 58% center / cover no-repeat;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .two-column,
+      .stance,
+      .line-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .subject-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-nav {
+        align-items: flex-start;
+      }
+
+      .brand {
+        font-size: 0.95rem;
+      }
+
+      .brand-mark {
+        flex-basis: 2rem;
+        width: 2rem;
+        height: 2rem;
+      }
+
+      .nav-cta {
+        min-height: 2.75rem;
+        padding: 0.62rem 0.72rem;
+        font-size: 0.86rem;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 6.3rem;
+        padding-bottom: 3.4rem;
+      }
+
+      h1 {
+        font-size: 2.35rem;
+      }
+
+      .hero-catch {
+        font-size: 1.18rem;
+      }
+
+      .hero-lead,
+      .section-lead {
+        font-size: 1rem;
+      }
+
+      .section {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+      }
+
+      .paper-panel {
+        padding: 1.4rem 1.2rem 1.4rem 2.2rem;
+        background:
+          repeating-linear-gradient(0deg, transparent 0, transparent 2rem, rgba(141, 170, 178, 0.18) 2rem, rgba(141, 170, 178, 0.18) calc(2rem + 1px)),
+          #fffefa;
+      }
+
+      .definition,
+      .subject-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .subject-card {
+        min-height: auto;
+      }
+
+      .chalk-note,
+      .story-panel,
+      .line-copy,
+      .line-side,
+      .final-cta-inner {
+        padding: 1.35rem;
+      }
+
+      .chalk-note {
+        min-height: 11rem;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      <a class="brand" href="#top" aria-label="365日夏休みプロジェクト">
+        <span class="brand-mark">365</span>
+        <span>365日夏休み<br>プロジェクト</span>
+      </a>
+      <a class="nav-cta" href="https://mail.world-smile-creator.com/p/r/Vj72ufnt">無料メルマガ</a>
+    </nav>
+
+    <div class="hero-inner" id="top">
+      <div class="hero-copy">
+        <p class="label">学校では教えてくれなかった人生の教科</p>
+        <h1><span>365日夏休み</span><span>プロジェクト</span></h1>
+        <p class="hero-catch">365日夏休みは、学校では教えてくれなかった「人生の教科」から始まる。</p>
+        <p class="hero-lead">お金、働き方、AI、マーケティング、自己理解、習慣。自分の人生を自分で選ぶために、大人になった今こそ、一緒に学び直そう。</p>
+        <div class="hero-actions">
+          <a class="button" href="https://mail.world-smile-creator.com/p/r/Vj72ufnt">無料メルマガで一緒に学ぶ</a>
+          <a class="button secondary" href="https://www.youtube.com/channel/UC4YMp0UxR4Qq2rD4kEKpa9w">YouTubeを見る</a>
+          <span class="small-note">自由は、才能ではなく、学びでつくれる。</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section compact blue" aria-labelledby="empathy-title">
+      <div class="container two-column">
+        <div>
+          <p class="label">はじめの一歩</p>
+          <h2 class="section-title" id="empathy-title">こんなこと、感じたことありませんか？</h2>
+          <p class="section-lead">自由な暮らしを自慢する場所ではなく、昔の自分に届けるように、やさしく学び直す入口です。</p>
+        </div>
+        <div class="paper-panel">
+          <ul class="check-list">
+            <li>このままでいいのかなと思う</li>
+            <li>もっと自由に働きたい</li>
+            <li>好きな時に好きなことをしたい</li>
+            <li>でも何から始めればいいかわからない</li>
+            <li>お金やビジネスの話は難しく感じる</li>
+            <li>AIやSNSも気になるけど、ついていけない</li>
+            <li>自分らしい人生を作りたい</li>
+          </ul>
+          <div class="message-box">もし一つでも当てはまるなら、このプロジェクトはあなたのための場所です。</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cream" aria-labelledby="problem-title">
+      <div class="narrow">
+        <p class="label">学び直し</p>
+        <h2 class="section-title" id="problem-title">大人になって本当に必要なことは、学校では教えてくれなかった。</h2>
+        <p>学校では、国語・数学・英語を学びました。でも、大人になってから本当に必要になることは、ほとんど教わりません。</p>
+        <ul class="simple-list">
+          <li>お金、投資、税金、家計管理のこと</li>
+          <li>働き方、時間の使い方、人生の選び方のこと</li>
+          <li>マーケティング、SNS、商品づくりのこと</li>
+          <li>AI、自己理解、習慣、目標設定のこと</li>
+        </ul>
+        <div class="message-box">だからこそ、大人になった今、自分の人生のために学び直す必要があります。</div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="story-title">
+      <div class="container two-column">
+        <div>
+          <p class="label">ブランドストーリー</p>
+          <h2 class="section-title" id="story-title">僕はもともと、学校の先生になりたいと思っていました。</h2>
+        </div>
+        <div class="story-panel">
+          <p>誰かの人生が少しでも良くなるきっかけを作りたい。そんな想いから、昔は学校の先生を目指していました。</p>
+          <p>でも大学3年生のとき、自由に働き、自分の人生を自分で選んでいる人たちに出会い、衝撃を受けました。</p>
+          <p>「こんな生き方があるんだ。」</p>
+          <p>そこから僕は、お金・ビジネス・マーケティング・AI・自己啓発・人生設計を学び始めました。そして少しずつ実践していく中で、好きな時に、好きな場所で、好きなことを選べる働き方に近づくことができました。</p>
+          <p>だから今度は、昔の自分と同じように「もっと自由に生きたい」と思っている人に向けて、学校では教えてくれなかった人生の教科を発信しています。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section board" aria-labelledby="definition-title">
+      <div class="container">
+        <p class="label">定義</p>
+        <h2 class="section-title" id="definition-title">365日夏休みとは、毎日遊ぶことではありません。</h2>
+        <p class="section-lead">自分の時間、自分の仕事、自分の人生を、自分で選べる状態のこと。誰かに決められた人生ではなく、自分で学び、自分で考え、自分で選べる人生をつくることです。</p>
+        <div class="definition">
+          <div class="definition-item">
+            <strong>働かないことではない</strong>
+            <p>好きなことだけをするというより、自分で選んだ働き方と暮らし方をつくっていくこと。</p>
+          </div>
+          <div class="definition-item">
+            <strong>人生を選べる状態をつくる</strong>
+            <p>お金、時間、場所、仕事を少しずつ学び、実践し、改善していくこと。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section blue" aria-labelledby="subjects-title">
+      <div class="container">
+        <p class="label">学べるテーマ</p>
+        <h2 class="section-title" id="subjects-title">このプロジェクトで一緒に学ぶこと</h2>
+        <p class="section-lead">難しい話を、毎日の小さな学びに分けて届けます。超初心者でも置いていかれない「人生の時間割」です。</p>
+        <div class="subject-grid">
+          <article class="subject-card">
+            <h3><span class="subject-number">1</span>人生の教科</h3>
+            <ul>
+              <li>自己理解</li>
+              <li>手帳の使い方</li>
+              <li>目標設定</li>
+              <li>習慣</li>
+              <li>マインドセット</li>
+            </ul>
+          </article>
+          <article class="subject-card">
+            <h3><span class="subject-number">2</span>お金の教科</h3>
+            <ul>
+              <li>お金の基本</li>
+              <li>投資の考え方</li>
+              <li>家計管理</li>
+              <li>税金</li>
+              <li>資産形成の入口</li>
+            </ul>
+          </article>
+          <article class="subject-card">
+            <h3><span class="subject-number">3</span>働き方の教科</h3>
+            <ul>
+              <li>フリーランス</li>
+              <li>副業</li>
+              <li>個人ビジネス</li>
+              <li>仕事の選び方</li>
+              <li>時間の使い方</li>
+            </ul>
+          </article>
+          <article class="subject-card">
+            <h3><span class="subject-number">4</span>ビジネスの教科</h3>
+            <ul>
+              <li>マーケティング</li>
+              <li>SNS発信</li>
+              <li>商品づくり</li>
+              <li>信頼の作り方</li>
+              <li>相談につながる発信</li>
+            </ul>
+          </article>
+          <article class="subject-card">
+            <h3><span class="subject-number">5</span>AIの教科</h3>
+            <ul>
+              <li>ChatGPT</li>
+              <li>AI活用</li>
+              <li>自動化</li>
+              <li>仕事の効率化</li>
+              <li>初心者向けAI入門</li>
+            </ul>
+          </article>
+          <article class="subject-card">
+            <h3><span class="subject-number">6</span>暮らしの教科</h3>
+            <ul>
+              <li>旅</li>
+              <li>ライフスタイル</li>
+              <li>健康</li>
+              <li>人間関係</li>
+              <li>自分らしい日常</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="stance-title">
+      <div class="container stance">
+        <div class="chalk-note" aria-hidden="true">
+          <p>難しいことを、小学生にも伝わるくらい簡単に。</p>
+        </div>
+        <div>
+          <p class="label">発信スタンス</p>
+          <h2 class="section-title" id="stance-title">すごい人になることより、昨日より少し選べる自分へ。</h2>
+          <p>このプロジェクトでは、専門用語だらけの難しい話はしません。お金も、AIも、マーケティングも、人生設計も、まずは超初心者向けに、やさしく、わかりやすく届けます。</p>
+          <p>目指しているのは、誰かに見せつける自由ではありません。昨日より少し、自分の人生を選べるようになることです。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section blue" aria-labelledby="sns-title">
+      <div class="container two-column">
+        <div>
+          <p class="label">SNS</p>
+          <h2 class="section-title" id="sns-title">動画でも、人生の教科を学べます。</h2>
+          <p class="section-lead">YouTubeでは、考え方・学び・働き方・日々の実践を、文章とは違う温度感で届けます。</p>
+        </div>
+        <div class="story-panel">
+          <h3>YouTube</h3>
+          <p>自由な人生をつくるための学びや、実践していることを動画で発信していきます。</p>
+          <a class="button secondary" href="https://www.youtube.com/channel/UC4YMp0UxR4Qq2rD4kEKpa9w">YouTubeチャンネルを見る</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cream" aria-labelledby="mailmag-title" id="line-register">
+      <div class="container">
+        <div class="line-panel">
+          <div class="line-copy">
+            <p class="label">無料メルマガ</p>
+            <h2 class="section-title" id="mailmag-title">無料メルマガで人生の教科を受け取れます。</h2>
+            <p>SNSでは話しきれない学びや、自分の経験や体験談を誰かの役に立つ価値に変えるヒントも届けます。</p>
+            <a class="button" href="https://mail.world-smile-creator.com/p/r/Vj72ufnt" aria-label="無料メルマガで人生の教科を受け取る">無料メルマガで人生の教科を受け取る</a>
+          </div>
+          <div class="line-side">
+            <ul class="receive-list">
+              <li>今日の人生の教科</li>
+              <li>初心者向けのお金・AI・SNSの話</li>
+              <li>自分の経験を価値に変えるヒント</li>
+              <li>自由な働き方の作り方</li>
+              <li>学びのアウトプット</li>
+              <li>おすすめ本・考え方</li>
+              <li>体験談と限定コンテンツ</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="consult-title" id="consulting">
+      <div class="container two-column">
+        <div>
+          <p class="label">個別相談</p>
+          <h2 class="section-title" id="consult-title">もっと具体的に、自分の人生や仕事を整理したい方へ。</h2>
+          <p class="section-lead">無料メルマガで学んだ先に、必要な方だけが個別相談へ進める導線を用意しました。</p>
+          <div class="hero-actions">
+            <a class="button" href="consulting.html">個別相談LPを見る</a>
+            <a class="button secondary" href="https://s.lmes.jp/landing-qr/2000599278-keaWG5ye?uLand=zX6Wzo">公式LINEで相談案内を受け取る</a>
+          </div>
+        </div>
+        <div class="paper-panel">
+          <ul class="check-list">
+            <li>自分の経験や体験談を、どんな価値に変えられるか整理したい</li>
+            <li>SNSやメルマガから、自然に相談につながる流れを作りたい</li>
+            <li>商品づくりや個別コンサルの方向性を一緒に考えたい</li>
+            <li>まず何から始めればいいか、やさしく整理してほしい</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact" aria-labelledby="final-title">
+      <div class="container final-cta">
+        <div class="final-cta-inner">
+          <p class="label">今日から始める</p>
+          <h2 class="section-title" id="final-title">学校では教えてくれなかった人生の教科を、今日から一緒に学びませんか？</h2>
+          <p>365日夏休みは、特別な人だけのものではありません。学び、考え、行動することで、自分の人生は少しずつ選べるようになります。</p>
+          <p>まずは無料メルマガで小さく学び、もっと深く整理したくなったら個別相談へ進めます。</p>
+          <div class="hero-actions">
+            <a class="button" href="https://mail.world-smile-creator.com/p/r/Vj72ufnt">無料メルマガで人生の教科を受け取る</a>
+            <a class="button secondary" href="consulting.html">個別相談LPを見る</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>365日夏休みプロジェクト | 人生を、自分で選べる人になる。</p>
+  </footer>
+</body>
+</html>
