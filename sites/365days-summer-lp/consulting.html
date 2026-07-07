@@ -44,6 +44,11 @@
       text-decoration: none;
     }
 
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
     .site-nav {
       position: absolute;
       inset: 0 0 auto;
@@ -250,6 +255,59 @@
       box-shadow: var(--shadow);
     }
 
+    .image-panel {
+      overflow: hidden;
+      padding: 0.75rem;
+      border: 1px solid rgba(36, 49, 58, 0.14);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: var(--shadow);
+    }
+
+    .proof-image {
+      width: 100%;
+      border-radius: 6px;
+    }
+
+    .story-timeline {
+      display: grid;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .story-step {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      gap: 1rem;
+      padding: 1.15rem;
+      border: 1px solid rgba(36, 49, 58, 0.12);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 10px 24px rgba(45, 74, 87, 0.07);
+    }
+
+    .story-step strong {
+      color: #386777;
+      font-size: 0.98rem;
+    }
+
+    .story-step p {
+      margin-bottom: 0;
+    }
+
+    .testimonial-panel {
+      margin-top: 2rem;
+      padding: 0.85rem;
+      border: 1px solid rgba(36, 49, 58, 0.14);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: var(--shadow);
+    }
+
+    .testimonial-panel img {
+      border-radius: 6px;
+    }
+
     .paper-panel {
       padding: 2rem 2rem 2rem 4.4rem;
       border: 1px solid rgba(91, 119, 130, 0.18);
@@ -385,6 +443,10 @@
       .card-grid {
         grid-template-columns: 1fr;
       }
+
+      .story-step {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 640px) {
@@ -456,10 +518,10 @@
 
     <div class="hero-inner">
       <div class="hero-copy">
-        <p class="label">個別相談</p>
-        <h1><span>人生経験を、</span><span>価値に変える相談室</span></h1>
-        <p class="hero-catch">自由な働き方を作りたい。でも何から始めればいいかわからない人へ。</p>
-        <p class="hero-lead">あなたの体験、学び、得意なことを整理して、SNS発信・メルマガ・公式LINE・商品づくりまで、自然につながる流れを一緒に考えます。</p>
+        <p class="label">物語から始まる個別相談</p>
+        <h1><span>人生の選択肢を、</span><span>一緒に増やす個別相談</span></h1>
+        <p class="hero-catch">僕自身、人生の選択肢を知らなかった時期がありました。</p>
+        <p class="hero-lead">でも、学び方・働き方・お金の作り方を知ったことで、自分の時間と人生を自分で選べる「365日夏休み」のような暮らしに近づくことができました。今度は、同じように人生の選択肢を手に入れたい方へ、一人ひとりと向き合いながらサポートしています。</p>
         <div class="actions">
           <a class="button" href="https://s.lmes.jp/landing-qr/2000599278-keaWG5ye?uLand=zX6Wzo">公式LINEで相談案内を受け取る</a>
           <a class="button secondary" href="https://liff.line.me/2000599278-vAqA4gPW?unique_key=ob5VtT&ts=1779962523">個別相談フォームへ進む</a>
@@ -469,12 +531,43 @@
   </header>
 
   <main>
+    <section class="section blue" aria-labelledby="story-title">
+      <div class="container two-column">
+        <div>
+          <p class="label">僕の物語</p>
+          <h2 class="section-title" id="story-title">なぜ、人生の選択肢を届けたいと思うようになったのか。</h2>
+          <p class="section-lead">自由な暮らしを見せたいわけではありません。過去の自分が知りたかったことを、今度は必要としている人に届けたいと思っています。</p>
+          <div class="story-timeline">
+            <div class="story-step">
+              <strong>過去</strong>
+              <p>昔は、人生には決められた道しかないと思っていました。学校、就職、働き続ける毎日。その流れに違和感があっても、他の選択肢を知りませんでした。</p>
+            </div>
+            <div class="story-step">
+              <strong>出会い</strong>
+              <p>大学3年生のとき、自由に働き、自分の人生を自分で選んでいる人たちに出会いました。「こんな生き方があるんだ」と知ったことが、僕の人生の転機でした。</p>
+            </div>
+            <div class="story-step">
+              <strong>学びと実践</strong>
+              <p>そこから、お金・ビジネス・マーケティング・AI・自己理解・人生設計を学び、少しずつ実践していきました。</p>
+            </div>
+            <div class="story-step">
+              <strong>今</strong>
+              <p>その積み重ねの先で、好きな時に、好きな場所で、好きなことを選べる「365日夏休み」のような暮らしに近づくことができました。</p>
+            </div>
+          </div>
+        </div>
+        <div class="image-panel">
+          <img class="proof-image" src="assets/consulting-profile.png" alt="小林優希のプロフィールと大切にしていること">
+        </div>
+      </div>
+    </section>
+
     <section class="section blue" aria-labelledby="for-title">
       <div class="container two-column">
         <div>
           <p class="label">こんな方へ</p>
-          <h2 class="section-title" id="for-title">一人で考えていると、ぐるぐるしてしまうことを整理します。</h2>
-          <p class="section-lead">売り込みではなく、あなたの経験をどう活かせるかを一緒に言葉にする時間です。</p>
+          <h2 class="section-title" id="for-title">人生の選択肢を増やしたい人に、向き合ってサポートします。</h2>
+          <p class="section-lead">一人で考えていると、ぐるぐるしてしまうことを一緒に整理します。売り込みではなく、あなたの経験をどう活かせるかを言葉にする時間です。</p>
         </div>
         <div class="paper-panel">
           <ul class="check-list">
@@ -488,7 +581,32 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="theme-title">
+    <section class="section" aria-labelledby="voice-title">
+      <div class="container">
+        <p class="label">受講生の声</p>
+        <h2 class="section-title" id="voice-title">実際に個別サポートした方から、こんな声をいただいています。</h2>
+        <p class="section-lead">一人ひとりの現在地に合わせて、目標設定・時間の使い方・行動の整理をサポートしています。</p>
+        <div class="testimonial-panel">
+          <img src="assets/consulting-review.png" alt="受講生の成果と喜びの声">
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <h3>やることが明確に</h3>
+            <p>タスクの付け方や優先順位の考え方が整理され、目からウロコだったという声をいただいています。</p>
+          </article>
+          <article class="card">
+            <h3>行動がブレなくなった</h3>
+            <p>単なる目標ではなく、価値観に沿って逆算することで、毎日の行動が決めやすくなります。</p>
+          </article>
+          <article class="card">
+            <h3>結果につながる行動へ</h3>
+            <p>しっかり行動した方からは、月7桁達成など大きな成果の報告も届いています。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cream" aria-labelledby="theme-title">
       <div class="container">
         <p class="label">相談テーマ</p>
         <h2 class="section-title" id="theme-title">個別相談で一緒に整理すること</h2>

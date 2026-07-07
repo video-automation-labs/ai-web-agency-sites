@@ -13,6 +13,7 @@ AIで自動生成されたホームページの実例集です。
 | AI戦略パートナーLP | https://ai-strategy-partner-lp.pages.dev |
 | AI4コマ漫画LP | https://ai-4koma-manga-lp.pages.dev |
 | Claude Code AI社員構築LP | https://claude-code-ai-employee-lp.pages.dev |
+| 365日夏休みプロジェクト | https://365days-summer-lp.pages.dev |
 
 ## フォルダ構成
 
@@ -26,6 +27,7 @@ ai-web-agency-sites/
 │   ├── ai-strategy-partner-lp/  # AI戦略パートナーLP
 │   ├── ai-4koma-manga-lp/       # AI4コマ漫画LP
 │   ├── claude-code-ai-employee-lp/ # Claude Code AI社員構築LP
+│   ├── 365days-summer-lp/       # 365日夏休みプロジェクト
 │   ├── motto-custom-motors/     # バイク屋HP（非公開）
 │   └── kobayashi-kigyojuku-lp/  # 小林起業塾LP（非公開）
 ├── _archive/2026-06/            # 廃止・重複サイト
