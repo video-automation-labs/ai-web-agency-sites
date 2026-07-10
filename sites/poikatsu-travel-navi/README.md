@@ -39,13 +39,13 @@ open /Users/kobayashiyuuki/ai-web-agency-sites/sites/poikatsu-travel-navi/index.
 - 楽天ふるさと納税（`event.rakuten.co.jp/furusato/`）
 - 楽天スーパーDEAL（`event.rakuten.co.jp/superdeal/`）
 
-以下3件は「URLからリンクを作成」ではエラーになった（金融・通信系は個別の提携申請が必要な可能性が高い）。該当記事（`05-bank-card-combo.html`, `11-mobile-travel.html`, `13-rakuten-pay.html`）は `RAKUTEN_AFFILIATE_ID` プレースホルダーのまま残っている：
+以下3件は「URLからリンクを作成」ではエラーになった（金融・通信系は個別の提携申請が必要な可能性が高い）：
 
-- 楽天銀行（`www.rakuten-bank.co.jp`）
-- 楽天モバイル（`network.mobile.rakuten.co.jp`）
-- 楽天Pay（`pay.rakuten.co.jp`）
+- **楽天銀行**（`www.rakuten-bank.co.jp`）→ `05-bank-card-combo.html` は対応済み。アフィリエイトリンクの代わりに、楽天銀行「ご紹介プログラム」の紹介コード **P15034653** を掲載し、公式サイトへの通常リンクに変更した（2026-07-10）。
+- 楽天モバイル（`network.mobile.rakuten.co.jp`）→ `11-mobile-travel.html` は `RAKUTEN_AFFILIATE_ID` プレースホルダーのまま
+- 楽天Pay（`pay.rakuten.co.jp`）→ `13-rakuten-pay.html` は `RAKUTEN_AFFILIATE_ID` プレースホルダーのまま
 
-対応方法：楽天アフィリエイトの「商品・サービスを探す」から該当サービスを検索し、提携申請（審査）が必要か確認する。提携後にリンクジェネレーターで発行し、該当ファイル内の該当箇所を差し替える。残りプレースホルダーの場所を確認する：
+対応方法：楽天アフィリエイトの「商品・サービスを探す」から該当サービスを検索し、提携申請（審査）が必要か確認する。提携後にリンクジェネレーターで発行し、該当ファイル内の該当箇所を差し替える。楽天モバイルにも紹介コード制度があれば、銀行と同じ方式（コード掲載＋通常リンク）で対応できる。残りプレースホルダーの場所を確認する：
 
 ```bash
 cd /Users/kobayashiyuuki/ai-web-agency-sites/sites/poikatsu-travel-navi
@@ -86,7 +86,8 @@ npx wrangler pages deploy sites/poikatsu-travel-navi --project-name poikatsu-tra
 
 - [x] 楽天アフィリエイトリンク差し替え（トラベル／カード／ふるさと納税／スーパーDEAL）
 - [x] Cloudflare Pagesへデプロイ（https://poikatsu-travel-navi.pages.dev）
-- [ ] 楽天銀行／楽天モバイル／楽天Payの提携申請 → リンク差し替え（上記参照）
+- [x] 楽天銀行 → 紹介コード方式で対応済み
+- [ ] 楽天モバイル／楽天Payの提携申請 → リンク差し替え（上記参照）
 - [ ] LINE公式アカウントのリッチメニュー・あいさつメッセージを設定（本人作業）
 - [ ] Threads新規アカウントを開設し、プロフィールにLINEリンクを設置（本人作業）
 - [ ] site-portalに登録
