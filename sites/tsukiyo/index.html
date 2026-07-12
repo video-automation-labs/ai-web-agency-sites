@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>月夜 — 月光の水庭 | TSUKIYO</title>
+<meta name="description" content="WebGPU × three.js で描く、月光の水庭。音と光が呼吸する世界観サイトのテンプレート。" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌕</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./css/style.css?r=1" />
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.182.0/build/three.webgpu.js",
+    "three/webgpu": "https://cdn.jsdelivr.net/npm/three@0.182.0/build/three.webgpu.js",
+    "three/tsl": "https://cdn.jsdelivr.net/npm/three@0.182.0/build/three.tsl.js"
+  }
+}
+</script>
+</head>
+<body>
+<canvas id="stage" class="stage" aria-hidden="true"></canvas>
+
+<main id="story">
+  <!-- 各セクションの文言は js/config.js から流し込まれる -->
+  <section class="sec hero" id="hero">
+    <div class="hero-inner">
+      <h1 class="hero-title" data-slot="brandJa"></h1>
+      <p class="hero-sub" data-slot="tagline"></p>
+    </div>
+    <p class="hero-en" data-slot="brandEn"></p>
+    <p class="scroll-cue" data-slot="scrollCue"></p>
+  </section>
+
+  <section class="sec presence" id="presence">
+    <p class="presence-line" data-slot="presenceLine"></p>
+    <p class="presence-sign" data-slot="presenceSign"></p>
+  </section>
+
+  <div id="features"><!-- feature節はconfigから生成 --></div>
+
+  <section class="sec cta" id="contact">
+    <h2 class="cta-title" data-slot="ctaTitle"></h2>
+    <p class="cta-copy" data-slot="ctaCopy"></p>
+    <div class="cta-actions" data-slot-links="ctaLinks"></div>
+  </section>
+
+  <section class="sec fin" id="fin">
+    <p class="fin-line" data-slot="finLine"></p>
+    <p class="fin-credit" data-slot="finCredit"></p>
+  </section>
+</main>
+
+<script type="module" src="./js/main.js?r=1"></script>
+</body>
+</html>
